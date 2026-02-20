@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aranio Soft</title>
+    <style>
+        :root {
+            --bg: #FAFAFA;
+            --card: #FFFFFF;
+            --text: #1A1A1A;
+            --muted: #6B7280;
+            --accent: #10B981;
+            --border: #E5E7EB;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #111111;
+                --card: #1C1C1E;
+                --text: #F5F5F5;
+                --muted: #9CA3AF;
+                --accent: #34D399;
+                --border: #2D2D2D;
+            }
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 600px;
+            text-align: center;
+        }
+        .brand {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--accent), #059669);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--muted);
+            margin-bottom: 3rem;
+        }
+        .app-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-decoration: none;
+            color: var(--text);
+            display: block;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .app-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+        }
+        .app-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        .app-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .app-desc {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+        .badge-row {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        .badge {
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background: var(--accent);
+            color: white;
+        }
+        .footer {
+            margin-top: 3rem;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+        .footer a { color: var(--accent); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="brand">Aranio Soft</div>
+        <p class="tagline">Apps que respetan tu privacidad</p>
+
+        <a href="zeroBudget/" class="app-card">
+            <div class="app-icon">💰</div>
+            <div class="app-name">ZeroBudget</div>
+            <p class="app-desc">Finanzas personales simples y privadas. Presupuestos, metas de ahorro, multi-cuenta — todo en tu dispositivo.</p>
+            <div class="badge-row">
+                <span class="badge">iOS</span>
+                <span class="badge">100% Offline</span>
+                <span class="badge">Gratis</span>
+            </div>
+        </a>
+
+        <div class="footer">
+            <p>&copy; 2025 Aranio Soft</p>
+            <p style="margin-top: 0.5rem;"><a href="mailto:soporte@araniosoft.com">soporte@araniosoft.com</a></p>
+        </div>
+    </div>
+</body>
+</html>

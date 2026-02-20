@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeroBudget — Finanzas Personales Privadas</title>
+    <meta name="description" content="ZeroBudget: gestiona tus finanzas personales de forma privada. Presupuestos, metas de ahorro, multi-cuenta. 100% offline, sin servidores.">
+    <style>
+        :root {
+            --bg: #FAFAFA;
+            --card: #FFFFFF;
+            --text: #1A1A1A;
+            --muted: #6B7280;
+            --accent: #10B981;
+            --accent-dark: #059669;
+            --border: #E5E7EB;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #111111;
+                --card: #1C1C1E;
+                --text: #F5F5F5;
+                --muted: #9CA3AF;
+                --accent: #34D399;
+                --accent-dark: #10B981;
+                --border: #2D2D2D;
+            }
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 4rem 1.5rem 3rem;
+        }
+        .hero-icon { font-size: 4rem; margin-bottom: 1rem; }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.75rem;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--muted);
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+        .badge-row {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Features */
+        .features {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+        }
+        .feature {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .feature-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+        .feature h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+        .feature p {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        /* Privacy callout */
+        .privacy-callout {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            padding: 0 1.5rem;
+        }
+        .privacy-callout .card {
+            background: var(--card);
+            border: 2px solid var(--accent);
+            border-radius: 14px;
+            padding: 2rem;
+            text-align: center;
+        }
+        .privacy-callout h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .privacy-callout p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+        footer a { color: var(--accent); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="hero-icon">💰</div>
+        <h1>ZeroBudget</h1>
+        <p>Tus finanzas personales, organizadas y privadas. Sin servidores, sin cuentas, sin complicaciones.</p>
+        <div class="badge-row">
+            <span class="badge">🔒 100% Local</span>
+            <span class="badge">📱 iOS</span>
+            <span class="badge">🌙 Dark Mode</span>
+            <span class="badge">🇲🇽 Hecho en México</span>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature">
+            <div class="feature-icon">📊</div>
+            <h3>Presupuesto Inteligente</h3>
+            <p>Asistente que te guía paso a paso para distribuir tu ingreso con la regla 50/20/20/10.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🏦</div>
+            <h3>Multi-Cuenta</h3>
+            <p>Gestiona efectivo, débito, crédito y cuentas de ahorro en un solo lugar.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🎯</div>
+            <h3>Metas de Ahorro</h3>
+            <p>Define metas con cuentas dedicadas y haz seguimiento automático de tu progreso.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">📈</div>
+            <h3>Analíticas</h3>
+            <p>Visualiza tus hábitos con gráficas de tendencias, categorías y patrones de gasto.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">📸</div>
+            <h3>Escaneo de Tickets</h3>
+            <p>Fotografía tus tickets y el OCR extrae los datos automáticamente.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🏧</div>
+            <h3>Importar Estados de Cuenta</h3>
+            <p>Importa CSV y Excel de bancos mexicanos: BBVA, Banorte, HSBC, Santander y más.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🗣️</div>
+            <h3>Siri</h3>
+            <p>"Oye Siri, agrega gasto de 500 en walmart." Registra transacciones con tu voz.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🔐</div>
+            <h3>Face ID</h3>
+            <p>Protege tu información con Face ID, Touch ID o código de acceso.</p>
+        </div>
+    </section>
+
+    <section class="privacy-callout">
+        <div class="card">
+            <h2>🛡️ Tu Privacidad Primero</h2>
+            <p>ZeroBudget no tiene servidores, no recopila datos, no tiene cuentas de usuario. Toda tu información financiera vive exclusivamente en tu iPhone.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="privacy.html">Política de Privacidad</a>
+            <a href="terms.html">Términos de Servicio</a>
+            <a href="mailto:soporte@araniosoft.com">Contacto</a>
+        </div>
+        <p>&copy; 2025 <a href="../">Aranio Soft</a>. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
