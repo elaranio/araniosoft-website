@@ -1,11 +1,46 @@
-<!DOCTYPE html>
-<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZeroBudget — Finanzas Personales Privadas</title>
-    <meta name="description" content="ZeroBudget: gestiona tus finanzas personales de forma privada. Presupuestos, metas de ahorro, multi-cuenta. 100% offline, sin servidores.">
-    <style>
+    <title>ZeroBudget — Finanzas Personales Privadas para iPhone</title>
+    <meta name="description" content="ZeroBudget: gestiona tus finanzas personales en iPhone sin servidores ni cuentas. Presupuestos, metas de ahorro, multi-cuenta, analíticas. 100% offline y gratis.">
+    <link rel="canonical" href="https://araniosoft.com/zeroBudget/">
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://araniosoft.com/zeroBudget/">
+    <meta property="og:title"       content="ZeroBudget — Finanzas Personales Privadas para iPhone">
+    <meta property="og:description" content="Gestiona tus finanzas sin servidores ni cuentas. 100% offline, presupuestos, metas de ahorro y analíticas en tu iPhone.">
+    <meta property="og:image"       content="https://araniosoft.com/zeroBudget/screenshots/dashboard.png">
+    <meta property="og:locale"      content="es_MX">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="ZeroBudget — Finanzas Personales para iPhone">
+    <meta name="twitter:description" content="100% offline. Sin servidores. Sin cuentas. Tus finanzas, solo en tu iPhone.">
+    <meta name="twitter:image"       content="https://araniosoft.com/zeroBudget/screenshots/dashboard.png">
+
+    <!-- JSON-LD SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "ZeroBudget",
+      "operatingSystem": "iOS",
+      "applicationCategory": "FinanceApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "MXN"
+      },
+      "description": "App de finanzas personales para iPhone. 100% offline, sin servidores ni cuentas de usuario. Presupuestos, metas de ahorro, multi-cuenta y analíticas.",
+      "author": {
+        "@type": "Organization",
+        "name": "Aranio Soft",
+        "url": "https://araniosoft.com"
+      }
+    }
+    </script>
+        <style>
         :root {
             --bg: #FAFAFA;
             --card: #FFFFFF;
@@ -141,12 +176,34 @@
             justify-content: center;
             margin-bottom: 1rem;
         }
+
+        .coming-soon {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .notify-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.75rem 1.75rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: opacity 0.2s;
+        }
+        .notify-btn:hover { opacity: 0.85; }
     </style>
 </head>
 <body>
 
     <section class="hero">
-        <div class="hero-icon"><img src="../logo.png" alt="ZeroBudget"></div>
+        <div class="hero-icon"><img src="../logo.png" alt="Ícono de ZeroBudget" width="120" height="120"></div>
         <h1>ZeroBudget</h1>
         <p>Tus finanzas personales, organizadas y privadas. Sin servidores, sin cuentas, sin complicaciones.</p>
         <div class="badge-row">
@@ -155,6 +212,10 @@
             <span class="badge">🌙 Dark Mode</span>
             <span class="badge">🇲🇽 Hecho en México</span>
         </div>
+        <p class="coming-soon">Próximamente en el App Store</p>
+        <a href="mailto:soporte@araniosoft.com?subject=Notif%C3%ADcame%20ZeroBudget" class="notify-btn">
+            🔔 Notifícame cuando esté disponible
+        </a>
     </section>
 
     <section class="features">
@@ -213,7 +274,7 @@
             <a href="terms.html">Términos de Servicio</a>
             <a href="mailto:soporte@araniosoft.com">Contacto</a>
         </div>
-        <p>&copy; 2025 <a href="../">Aranio Soft</a>. Todos los derechos reservados.</p>
+        <p>&copy; 2026 <a href="../">Aranio Soft</a>. Todos los derechos reservados.</p>
     </footer>
 
 </body>
