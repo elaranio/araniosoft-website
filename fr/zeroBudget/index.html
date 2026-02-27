@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeroBudget — Finances Personnelles Privées pour iPhone</title>
+    <meta name="description" content="ZeroBudget : gérez vos finances personnelles sur iPhone sans serveurs ni comptes. Budgets, objectifs d'épargne, multi-comptes, analyses. 100% hors ligne et gratuit.">
+    <link rel="canonical" href="https://araniosoft.com/fr/zeroBudget/">
+    <link rel="alternate" hreflang="es"        href="https://araniosoft.com/zeroBudget/">
+    <link rel="alternate" hreflang="en"        href="https://araniosoft.com/en/zeroBudget/">
+    <link rel="alternate" hreflang="fr"        href="https://araniosoft.com/fr/zeroBudget/">
+    <link rel="alternate" hreflang="x-default" href="https://araniosoft.com/zeroBudget/">
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://araniosoft.com/fr/zeroBudget/">
+    <meta property="og:title"       content="ZeroBudget — Finances Personnelles Privées pour iPhone">
+    <meta property="og:description" content="Gérez vos finances sans serveurs ni comptes. 100% hors ligne, budgets, objectifs d'épargne et analyses sur votre iPhone.">
+    <meta property="og:image"       content="https://araniosoft.com/zeroBudget/screenshots/dashboard.png">
+    <meta property="og:locale"      content="fr_FR">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="ZeroBudget — Finances Personnelles pour iPhone">
+    <meta name="twitter:description" content="100% hors ligne. Sans serveurs. Sans comptes. Vos finances, uniquement sur votre iPhone.">
+    <meta name="twitter:image"       content="https://araniosoft.com/zeroBudget/screenshots/dashboard.png">
+
+    <!-- JSON-LD SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "ZeroBudget",
+      "operatingSystem": "iOS",
+      "applicationCategory": "FinanceApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+      "description": "Application de finances personnelles pour iPhone. 100% hors ligne, sans serveurs ni comptes utilisateur. Budgets, objectifs d'épargne, multi-comptes et analyses.",
+      "author": { "@type": "Organization", "name": "Aranio Soft", "url": "https://araniosoft.com" }
+    }
+    </script>
+    <style>
+        :root {
+            --bg: #FAFAFA; --card: #FFFFFF; --text: #1A1A1A;
+            --muted: #6B7280; --accent: #10B981; --accent-dark: #059669; --border: #E5E7EB;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #111111; --card: #1C1C1E; --text: #F5F5F5;
+                --muted: #9CA3AF; --accent: #34D399; --accent-dark: #10B981; --border: #2D2D2D;
+            }
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+        .hero { text-align: center; padding: 4rem 1.5rem 3rem; }
+        .hero-icon { margin-bottom: 1rem; }
+        .hero-icon img { width: 120px; height: 120px; border-radius: 26px; }
+        .hero h1 { font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.75rem; }
+        .hero p { font-size: 1.15rem; color: var(--muted); max-width: 500px; margin: 0 auto 2rem; }
+        .badge-row { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+        .badge { font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; background: var(--accent); color: white; }
+        .features { max-width: 800px; margin: 0 auto; padding: 0 1.5rem 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
+        .feature { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; text-align: center; }
+        .feature-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+        .feature h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
+        .feature p { font-size: 0.85rem; color: var(--muted); }
+        .privacy-callout { max-width: 600px; margin: 0 auto 3rem; padding: 0 1.5rem; }
+        .privacy-callout .card { background: var(--card); border: 2px solid var(--accent); border-radius: 14px; padding: 2rem; text-align: center; }
+        .privacy-callout h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .privacy-callout p { color: var(--muted); font-size: 0.9rem; }
+        footer { text-align: center; padding: 2rem 1.5rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.8rem; }
+        footer a { color: var(--accent); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        .footer-links { display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 1rem; }
+        .coming-soon { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600; }
+        .notify-btn { display: inline-block; background: var(--accent); color: white; padding: 0.75rem 1.75rem; border-radius: 50px; font-weight: 700; font-size: 0.95rem; text-decoration: none; margin-bottom: 2rem; transition: opacity 0.2s; }
+        .notify-btn:hover { opacity: 0.85; }
+        .gallery-section { max-width: 800px; margin: 0 auto 3rem; padding: 0 1.5rem; text-align: center; }
+        .gallery-section h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem; }
+        .gallery { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 0.5rem; justify-content: center; }
+        .gallery img { width: 200px; flex-shrink: 0; border-radius: 28px; box-shadow: 0 8px 30px rgba(0,0,0,0.15); scroll-snap-align: center; }
+        @media (max-width: 600px) { .gallery { justify-content: flex-start; } .gallery img { width: 160px; } }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-icon"><img src="../../logo.png" alt="Icône ZeroBudget" width="120" height="120"></div>
+        <h1>ZeroBudget</h1>
+        <p>Vos finances personnelles, organisées et privées. Sans serveurs, sans comptes, sans complications.</p>
+        <div class="badge-row">
+            <span class="badge">🔒 100% Local</span>
+            <span class="badge">📱 iOS</span>
+            <span class="badge">🌙 Mode Sombre</span>
+        </div>
+        <p class="coming-soon">Bientôt sur l'App Store</p>
+        <a href="mailto:soporte@araniosoft.com?subject=Notifiez-moi%20de%20ZeroBudget" class="notify-btn">
+            🔔 Notifiez-moi quand disponible
+        </a>
+    </section>
+
+    <section class="features">
+        <div class="feature">
+            <div class="feature-icon">📊</div>
+            <h3>Budget Intelligent</h3>
+            <p>Assistant étape par étape pour distribuer vos revenus avec la règle 50/20/20/10.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🏦</div>
+            <h3>Multi-Comptes</h3>
+            <p>Gérez espèces, débit, crédit et comptes d'épargne en un seul endroit.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🎯</div>
+            <h3>Objectifs d'Épargne</h3>
+            <p>Définissez des objectifs avec des comptes dédiés et suivez votre progression automatiquement.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">📈</div>
+            <h3>Analyses</h3>
+            <p>Visualisez vos habitudes avec des graphiques de tendances, catégories et schémas de dépenses.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">📸</div>
+            <h3>Scan de Reçus</h3>
+            <p>Photographiez vos reçus et l'OCR extrait les données automatiquement.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🏧</div>
+            <h3>Import Bancaire</h3>
+            <p>Importez des fichiers CSV et Excel de n'importe quelle banque dans le monde.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🗣️</div>
+            <h3>Siri</h3>
+            <p>« Dis Siri, ajoute une dépense de 50€ au supermarché. » Enregistrez des transactions avec votre voix.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🔐</div>
+            <h3>Face ID</h3>
+            <p>Protégez vos données avec Face ID, Touch ID ou code d'accès.</p>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <h2>Découvrez comment ça fonctionne</h2>
+        <div class="gallery">
+            <img src="../../zeroBudget/screenshots/dashboard.png"    alt="Dashboard ZeroBudget — vue principale avec dépenses du mois" width="200" loading="lazy">
+            <img src="../../zeroBudget/screenshots/transactions.png" alt="Transactions ZeroBudget — historique avec filtres" width="200" loading="lazy">
+            <img src="../../zeroBudget/screenshots/budget.png"       alt="Budget ZeroBudget — distribution 50/20/20/10" width="200" loading="lazy">
+            <img src="../../zeroBudget/screenshots/drilldown.png"    alt="Détail de catégorie ZeroBudget — sous-catégories de dépenses" width="200" loading="lazy">
+            <img src="../../zeroBudget/screenshots/accounts.png"     alt="Comptes ZeroBudget — crédit, débit et épargne" width="200" loading="lazy">
+            <img src="../../zeroBudget/screenshots/analytics.png"    alt="Analyses ZeroBudget — graphiques de dépenses par catégorie" width="200" loading="lazy">
+        </div>
+    </section>
+
+    <section class="privacy-callout">
+        <div class="card">
+            <h2>🛡️ Votre Vie Privée d'Abord</h2>
+            <p>ZeroBudget n'a pas de serveurs, ne collecte pas de données, n'a pas de comptes utilisateur. Toutes vos informations financières vivent exclusivement sur votre iPhone.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../../zeroBudget/privacy.html">Politique de Confidentialité</a>
+            <a href="../../zeroBudget/terms.html">Conditions d'utilisation</a>
+            <a href="mailto:soporte@araniosoft.com">Contact</a>
+        </div>
+        <p>&copy; 2026 <a href="../">Aranio Soft</a>. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
