@@ -394,92 +394,164 @@
 </head>
 <body>
 
-    <section class="hero">
-        <div class="hero-icon"><img src="../logo.png" alt="Ícono de ZeroBudget" width="120" height="120"></div>
-        <h1>ZeroBudget</h1>
-        <p>Tus finanzas personales, organizadas y privadas. Sin servidores, sin cuentas, sin complicaciones.</p>
-        <div class="badge-row">
-            <span class="badge">🔒 100% Local</span>
-            <span class="badge">📱 iOS</span>
-            <span class="badge">🌙 Dark Mode</span>
-            <span class="badge">🇲🇽 Hecho en México</span>
-        </div>
-        <p class="coming-soon">Próximamente en el App Store</p>
-        <a href="mailto:soporte@araniosoft.com?subject=Notif%C3%ADcame%20ZeroBudget" class="notify-btn">
-            🔔 Notifícame cuando esté disponible
-        </a>
-    </section>
+  <!-- ─── NAV ─────────────────────────────────────────────────── -->
+  <nav class="nav" id="mainNav">
+    <a class="nav-logo" href="../">
+      <img src="../logo.png" alt="ZeroBudget">
+      ZeroBudget
+    </a>
+    <span class="nav-badge">Próximamente en App Store</span>
+  </nav>
 
-    <section class="features">
-        <div class="feature">
-            <div class="feature-icon">📊</div>
-            <h3>Presupuesto Inteligente</h3>
-            <p>Asistente que te guía paso a paso para distribuir tu ingreso con la regla 50/20/20/10.</p>
-        </div>
-        <div class="feature">
-            <div class="feature-icon">🏦</div>
-            <h3>Multi-Cuenta</h3>
-            <p>Gestiona efectivo, débito, crédito y cuentas de ahorro en un solo lugar.</p>
-        </div>
-        <div class="feature">
-            <div class="feature-icon">🎯</div>
-            <h3>Metas de Ahorro</h3>
-            <p>Define metas con cuentas dedicadas y haz seguimiento automático de tu progreso.</p>
-        </div>
-        <div class="feature">
-            <div class="feature-icon">📈</div>
-            <h3>Analíticas</h3>
-            <p>Visualiza tus hábitos con gráficas de tendencias, categorías y patrones de gasto.</p>
-        </div>
-        <div class="feature">
-            <div class="feature-icon">📸</div>
-            <h3>Escaneo de Tickets</h3>
-            <p>Fotografía tus tickets y el OCR extrae los datos automáticamente.</p>
-        </div>
-        <div class="feature">
-            <div class="feature-icon">🏧</div>
-            <h3>Importar Estados de Cuenta</h3>
-            <p>Importa CSV y Excel de bancos mexicanos: BBVA, Banorte, HSBC, Santander y más.</p>
-        </div>
-        <div class="feature">
-            <div class="feature-icon">🗣️</div>
-            <h3>Siri</h3>
-            <p>"Oye Siri, agrega gasto de 500 en walmart." Registra transacciones con tu voz.</p>
-        </div>
-        <div class="feature">
-            <div class="feature-icon">🔐</div>
-            <h3>Face ID</h3>
-            <p>Protege tu información con Face ID, Touch ID o código de acceso.</p>
-        </div>
-    </section>
+  <!-- ─── HERO ─────────────────────────────────────────────────── -->
+  <section class="hero">
+    <p class="hero-eyebrow fade-up">Finanzas Personales para iPhone</p>
+    <h1 class="hero-title fade-up">Tus finanzas.<br>Solo en tu iPhone.</h1>
+    <p class="hero-subtitle fade-up">Sin servidores. Sin cuentas. Sin que nadie más las vea.</p>
+    <a href="mailto:soporte@araniosoft.com?subject=Notif%C3%ADcame%20ZeroBudget"
+       class="hero-cta fade-up">🔔 Notifícame cuando esté disponible</a>
+    <p class="hero-coming-soon fade-up">Próximamente en el App Store</p>
 
-    <section class="gallery-section">
-        <h2>Mira cómo funciona</h2>
-        <div class="gallery">
-            <img src="screenshots/dashboard.png"    alt="Dashboard de ZeroBudget — vista principal con gastos del mes" width="200" loading="lazy">
-            <img src="screenshots/transactions.png" alt="Movimientos en ZeroBudget — historial de transacciones con filtros" width="200" loading="lazy">
-            <img src="screenshots/budget.png"       alt="Presupuesto en ZeroBudget — distribución 50/20/20/10" width="200" loading="lazy">
-            <img src="screenshots/drilldown.png"    alt="Detalle de categoría en ZeroBudget — subcategorías de Wants con consumo por ítem" width="200" loading="lazy">
-            <img src="screenshots/accounts.png"     alt="Cuentas en ZeroBudget — crédito, débito y ahorro" width="200" loading="lazy">
-            <img src="screenshots/analytics.png"    alt="Analíticas en ZeroBudget — gráficas de gastos por categoría" width="200" loading="lazy">
+    <div class="iphone-wrap" id="heroPhone">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <img src="screenshots/dashboard.png" alt="ZeroBudget Dashboard" loading="eager">
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section class="privacy-callout">
-        <div class="card">
-            <h2>🛡️ Tu Privacidad Primero</h2>
-            <p>ZeroBudget no tiene servidores, no recopila datos, no tiene cuentas de usuario. Toda tu información financiera vive exclusivamente en tu iPhone.</p>
+  <!-- ─── FEATURE 1: Privacidad ─────────────────────────────────── -->
+  <section class="feature-section bg-dark">
+    <div class="feature-text">
+      <p class="feature-eyebrow fade-up">Privacidad Total</p>
+      <h2 class="feature-title fade-up">Sin servidores.<br>Sin cuentas.<br>Solo tú.</h2>
+      <p class="feature-desc fade-up">ZeroBudget no recopila datos, no tiene backend, no requiere registro. Toda tu información financiera vive exclusivamente en tu iPhone, protegida con Face ID.</p>
+    </div>
+    <div class="feature-img" id="phone1Wrap">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <img src="screenshots/accounts.png" alt="Cuentas en ZeroBudget" loading="lazy">
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <div class="footer-links">
-            <a href="privacy.html">Política de Privacidad</a>
-            <a href="terms.html">Términos de Servicio</a>
-            <a href="mailto:soporte@araniosoft.com">Contacto</a>
+  <!-- ─── FEATURE 2: Presupuesto ────────────────────────────────── -->
+  <section class="feature-section bg-black reverse">
+    <div class="feature-text">
+      <p class="feature-eyebrow fade-up">Presupuesto Base Cero</p>
+      <h2 class="feature-title fade-up">Cada peso,<br>con un destino.</h2>
+      <p class="feature-desc fade-up">Asigna cada peso de tu ingreso a una categoría con la regla 50/20/20/10. Necesidades, ahorro, deseos y deudas — en balance perfecto.</p>
+    </div>
+    <div class="feature-img" id="phone2Wrap">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <img src="screenshots/budget.png" alt="Presupuesto en ZeroBudget" loading="lazy">
         </div>
-        <p>&copy; 2026 <a href="../">Araniosoft</a>. Todos los derechos reservados.</p>
-    </footer>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FEATURE 3: Analíticas ─────────────────────────────────── -->
+  <section class="feature-section bg-dark">
+    <div class="feature-text">
+      <p class="feature-eyebrow fade-up">Analíticas Inteligentes</p>
+      <h2 class="feature-title fade-up">Conoce tus<br>patrones reales.</h2>
+      <p class="feature-desc fade-up">Proyección mensual, alertas de presupuesto y Top Spending Drivers te muestran exactamente a dónde va tu dinero, antes de que se vaya.</p>
+    </div>
+    <div class="feature-img" id="phone3Wrap">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <img src="screenshots/analytics.png" alt="Analíticas en ZeroBudget" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FEATURE 4: Siri ───────────────────────────────────────── -->
+  <section class="feature-section bg-black reverse">
+    <div class="feature-text">
+      <p class="feature-eyebrow fade-up">Integración con Siri</p>
+      <h2 class="feature-title fade-up">"Oye Siri,<br>agrega gasto<br>de 500."</h2>
+      <p class="feature-desc fade-up">Registra transacciones con tu voz sin abrir la app. También importa estados de cuenta en CSV de BBVA, Banorte, HSBC, Santander y más bancos mexicanos.</p>
+    </div>
+    <div class="feature-img" id="phone4Wrap">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <img src="screenshots/transactions.png" alt="Transacciones en ZeroBudget" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── STATS ─────────────────────────────────────────────────── -->
+  <section class="stats-section">
+    <p class="stats-title fade-up">Diseñado para quienes toman en serio sus finanzas.</p>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number fade-up" data-target="100">0</span>
+        <span class="stat-label">% Offline</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number fade-up" data-target="6">0</span>
+        <span class="stat-label">Bancos Mexicanos integrados</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number stat-accent fade-up" data-target="0">0</span>
+        <span class="stat-label">Servidores. Cero datos tuyos en la nube.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── GALLERY ───────────────────────────────────────────────── -->
+  <section class="gallery-section">
+    <div class="gallery-header">
+      <h2 class="gallery-title fade-up">Mira cómo funciona.</h2>
+      <p class="gallery-subtitle fade-up">Desliza para explorar cada pantalla.</p>
+    </div>
+    <div class="gallery-track">
+      <div class="iphone-frame">
+        <div class="iphone-screen"><img src="screenshots/dashboard.png"    alt="Dashboard" loading="lazy"></div>
+      </div>
+      <div class="iphone-frame">
+        <div class="iphone-screen"><img src="screenshots/budget.png"       alt="Presupuesto" loading="lazy"></div>
+      </div>
+      <div class="iphone-frame">
+        <div class="iphone-screen"><img src="screenshots/transactions.png" alt="Movimientos" loading="lazy"></div>
+      </div>
+      <div class="iphone-frame">
+        <div class="iphone-screen"><img src="screenshots/accounts.png"     alt="Cuentas" loading="lazy"></div>
+      </div>
+      <div class="iphone-frame">
+        <div class="iphone-screen"><img src="screenshots/analytics.png"    alt="Analíticas" loading="lazy"></div>
+      </div>
+      <div class="iphone-frame">
+        <div class="iphone-screen"><img src="screenshots/drilldown.png"    alt="Detalle categoría" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ───────────────────────────────────────────────────── -->
+  <section class="cta-section">
+    <h2 class="cta-title fade-up">Próximamente<br>en el App Store.</h2>
+    <p class="cta-subtitle fade-up">Sé el primero en saber cuándo ZeroBudget esté disponible para descargar.</p>
+    <a href="mailto:soporte@araniosoft.com?subject=Notif%C3%ADcame%20ZeroBudget"
+       class="hero-cta fade-up">🔔 Notifícame</a>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="privacy.html">Política de Privacidad</a>
+        <a href="terms.html">Términos de Servicio</a>
+        <a href="mailto:soporte@araniosoft.com">Contacto</a>
+        <a href="../">Araniosoft</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 <a href="../">Araniosoft</a>. Todos los derechos reservados.</p>
+    </div>
+  </footer>
 
 </body>
 </html>
