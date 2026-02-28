@@ -390,6 +390,70 @@
     .stats-grid { grid-template-columns: 1fr; gap: 48px; }
     .hero .iphone-frame { width: 240px; }
   }
+
+  /* ─── HERO: animación de entrada al cargar ───────────────────── */
+  @keyframes heroIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  /* Overrides fade-up initial state for hero elements (they animate via CSS, not GSAP) */
+  .hero .hero-eyebrow   { animation: heroIn 0.8s 0.10s both ease-out; opacity: 1 !important; transform: none !important; }
+  .hero .hero-title     { animation: heroIn 0.8s 0.25s both ease-out; opacity: 1 !important; transform: none !important; }
+  .hero .hero-subtitle  { animation: heroIn 0.8s 0.40s both ease-out; opacity: 1 !important; transform: none !important; }
+  .hero .hero-cta       { animation: heroIn 0.8s 0.55s both ease-out; opacity: 1 !important; transform: none !important; }
+  .hero .hero-coming-soon { animation: heroIn 0.8s 0.65s both ease-out; opacity: 1 !important; transform: none !important; }
+
+  /* ─── iPhone hover effect ────────────────────────────────────── */
+  .iphone-frame {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .iphone-frame:hover {
+    transform: translateY(-8px) rotate(-1deg);
+    box-shadow:
+      0 0 0 1.5px #3a3a3a,
+      0 60px 100px rgba(0,0,0,0.7),
+      0 0 0 8px #0d0d0d,
+      0 0 0 9.5px #2a2a2a;
+  }
+  /* Sin hover en la galería */
+  .gallery-track .iphone-frame:hover {
+    transform: none;
+    box-shadow:
+      0 0 0 1.5px #3a3a3a,
+      0 40px 80px rgba(0,0,0,0.6),
+      0 0 0 8px #0d0d0d,
+      0 0 0 9.5px #2a2a2a;
+  }
+
+  /* ─── Separador sutil entre secciones ───────────────────────── */
+  .feature-section + .feature-section {
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+
+  /* ─── Glow verde en botones CTA ─────────────────────────────── */
+  .hero-cta {
+    box-shadow: 0 0 30px rgba(52, 211, 153, 0.3);
+  }
+  .hero-cta:hover {
+    box-shadow: 0 0 50px rgba(52, 211, 153, 0.5);
+    opacity: 1 !important;
+    transform: scale(1.02);
+    transition: all 0.2s;
+  }
+
+  /* ─── Stats: número + label alineados ───────────────────────── */
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ─── Gallery: padding extra al final para que se vea el último ─ */
+  .gallery-track::after {
+    content: '';
+    flex-shrink: 0;
+    width: 8vw;
+  }
     </style>
 </head>
 <body>
