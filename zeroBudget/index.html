@@ -553,5 +553,92 @@
     </div>
   </footer>
 
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // ─── NAV: glassmorphism al scrollear ───────────────────────────
+    ScrollTrigger.create({
+      start: "80px top",
+      onEnter:     () => document.getElementById('mainNav').classList.add('scrolled'),
+      onLeaveBack: () => document.getElementById('mainNav').classList.remove('scrolled'),
+    });
+
+    // ─── HERO: iPhone escala + sube al hacer scroll ────────────────
+    gsap.to("#heroPhone", {
+      y: -120,
+      scale: 1.08,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: 1.5,
+      }
+    });
+
+    // ─── FADE-UP para textos (una vez, al entrar al viewport) ──────
+    gsap.utils.toArray(".fade-up").forEach(el => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1, y: 0,
+          duration: 0.9,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 88%",
+            toggleActions: "play none none none",
+          }
+        }
+      );
+    });
+
+    // ─── PARALLAX en iPhones de features ──────────────────────────
+    [
+      { id: "#phone1Wrap", yFrom: 80,  yTo: -80  },
+      { id: "#phone2Wrap", yFrom: 100, yTo: -100 },
+      { id: "#phone3Wrap", yFrom: 80,  yTo: -80  },
+      { id: "#phone4Wrap", yFrom: 100, yTo: -100 },
+    ].forEach(({ id, yFrom, yTo }) => {
+      gsap.fromTo(id,
+        { y: yFrom },
+        {
+          y: yTo,
+          ease: "none",
+          scrollTrigger: {
+            trigger: id,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          }
+        }
+      );
+    });
+
+    // ─── COUNTER ANIMADO para stats ───────────────────────────────
+    document.querySelectorAll('.stat-number[data-target]').forEach(el => {
+      const target = parseInt(el.getAttribute('data-target'));
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top 80%",
+        once: true,
+        onEnter: () => {
+          gsap.to({ val: 0 }, {
+            val: target,
+            duration: 1.8,
+            ease: "power2.out",
+            onUpdate: function() {
+              el.textContent = Math.round(this.targets()[0].val);
+            }
+          });
+        }
+      });
+    });
+  </script>
+
 </body>
 </html>
