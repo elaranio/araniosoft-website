@@ -73,8 +73,8 @@
 
   /* ─── SCROLLBAR ─────────────────────────────────────────────── */
   ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--apple-black); }
-  ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+  ::-webkit-scrollbar-track { background: #f0f0f0; }
+  ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
 
   /* ─── NAV ───────────────────────────────────────────────────── */
   .nav {
@@ -85,11 +85,13 @@
     transition: background 0.3s;
   }
   .nav.scrolled {
-    background: rgba(0,0,0,0.72);
+    background: rgba(255,255,255,0.85);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
   }
+  .nav.scrolled .nav-logo { color: #1D1D1F; }
+  .nav.scrolled .nav-badge { color: #6E6E73; }
   .nav-logo {
     display: flex; align-items: center; gap: 8px;
     text-decoration: none; color: var(--apple-text);
@@ -214,8 +216,8 @@
     padding: 120px 8vw;
     overflow: hidden;
   }
-  .feature-section.bg-dark   { background: var(--apple-darker); }
-  .feature-section.bg-black  { background: var(--apple-black); }
+  .feature-section.bg-dark   { background: #F5F5F7; }
+  .feature-section.bg-black  { background: #FFFFFF; }
   .feature-section.reverse   { direction: rtl; }
   .feature-section.reverse > * { direction: ltr; }
 
@@ -232,11 +234,11 @@
     letter-spacing: -0.03em;
     line-height: 1.1;
     margin-bottom: 20px;
-    color: var(--apple-text);
+    color: #1D1D1F;
   }
   .feature-desc {
     font-size: 17px;
-    color: var(--apple-muted);
+    color: #6E6E73;
     line-height: 1.7;
   }
   .feature-img {
@@ -248,13 +250,13 @@
   /* ─── STATS SECTION ─────────────────────────────────────────── */
   .stats-section {
     padding: 120px 8vw;
-    background: var(--apple-darker);
+    background: #F5F5F7;
     text-align: center;
   }
   .stats-title {
     font-size: clamp(1.4rem, 3vw, 2rem);
     font-weight: 600;
-    color: var(--apple-muted);
+    color: #6E6E73;
     margin-bottom: 80px;
     letter-spacing: -0.02em;
   }
@@ -270,21 +272,21 @@
     font-size: clamp(3rem, 7vw, 5.5rem);
     font-weight: 700;
     letter-spacing: -0.04em;
-    color: var(--apple-text);
+    color: #1D1D1F;
     line-height: 1;
     display: block;
     margin-bottom: 12px;
   }
   .stat-label {
     font-size: 17px;
-    color: var(--apple-muted);
+    color: #6E6E73;
   }
   .stat-accent { color: var(--brand-green); }
 
   /* ─── GALLERY SECTION ───────────────────────────────────────── */
   .gallery-section {
     padding: 120px 0;
-    background: var(--apple-black);
+    background: #FFFFFF;
     overflow: hidden;
   }
   .gallery-header {
@@ -296,10 +298,11 @@
     font-weight: 700;
     letter-spacing: -0.03em;
     margin-bottom: 16px;
+    color: #1D1D1F;
   }
   .gallery-subtitle {
     font-size: 17px;
-    color: var(--apple-muted);
+    color: #6E6E73;
   }
   .gallery-track {
     display: flex;
@@ -324,7 +327,7 @@
     align-items: center; justify-content: center;
     text-align: center;
     padding: 120px 24px;
-    background: var(--apple-darker);
+    background: #F5F5F7;
   }
   .cta-title {
     font-size: clamp(2.5rem, 6vw, 5rem);
@@ -332,10 +335,11 @@
     letter-spacing: -0.03em;
     line-height: 1.1;
     margin-bottom: 24px;
+    color: #1D1D1F;
   }
   .cta-subtitle {
     font-size: 19px;
-    color: var(--apple-muted);
+    color: #6E6E73;
     margin-bottom: 48px;
     max-width: 500px;
   }
@@ -343,8 +347,8 @@
   /* ─── FOOTER ────────────────────────────────────────────────── */
   footer {
     padding: 40px 24px;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    background: var(--apple-darker);
+    border-top: 1px solid rgba(0,0,0,0.08);
+    background: #F5F5F7;
   }
   .footer-inner {
     max-width: 900px;
@@ -359,16 +363,16 @@
   }
   .footer-links a {
     font-size: 13px;
-    color: var(--apple-muted);
+    color: #6E6E73;
     text-decoration: none;
     transition: color 0.2s;
   }
-  .footer-links a:hover { color: var(--apple-text); }
+  .footer-links a:hover { color: #1D1D1F; }
   .footer-copy {
     font-size: 13px;
-    color: var(--apple-muted);
+    color: #6E6E73;
   }
-  .footer-copy a { color: var(--apple-muted); text-decoration: none; }
+  .footer-copy a { color: #6E6E73; text-decoration: none; }
 
   /* ─── ANIMATIONS (estado inicial — GSAP los anima) ──────────── */
   .fade-up {
@@ -427,7 +431,7 @@
 
   /* ─── Separador sutil entre secciones ───────────────────────── */
   .feature-section + .feature-section {
-    border-top: 1px solid rgba(255,255,255,0.04);
+    border-top: 1px solid rgba(0,0,0,0.06);
   }
 
   /* ─── Glow verde en botones CTA ─────────────────────────────── */
@@ -453,6 +457,23 @@
     content: '';
     flex-shrink: 0;
     width: 8vw;
+  }
+
+  /* ─── iPhone frame en secciones claras ──────────────────────── */
+  .feature-section .iphone-frame,
+  .gallery-track .iphone-frame {
+    box-shadow:
+      0 0 0 1.5px #d0d0d0,
+      0 30px 60px rgba(0,0,0,0.12),
+      0 0 0 8px #e8e8e8,
+      0 0 0 9.5px #cccccc;
+  }
+  .feature-section .iphone-frame:hover {
+    box-shadow:
+      0 0 0 1.5px #c0c0c0,
+      0 50px 80px rgba(0,0,0,0.18),
+      0 0 0 8px #e0e0e0,
+      0 0 0 9.5px #c8c8c8;
   }
     </style>
 </head>
