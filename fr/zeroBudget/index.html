@@ -568,6 +568,22 @@
     </div>
   </section>
 
+  <!-- ─── FEATURE 5: Category Consumption ─────────────────────── -->
+  <section class="feature-section bg-dark">
+    <div class="feature-text">
+      <p class="feature-eyebrow fade-up">Category Consumption</p>
+      <h2 class="feature-title fade-up">Chaque centime,<br>expliqué.</h2>
+      <p class="feature-desc fade-up">Touchez n'importe quelle catégorie et voyez exactement dans quelle sous-catégorie vous avez dépensé, combien et quand. Le niveau de détail pour prendre de vraies décisions financières.</p>
+    </div>
+    <div class="feature-img" id="phone5Wrap">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <img src="../../zeroBudget/screenshots/drilldown.png" alt="Détail de catégorie dans ZeroBudget" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── STATS ─────────────────────────────────────────────────── -->
   <section class="stats-section">
     <p class="stats-title fade-up">Conçu pour ceux qui prennent leurs finances au sérieux.</p>
@@ -686,6 +702,7 @@
       { id: "#phone2Wrap", yFrom: 100, yTo: -100 },
       { id: "#phone3Wrap", yFrom: 80,  yTo: -80  },
       { id: "#phone4Wrap", yFrom: 100, yTo: -100 },
+      { id: "#phone5Wrap", yFrom: 80,  yTo: -80  },
     ].forEach(({ id, yFrom, yTo }) => {
       gsap.fromTo(id,
         { y: yFrom },
