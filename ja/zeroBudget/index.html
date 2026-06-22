@@ -1,31 +1,31 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZeroBudget — Finances Personnelles Privées pour iPhone</title>
-    <meta name="description" content="ZeroBudget : gérez vos finances personnelles sur iPhone sans serveurs ni comptes. Budgets, objectifs d'épargne, multi-compte, analytiques. 100% hors ligne et gratuit.">
-    <link rel="canonical" href="https://araniosoft.com/fr/zeroBudget/">
-    <link rel="alternate" hreflang="es"      href="https://araniosoft.com/zeroBudget/">
-    <link rel="alternate" hreflang="en"      href="https://araniosoft.com/en/zeroBudget/">
-    <link rel="alternate" hreflang="fr"      href="https://araniosoft.com/fr/zeroBudget/">
-    <link rel="alternate" hreflang="pt-BR"   href="https://araniosoft.com/pt/zeroBudget/">
-    <link rel="alternate" hreflang="ja"      href="https://araniosoft.com/ja/zeroBudget/">
-    <link rel="alternate" hreflang="ko"      href="https://araniosoft.com/ko/zeroBudget/">
+    <title>ZeroBudget — iPhoneのためのプライベートな家計管理</title>
+    <meta name="description" content="ZeroBudget：サーバーもアカウントも不要。iPhoneだけで家計を管理。予算、貯金目標、複数口座、分析。100%オフラインで無料。">
+    <link rel="canonical" href="https://araniosoft.com/ja/zeroBudget/">
+    <link rel="alternate" hreflang="es" href="https://araniosoft.com/zeroBudget/">
+    <link rel="alternate" hreflang="en" href="https://araniosoft.com/en/zeroBudget/">
+    <link rel="alternate" hreflang="fr" href="https://araniosoft.com/fr/zeroBudget/">
+    <link rel="alternate" hreflang="pt-BR" href="https://araniosoft.com/pt/zeroBudget/">
+    <link rel="alternate" hreflang="ja" href="https://araniosoft.com/ja/zeroBudget/">
+    <link rel="alternate" hreflang="ko" href="https://araniosoft.com/ko/zeroBudget/">
     <link rel="alternate" hreflang="x-default" href="https://araniosoft.com/zeroBudget/">
 
     <!-- Open Graph -->
     <meta property="og:type"        content="website">
-    <meta property="og:url"         content="https://araniosoft.com/fr/zeroBudget/">
-    <meta property="og:title"       content="ZeroBudget — Finances Personnelles Privées pour iPhone">
-    <meta property="og:description" content="Gérez vos finances sans serveurs ni comptes. 100% hors ligne, budgets, objectifs d'épargne et analytiques sur votre iPhone.">
+    <meta property="og:url"         content="https://araniosoft.com/ja/zeroBudget/">
+    <meta property="og:title"       content="ZeroBudget — iPhoneのためのプライベートな家計管理">
+    <meta property="og:description" content="サーバーもアカウントも不要で家計を管理。100%オフライン。予算、貯金目標、分析をすべてiPhoneの中で。">
     <meta property="og:image"       content="https://araniosoft.com/zeroBudget/screenshots/dashboard.png">
-    <meta property="og:locale"      content="fr_FR">
+    <meta property="og:locale"      content="ja_JP">
 
     <!-- Twitter Card -->
     <meta name="twitter:card"        content="summary_large_image">
-    <meta name="twitter:title"       content="ZeroBudget — Finances Personnelles pour iPhone">
-    <meta name="twitter:description" content="100% hors ligne. Sans serveurs. Sans comptes. Vos finances, seulement sur votre iPhone.">
+    <meta name="twitter:title"       content="ZeroBudget — iPhoneのための家計管理">
+    <meta name="twitter:description" content="100%オフライン。サーバーなし。アカウントなし。あなたの家計は、あなたのiPhoneだけに。">
     <meta name="twitter:image"       content="https://araniosoft.com/zeroBudget/screenshots/dashboard.png">
 
     <!-- JSON-LD SoftwareApplication -->
@@ -39,9 +39,9 @@
       "offers": {
         "@type": "Offer",
         "price": "0",
-        "priceCurrency": "EUR"
+        "priceCurrency": "JPY"
       },
-      "description": "Application de finances personnelles pour iPhone. 100% hors ligne, sans serveurs ni comptes utilisateur. Budgets, objectifs d'épargne, multi-compte et analytiques.",
+      "description": "iPhoneのための家計管理アプリ。100%オフラインで、サーバーもユーザーアカウントも不要。予算、貯金目標、複数口座、分析機能を搭載。",
       "author": {
         "@type": "Organization",
         "name": "Araniosoft",
@@ -150,10 +150,6 @@
     margin-bottom: 16px;
   }
   .hero-cta:hover { opacity: 0.85; }
-  .hero-coming-soon {
-    font-size: 13px; color: var(--apple-muted);
-    letter-spacing: 0.04em; text-transform: uppercase;
-  }
   .appstore-badge {
     display: inline-flex;
     align-items: center;
@@ -172,7 +168,7 @@
   .badge-small { font-size: 11px; font-weight: 400; letter-spacing: 0.06em; }
   .badge-big { font-size: 23px; font-weight: 600; letter-spacing: -0.01em; }
 
-  /* ─── IPHONE FRAME (CSS pur) ────────────────────────────────── */
+  /* ─── IPHONE FRAME ──────────────────────────────────────────── */
   .iphone-wrap {
     position: relative;
     display: inline-block;
@@ -222,7 +218,6 @@
     border-radius: 36px;
   }
 
-  /* Hero iPhone */
   .hero .iphone-frame { width: 300px; }
 
   /* ─── FEATURE SECTIONS ──────────────────────────────────────── */
@@ -393,7 +388,7 @@
   }
   .footer-copy a { color: #6E6E73; text-decoration: none; }
 
-  /* ─── ANIMATIONS (état initial — GSAP anime) ─────────────────── */
+  /* ─── ANIMATIONS ────────────────────────────────────────────── */
   .fade-up {
     opacity: 0;
     transform: translateY(40px);
@@ -414,7 +409,6 @@
     .hero .iphone-frame { width: 240px; }
   }
 
-  /* ─── HERO: animation d'entrée au chargement ─────────────────── */
   @keyframes heroIn {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -423,9 +417,7 @@
   .hero .hero-title     { animation: heroIn 0.8s 0.25s both ease-out; opacity: 1 !important; transform: none !important; }
   .hero .hero-subtitle  { animation: heroIn 0.8s 0.40s both ease-out; opacity: 1 !important; transform: none !important; }
   .hero .hero-cta       { animation: heroIn 0.8s 0.55s both ease-out; opacity: 1 !important; transform: none !important; }
-  .hero .hero-coming-soon { animation: heroIn 0.8s 0.65s both ease-out; opacity: 1 !important; transform: none !important; }
 
-  /* ─── Effet hover iPhone ─────────────────────────────────────── */
   .iphone-frame {
     transition: transform 0.4s ease, box-shadow 0.4s ease;
   }
@@ -437,7 +429,6 @@
       0 0 0 8px #0d0d0d,
       0 0 0 9.5px #2a2a2a;
   }
-  /* Pas de hover dans la galerie */
   .gallery-track .iphone-frame:hover {
     transform: none;
     box-shadow:
@@ -447,12 +438,10 @@
       0 0 0 9.5px #2a2a2a;
   }
 
-  /* ─── Séparateur subtil entre sections ──────────────────────── */
   .feature-section + .feature-section {
     border-top: 1px solid rgba(0,0,0,0.06);
   }
 
-  /* ─── Lueur verte sur boutons CTA ───────────────────────────── */
   .hero-cta {
     box-shadow: 0 0 30px rgba(52, 211, 153, 0.3);
   }
@@ -463,21 +452,18 @@
     transition: all 0.2s;
   }
 
-  /* ─── Stats: nombre + label alignés ─────────────────────────── */
   .stat-item {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  /* ─── Galerie: padding extra pour voir le dernier élément ────── */
   .gallery-track::after {
     content: '';
     flex-shrink: 0;
     width: 8vw;
   }
 
-  /* ─── iPhone frame dans sections claires ────────────────────── */
   .feature-section .iphone-frame,
   .gallery-track .iphone-frame {
     box-shadow:
@@ -503,21 +489,21 @@
       <img src="../../logo.png" alt="ZeroBudget">
       ZeroBudget
     </a>
-    <span class="nav-badge">Disponible sur l'App Store</span>
+    <span class="nav-badge">App Storeで配信中</span>
   </nav>
 
   <!-- ─── HERO ─────────────────────────────────────────────────── -->
   <section class="hero">
-    <p class="hero-eyebrow fade-up">Finances Personnelles pour iPhone</p>
-    <h1 class="hero-title fade-up">Vos finances.<br>Seulement sur iPhone.</h1>
-    <p class="hero-subtitle fade-up">Parce qu'il n'est jamais trop tard pour prendre le contrôle de votre argent.</p>
+    <p class="hero-eyebrow fade-up">iPhoneのための家計管理</p>
+    <h1 class="hero-title fade-up">あなたの家計は、<br>あなたのiPhoneだけに。</h1>
+    <p class="hero-subtitle fade-up">お金を管理し始めるのに、遅すぎるということはありません。</p>
     <a href="https://apps.apple.com/app/zerobudget/id6759937538"
        class="appstore-badge fade-up" target="_blank" rel="noopener noreferrer">
       <svg class="apple-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
         <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
       </svg>
       <span class="badge-text">
-        <span class="badge-small">Disponible sur</span>
+        <span class="badge-small">ダウンロードはこちら</span>
         <span class="badge-big">App Store</span>
       </span>
     </a>
@@ -525,55 +511,55 @@
     <div class="iphone-wrap" id="heroPhone">
       <div class="iphone-frame">
         <div class="iphone-screen">
-          <img src="../../zeroBudget/screenshots/dashboard.png" alt="ZeroBudget Dashboard" loading="eager">
+          <img src="../../zeroBudget/screenshots/dashboard.png" alt="ZeroBudgetのダッシュボード" loading="eager">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── FEATURE 1: Confidentialité ──────────────────────────── -->
+  <!-- ─── FEATURE 1: Privacidade ───────────────────────────────── -->
   <section class="feature-section bg-dark">
     <div class="feature-text">
-      <p class="feature-eyebrow fade-up">Confidentialité Totale</p>
-      <h2 class="feature-title fade-up">Sans serveurs.<br>Sans comptes.<br>Juste vous.</h2>
-      <p class="feature-desc fade-up">ZeroBudget ne collecte aucune donnée, n'a pas de backend, ne nécessite aucune inscription. Toutes vos informations financières vivent exclusivement sur votre iPhone, protégées par Face ID.</p>
+      <p class="feature-eyebrow fade-up">完全なプライバシー</p>
+      <h2 class="feature-title fade-up">サーバーなし。<br>アカウントなし。<br>あなただけ。</h2>
+      <p class="feature-desc fade-up">ZeroBudgetはデータを収集せず、バックエンドも持たず、登録も不要です。あなたの家計情報はすべてiPhoneの中だけに保存され、Face IDで守られます。</p>
     </div>
     <div class="feature-img" id="phone1Wrap">
       <div class="iphone-frame">
         <div class="iphone-screen">
-          <img src="../../zeroBudget/screenshots/accounts.png" alt="Comptes dans ZeroBudget" loading="lazy">
+          <img src="../../zeroBudget/screenshots/accounts.png" alt="ZeroBudgetの口座管理" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── FEATURE 2: Budget ────────────────────────────────────── -->
+  <!-- ─── FEATURE 2: Orçamento ─────────────────────────────────── -->
   <section class="feature-section bg-black reverse">
     <div class="feature-text">
-      <p class="feature-eyebrow fade-up">Budget Base Zéro</p>
-      <h2 class="feature-title fade-up">Votre argent,<br>avec un but.</h2>
-      <p class="feature-desc fade-up">Attribuez vos revenus à des catégories avec la règle 50/20/20/10 — Besoins, Épargne, Envies et Dettes. Vous savez si vous êtes sur la bonne voie.</p>
+      <p class="feature-eyebrow fade-up">ゼロベース予算</p>
+      <h2 class="feature-title fade-up">あなたのお金に、<br>目的を。</h2>
+      <p class="feature-desc fade-up">50/20/20/10のルール（必要なもの・貯金・欲しいもの・負債）で収入をカテゴリに振り分けます。ただ支出を記録するだけでなく、自分が正しい道を歩めているかが分かります。</p>
     </div>
     <div class="feature-img" id="phone2Wrap">
       <div class="iphone-frame">
         <div class="iphone-screen">
-          <img src="../../zeroBudget/screenshots/budget.png" alt="Budget dans ZeroBudget" loading="lazy">
+          <img src="../../zeroBudget/screenshots/budget.png" alt="ZeroBudgetの予算" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── FEATURE 3: Analytiques ───────────────────────────────── -->
+  <!-- ─── FEATURE 3: Análises ──────────────────────────────────── -->
   <section class="feature-section bg-dark">
     <div class="feature-text">
-      <p class="feature-eyebrow fade-up">Analytiques Intelligentes</p>
-      <h2 class="feature-title fade-up">Connaissez vos<br>vrais schémas.</h2>
-      <p class="feature-desc fade-up">Projections mensuelles, alertes budgétaires et Top Spending Drivers vous montrent exactement où va votre argent, avant qu'il ne parte.</p>
+      <p class="feature-eyebrow fade-up">スマートな分析</p>
+      <h2 class="feature-title fade-up">本当の支出<br>パターンを知る。</h2>
+      <p class="feature-desc fade-up">月次の予測、予算アラート、トップ支出要因が、お金がどこへ向かっているのかを、使ってしまう前に正確に教えてくれます。</p>
     </div>
     <div class="feature-img" id="phone3Wrap">
       <div class="iphone-frame">
         <div class="iphone-screen">
-          <img src="../../zeroBudget/screenshots/analytics.png" alt="Analytiques dans ZeroBudget" loading="lazy">
+          <img src="../../zeroBudget/screenshots/analytics.png" alt="ZeroBudgetの分析" loading="lazy">
         </div>
       </div>
     </div>
@@ -582,14 +568,14 @@
   <!-- ─── FEATURE 4: Siri ──────────────────────────────────────── -->
   <section class="feature-section bg-black reverse">
     <div class="feature-text">
-      <p class="feature-eyebrow fade-up">Intégration Siri</p>
-      <h2 class="feature-title fade-up">"Dis Siri,<br>ajoute une dépense<br>de 50€."</h2>
-      <p class="feature-desc fade-up">Enregistrez des transactions avec votre voix sans ouvrir l'app. Importe aussi vos opérations depuis un fichier Excel, CSV ou TXT — sans saisie manuelle.</p>
+      <p class="feature-eyebrow fade-up">Siri連携</p>
+      <h2 class="feature-title fade-up">「Hey Siri、<br>100円の支出を<br>追加して。」</h2>
+      <p class="feature-desc fade-up">アプリを開かなくても、声で取引を記録できます。Excel、CSV、TXTファイルから明細をまとめてインポートすることも可能。一件ずつ入力する必要はありません。</p>
     </div>
     <div class="feature-img" id="phone4Wrap">
       <div class="iphone-frame">
         <div class="iphone-screen">
-          <img src="../../zeroBudget/screenshots/transactions.png" alt="Transactions dans ZeroBudget" loading="lazy">
+          <img src="../../zeroBudget/screenshots/transactions.png" alt="ZeroBudgetの取引履歴" loading="lazy">
         </div>
       </div>
     </div>
@@ -598,14 +584,14 @@
   <!-- ─── FEATURE 5: Category Consumption ─────────────────────── -->
   <section class="feature-section bg-dark">
     <div class="feature-text">
-      <p class="feature-eyebrow fade-up">Category Consumption</p>
-      <h2 class="feature-title fade-up">Chaque détail,<br>expliqué.</h2>
-      <p class="feature-desc fade-up">Touchez n'importe quelle catégorie et voyez exactement dans quelle sous-catégorie vous avez dépensé, combien et quand. Le niveau de détail pour prendre de vraies décisions financières.</p>
+      <p class="feature-eyebrow fade-up">カテゴリ別消費</p>
+      <h2 class="feature-title fade-up">細部まで、<br>すべて<br>見える化。</h2>
+      <p class="feature-desc fade-up">どのカテゴリをタップしても、どのサブカテゴリで、いくら、いつ使ったのかが正確に分かります。本当に役立つお金の判断をするために必要な、詳細なレベルです。</p>
     </div>
     <div class="feature-img" id="phone5Wrap">
       <div class="iphone-frame">
         <div class="iphone-screen">
-          <img src="../../zeroBudget/screenshots/drilldown.png" alt="Détail de catégorie dans ZeroBudget" loading="lazy">
+          <img src="../../zeroBudget/screenshots/drilldown.png" alt="ZeroBudgetのカテゴリ詳細" loading="lazy">
         </div>
       </div>
     </div>
@@ -613,19 +599,19 @@
 
   <!-- ─── STATS ─────────────────────────────────────────────────── -->
   <section class="stats-section">
-    <p class="stats-title fade-up">Conçu pour ceux qui prennent leurs finances au sérieux.</p>
+    <p class="stats-title fade-up">家計に真剣に向き合うあなたのために。</p>
     <div class="stats-grid">
       <div class="stat-item">
         <span class="stat-number fade-up" data-target="100">0</span>
-        <span class="stat-label">% Offline</span>
+        <span class="stat-label">% オフライン</span>
       </div>
       <div class="stat-item">
         <span class="stat-number fade-up" data-target="3">0</span>
-        <span class="stat-label">formats : CSV, Excel et TXT</span>
+        <span class="stat-label">つの形式：CSV、Excel、TXT</span>
       </div>
       <div class="stat-item">
         <span class="stat-number stat-accent fade-up" data-target="0">0</span>
-        <span class="stat-label">Zéro donnée en ligne.</span>
+        <span class="stat-label">台のサーバー。あなたのデータはクラウドにゼロ。</span>
       </div>
     </div>
   </section>
@@ -633,42 +619,42 @@
   <!-- ─── GALLERY ───────────────────────────────────────────────── -->
   <section class="gallery-section">
     <div class="gallery-header">
-      <h2 class="gallery-title fade-up">Voir comment ça marche.</h2>
-      <p class="gallery-subtitle fade-up">Glissez pour explorer chaque écran.</p>
+      <h2 class="gallery-title fade-up">使い方を見てみましょう。</h2>
+      <p class="gallery-subtitle fade-up">スワイプして各画面を探索。</p>
     </div>
     <div class="gallery-track">
       <div class="iphone-frame">
-        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/dashboard.png"    alt="Dashboard" loading="lazy"></div>
+        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/dashboard.png"    alt="ダッシュボード" loading="lazy"></div>
       </div>
       <div class="iphone-frame">
-        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/budget.png"       alt="Budget" loading="lazy"></div>
+        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/budget.png"       alt="予算" loading="lazy"></div>
       </div>
       <div class="iphone-frame">
-        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/transactions.png" alt="Transactions" loading="lazy"></div>
+        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/transactions.png" alt="取引履歴" loading="lazy"></div>
       </div>
       <div class="iphone-frame">
-        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/accounts.png"     alt="Comptes" loading="lazy"></div>
+        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/accounts.png"     alt="口座" loading="lazy"></div>
       </div>
       <div class="iphone-frame">
-        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/analytics.png"    alt="Analytiques" loading="lazy"></div>
+        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/analytics.png"    alt="分析" loading="lazy"></div>
       </div>
       <div class="iphone-frame">
-        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/drilldown.png"    alt="Détail catégorie" loading="lazy"></div>
+        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/drilldown.png"    alt="カテゴリ詳細" loading="lazy"></div>
       </div>
     </div>
   </section>
 
   <!-- ─── CTA ───────────────────────────────────────────────────── -->
   <section class="cta-section">
-    <h2 class="cta-title fade-up">Déjà disponible<br>sur l'App Store.</h2>
-    <p class="cta-subtitle fade-up">Téléchargez ZeroBudget gratuitement et commencez à contrôler vos finances dès aujourd'hui.</p>
+    <h2 class="cta-title fade-up">App Storeで<br>配信中。</h2>
+    <p class="cta-subtitle fade-up">ZeroBudgetを無料でダウンロードして、今日から家計の管理を始めましょう。</p>
     <a href="https://apps.apple.com/app/zerobudget/id6759937538"
        class="appstore-badge fade-up" target="_blank" rel="noopener noreferrer">
       <svg class="apple-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
         <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
       </svg>
       <span class="badge-text">
-        <span class="badge-small">Disponible sur</span>
+        <span class="badge-small">ダウンロードはこちら</span>
         <span class="badge-big">App Store</span>
       </span>
     </a>
@@ -678,12 +664,12 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-links">
-        <a href="../../zeroBudget/privacy.html">Politique de Confidentialité</a>
-        <a href="../../zeroBudget/terms.html">Conditions d'Utilisation</a>
-        <a href="mailto:soporte@araniosoft.com">Contact</a>
+        <a href="../../zeroBudget/privacy.html">プライバシーポリシー</a>
+        <a href="../../zeroBudget/terms.html">利用規約</a>
+        <a href="mailto:soporte@araniosoft.com">お問い合わせ</a>
         <a href="../../">Araniosoft</a>
       </div>
-      <p class="footer-copy">&copy; 2026 <a href="../../">Araniosoft</a>. Tous droits réservés.</p>
+      <p class="footer-copy">&copy; 2026 <a href="../../">Araniosoft</a>. All rights reserved.</p>
     </div>
   </footer>
 
@@ -694,14 +680,12 @@
   <script>
     gsap.registerPlugin(ScrollTrigger);
 
-    // ─── NAV: glassmorphism au défilement ─────────────────────────
     ScrollTrigger.create({
       start: "80px top",
       onEnter:     () => document.getElementById('mainNav').classList.add('scrolled'),
       onLeaveBack: () => document.getElementById('mainNav').classList.remove('scrolled'),
     });
 
-    // ─── HERO: iPhone monte au défilement ─────────────────────────
     gsap.to("#heroPhone", {
       y: -120,
       scale: 1.08,
@@ -714,7 +698,6 @@
       }
     });
 
-    // ─── FADE-UP pour textes (une fois, à l'entrée du viewport) ───
     gsap.utils.toArray(".fade-up").forEach(el => {
       gsap.fromTo(el,
         { opacity: 0, y: 40 },
@@ -731,7 +714,6 @@
       );
     });
 
-    // ─── PARALLAX sur les iPhones des features ────────────────────
     [
       { id: "#phone1Wrap", yFrom: 80,  yTo: -80  },
       { id: "#phone2Wrap", yFrom: 100, yTo: -100 },
@@ -754,7 +736,6 @@
       );
     });
 
-    // ─── COMPTEUR ANIMÉ pour les stats ────────────────────────────
     document.querySelectorAll('.stat-number[data-target]').forEach(el => {
       const target = parseInt(el.getAttribute('data-target'));
       ScrollTrigger.create({
