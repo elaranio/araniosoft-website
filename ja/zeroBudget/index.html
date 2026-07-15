@@ -3,30 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZeroBudget — iPhoneのためのプライベートな家計管理</title>
-    <meta name="description" content="ZeroBudget：サーバーもアカウントも不要。iPhoneだけで家計を管理。予算、貯金目標、複数口座、分析。100%オフラインで無料。">
+    <title>ZeroBudget — 100%プライベートな家計簿アプリ（iPhone）</title>
+    <meta name="description" content="ゼロベース予算、分割払い対応のカード管理、支出ヒートマップ、家族との取引共有。100%オフライン：サーバーなし、アカウントなし。App Storeで無料。">
     <link rel="canonical" href="https://araniosoft.com/ja/zeroBudget/">
-    <link rel="alternate" hreflang="es" href="https://araniosoft.com/zeroBudget/">
-    <link rel="alternate" hreflang="en" href="https://araniosoft.com/en/zeroBudget/">
-    <link rel="alternate" hreflang="fr" href="https://araniosoft.com/fr/zeroBudget/">
-    <link rel="alternate" hreflang="pt-BR" href="https://araniosoft.com/pt/zeroBudget/">
-    <link rel="alternate" hreflang="ja" href="https://araniosoft.com/ja/zeroBudget/">
-    <link rel="alternate" hreflang="ko" href="https://araniosoft.com/ko/zeroBudget/">
+    <link rel="alternate" hreflang="es"      href="https://araniosoft.com/zeroBudget/">
+    <link rel="alternate" hreflang="en"      href="https://araniosoft.com/en/zeroBudget/">
+    <link rel="alternate" hreflang="fr"      href="https://araniosoft.com/fr/zeroBudget/">
+    <link rel="alternate" hreflang="pt-BR"   href="https://araniosoft.com/pt/zeroBudget/">
+    <link rel="alternate" hreflang="ja"      href="https://araniosoft.com/ja/zeroBudget/">
+    <link rel="alternate" hreflang="ko"      href="https://araniosoft.com/ko/zeroBudget/">
     <link rel="alternate" hreflang="x-default" href="https://araniosoft.com/zeroBudget/">
 
     <!-- Open Graph -->
     <meta property="og:type"        content="website">
     <meta property="og:url"         content="https://araniosoft.com/ja/zeroBudget/">
-    <meta property="og:title"       content="ZeroBudget — iPhoneのためのプライベートな家計管理">
-    <meta property="og:description" content="サーバーもアカウントも不要で家計を管理。100%オフライン。予算、貯金目標、分析をすべてiPhoneの中で。">
-    <meta property="og:image"       content="https://araniosoft.com/zeroBudget/screenshots/dashboard.png">
+    <meta property="og:title"       content="ZeroBudget — 100%プライベートな家計簿アプリ（iPhone）">
+    <meta property="og:description" content="ゼロベース予算、分割払い管理、支出ヒートマップ、家族との共有。サーバーなし。アカウントなし。データはiPhoneの中だけ。">
+    <meta property="og:image"       content="https://araniosoft.com/zeroBudget/screenshots/ja/heatmap.png">
     <meta property="og:locale"      content="ja_JP">
 
     <!-- Twitter Card -->
     <meta name="twitter:card"        content="summary_large_image">
-    <meta name="twitter:title"       content="ZeroBudget — iPhoneのための家計管理">
-    <meta name="twitter:description" content="100%オフライン。サーバーなし。アカウントなし。あなたの家計は、あなたのiPhoneだけに。">
-    <meta name="twitter:image"       content="https://araniosoft.com/zeroBudget/screenshots/dashboard.png">
+    <meta name="twitter:title"       content="ZeroBudget — iPhoneの家計簿アプリ">
+    <meta name="twitter:description" content="100%オフライン。サーバーなし。アカウントなし。家計はiPhoneの中だけに。">
+    <meta name="twitter:image"       content="https://araniosoft.com/zeroBudget/screenshots/ja/heatmap.png">
 
     <!-- JSON-LD SoftwareApplication -->
     <script type="application/ld+json">
@@ -41,7 +41,7 @@
         "price": "0",
         "priceCurrency": "JPY"
       },
-      "description": "iPhoneのための家計管理アプリ。100%オフラインで、サーバーもユーザーアカウントも不要。予算、貯金目標、複数口座、分析機能を搭載。",
+      "description": "iPhone向け家計簿アプリ。100%オフライン、サーバーなし、アカウントなし。ゼロベース予算、分割払い対応のクレジットカード管理、支出ヒートマップ、貯蓄目標、家族との取引共有。",
       "author": {
         "@type": "Organization",
         "name": "Araniosoft",
@@ -61,6 +61,8 @@
     --apple-muted:  #86868B;
     --brand-green:  #34D399;
     --brand-green2: #10B981;
+    --ink:          #1D1D1F;
+    --ink-muted:    #6E6E73;
   }
 
   html { scroll-behavior: smooth; }
@@ -92,18 +94,22 @@
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     border-bottom: 1px solid rgba(0,0,0,0.08);
   }
-  .nav.scrolled .nav-logo { color: #1D1D1F; }
-  .nav.scrolled .nav-badge { color: #6E6E73; }
+  .nav.scrolled .nav-logo { color: var(--ink); }
+  .nav.scrolled .nav-cta { background: var(--ink); color: #fff; }
   .nav-logo {
     display: flex; align-items: center; gap: 8px;
     text-decoration: none; color: var(--apple-text);
     font-size: 17px; font-weight: 600; letter-spacing: -0.3px;
   }
   .nav-logo img { width: 28px; height: 28px; border-radius: 7px; }
-  .nav-badge {
-    font-size: 12px; color: var(--apple-muted);
-    font-weight: 400; letter-spacing: 0;
+  .nav-cta {
+    font-size: 13px; font-weight: 600;
+    color: #000; background: var(--brand-green);
+    padding: 7px 16px; border-radius: 980px;
+    text-decoration: none;
+    transition: opacity 0.2s;
   }
+  .nav-cta:hover { opacity: 0.85; }
 
   /* ─── HERO ──────────────────────────────────────────────────── */
   .hero {
@@ -111,8 +117,8 @@
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     text-align: center;
-    padding: 80px 24px 60px;
-    background: var(--apple-black);
+    padding: 90px 24px 60px;
+    background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(16,185,129,0.16), transparent), var(--apple-black);
     position: relative;
     overflow: hidden;
   }
@@ -131,48 +137,47 @@
     color: var(--apple-text);
   }
   .hero-subtitle {
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
     color: var(--apple-muted);
     font-weight: 400;
-    max-width: 560px;
-    margin: 0 auto 40px;
-    line-height: 1.5;
+    max-width: 640px;
+    margin: 0 auto 36px;
+    line-height: 1.55;
   }
-  .hero-cta {
-    display: inline-block;
-    background: var(--brand-green);
-    color: #000;
-    font-size: 17px; font-weight: 600;
-    padding: 14px 30px;
-    border-radius: 980px;
-    text-decoration: none;
-    transition: opacity 0.2s;
-    margin-bottom: 16px;
-  }
-  .hero-cta:hover { opacity: 0.85; }
+  .hero-subtitle strong { color: var(--apple-text); font-weight: 600; }
   .appstore-badge {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    background: #000;
-    color: #fff;
+    background: #fff;
+    color: #000;
     border-radius: 14px;
     padding: 13px 26px;
     text-decoration: none;
     transition: opacity 0.2s, transform 0.15s;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
+    box-shadow: 0 0 40px rgba(52, 211, 153, 0.25);
   }
-  .appstore-badge:hover { opacity: 0.82; transform: scale(1.03); }
+  .appstore-badge:hover { transform: scale(1.03); box-shadow: 0 0 60px rgba(52, 211, 153, 0.4); }
   .apple-icon { width: 30px; height: 30px; flex-shrink: 0; }
   .badge-text { display: flex; flex-direction: column; line-height: 1.2; text-align: left; }
   .badge-small { font-size: 11px; font-weight: 400; letter-spacing: 0.06em; }
   .badge-big { font-size: 23px; font-weight: 600; letter-spacing: -0.01em; }
+  .hero-note {
+    font-size: 13px; color: var(--apple-muted);
+    letter-spacing: 0.02em;
+  }
+  .hero-note strong { color: var(--brand-green); font-weight: 600; }
 
-  /* ─── IPHONE FRAME ──────────────────────────────────────────── */
+  /* iPhone frame en fondo negro (hero) */
+  .hero .appstore-badge { background: #fff; color: #000; }
+  .hero .apple-icon { fill: #000; }
+
+  /* ─── IPHONE FRAME (CSS puro) ───────────────────────────────── */
   .iphone-wrap {
     position: relative;
     display: inline-block;
-    margin: 60px auto 0;
+    margin: 56px auto 0;
   }
   .iphone-frame {
     position: relative;
@@ -217,17 +222,56 @@
     display: block;
     border-radius: 36px;
   }
-
   .hero .iphone-frame { width: 300px; }
+
+  /* ─── PRIVACY BAND (statement oscuro) ───────────────────────── */
+  .privacy-band {
+    background: var(--apple-black);
+    padding: 140px 8vw;
+    text-align: center;
+  }
+  .privacy-title {
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.12;
+    max-width: 900px;
+    margin: 0 auto 28px;
+  }
+  .privacy-title .accent { color: var(--brand-green); }
+  .privacy-desc {
+    font-size: 19px;
+    color: var(--apple-muted);
+    max-width: 620px;
+    margin: 0 auto 56px;
+    line-height: 1.6;
+  }
+  .privacy-points {
+    display: flex; gap: 48px; justify-content: center; flex-wrap: wrap;
+  }
+  .privacy-point {
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    max-width: 200px;
+  }
+  .privacy-point .icon {
+    width: 52px; height: 52px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(52,211,153,0.12);
+    border: 1px solid rgba(52,211,153,0.25);
+    border-radius: 16px;
+    font-size: 24px;
+  }
+  .privacy-point .label { font-size: 15px; font-weight: 600; color: var(--apple-text); }
+  .privacy-point .sub { font-size: 13px; color: var(--apple-muted); line-height: 1.4; }
 
   /* ─── FEATURE SECTIONS ──────────────────────────────────────── */
   .feature-section {
-    min-height: 100vh;
+    min-height: 92vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: 60px;
-    padding: 120px 8vw;
+    padding: 110px 8vw;
     overflow: hidden;
   }
   .feature-section.bg-dark   { background: #F5F5F7; }
@@ -239,8 +283,16 @@
   .feature-eyebrow {
     font-size: 13px; font-weight: 600;
     letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--brand-green);
+    color: var(--brand-green2);
     margin-bottom: 16px;
+  }
+  .feature-eyebrow .new-pill {
+    display: inline-block;
+    background: var(--brand-green2); color: #fff;
+    font-size: 11px; font-weight: 700;
+    padding: 2px 9px; border-radius: 999px;
+    margin-left: 8px; letter-spacing: 0.04em;
+    vertical-align: 1px;
   }
   .feature-title {
     font-size: clamp(2rem, 4.5vw, 3.5rem);
@@ -248,29 +300,112 @@
     letter-spacing: -0.03em;
     line-height: 1.1;
     margin-bottom: 20px;
-    color: #1D1D1F;
+    color: var(--ink);
   }
   .feature-desc {
     font-size: 17px;
-    color: #6E6E73;
+    color: var(--ink-muted);
     line-height: 1.7;
   }
+  .feature-desc + .feature-desc { margin-top: 14px; }
   .feature-img {
     display: flex;
     justify-content: center;
     will-change: transform;
   }
 
+  /* ─── GRID "TODO LO DEMÁS" ──────────────────────────────────── */
+  .grid-section {
+    background: #FFFFFF;
+    padding: 120px 8vw;
+  }
+  .grid-header { text-align: center; margin-bottom: 64px; }
+  .grid-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; letter-spacing: -0.03em;
+    color: var(--ink); margin-bottom: 12px;
+  }
+  .grid-subtitle { font-size: 17px; color: var(--ink-muted); }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .grid-card {
+    background: #F5F5F7;
+    border-radius: 20px;
+    padding: 28px 24px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .grid-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+  .grid-card .emoji { font-size: 28px; display: block; margin-bottom: 14px; }
+  .grid-card h3 { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.01em; }
+  .grid-card p  { font-size: 14px; color: var(--ink-muted); line-height: 1.55; }
+
+  /* ─── PRICING ───────────────────────────────────────────────── */
+  .pricing-section {
+    background: #F5F5F7;
+    padding: 120px 8vw;
+  }
+  .pricing-header { text-align: center; margin-bottom: 64px; }
+  .pricing-title {
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 700; letter-spacing: -0.03em;
+    color: var(--ink); margin-bottom: 14px;
+  }
+  .pricing-subtitle { font-size: 18px; color: var(--ink-muted); max-width: 560px; margin: 0 auto; }
+  .pricing-subtitle strong { color: var(--brand-green2); }
+  .pricing-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .price-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 40px 34px;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .price-card.pro {
+    background: linear-gradient(160deg, #0d1f18, #000);
+    border: 1px solid rgba(52,211,153,0.35);
+    color: var(--apple-text);
+  }
+  .price-card .tier {
+    font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--brand-green2); margin-bottom: 10px;
+  }
+  .price-card h3 { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 6px; }
+  .price-card.pro h3 { color: var(--apple-text); }
+  .price-card .price-note { font-size: 14px; color: var(--ink-muted); margin-bottom: 26px; }
+  .price-card.pro .price-note { color: var(--apple-muted); }
+  .price-card ul { list-style: none; }
+  .price-card li {
+    font-size: 15px; color: var(--ink);
+    padding: 8px 0 8px 30px;
+    position: relative; line-height: 1.45;
+  }
+  .price-card.pro li { color: var(--apple-text); }
+  .price-card li::before {
+    content: '✓';
+    position: absolute; left: 0; top: 7px;
+    color: var(--brand-green2); font-weight: 700;
+  }
+
   /* ─── STATS SECTION ─────────────────────────────────────────── */
   .stats-section {
     padding: 120px 8vw;
-    background: #F5F5F7;
+    background: #FFFFFF;
     text-align: center;
   }
   .stats-title {
     font-size: clamp(1.4rem, 3vw, 2rem);
     font-weight: 600;
-    color: #6E6E73;
+    color: var(--ink-muted);
     margin-bottom: 80px;
     letter-spacing: -0.02em;
   }
@@ -281,26 +416,23 @@
     max-width: 900px;
     margin: 0 auto;
   }
-  .stat-item {}
+  .stat-item { display: flex; flex-direction: column; align-items: center; }
   .stat-number {
     font-size: clamp(3rem, 7vw, 5.5rem);
     font-weight: 700;
     letter-spacing: -0.04em;
-    color: #1D1D1F;
+    color: var(--ink);
     line-height: 1;
     display: block;
     margin-bottom: 12px;
   }
-  .stat-label {
-    font-size: 17px;
-    color: #6E6E73;
-  }
-  .stat-accent { color: var(--brand-green); }
+  .stat-label { font-size: 17px; color: var(--ink-muted); }
+  .stat-accent { color: var(--brand-green2); }
 
   /* ─── GALLERY SECTION ───────────────────────────────────────── */
   .gallery-section {
     padding: 120px 0;
-    background: #FFFFFF;
+    background: #F5F5F7;
     overflow: hidden;
   }
   .gallery-header {
@@ -312,12 +444,9 @@
     font-weight: 700;
     letter-spacing: -0.03em;
     margin-bottom: 16px;
-    color: #1D1D1F;
+    color: var(--ink);
   }
-  .gallery-subtitle {
-    font-size: 17px;
-    color: #6E6E73;
-  }
+  .gallery-subtitle { font-size: 17px; color: var(--ink-muted); }
   .gallery-track {
     display: flex;
     gap: 24px;
@@ -333,15 +462,16 @@
     width: 220px;
     scroll-snap-align: start;
   }
+  .gallery-track::after { content: ''; flex-shrink: 0; width: 8vw; }
 
   /* ─── CTA SECTION ───────────────────────────────────────────── */
   .cta-section {
-    min-height: 60vh;
+    min-height: 70vh;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     text-align: center;
-    padding: 120px 24px;
-    background: #F5F5F7;
+    padding: 130px 24px;
+    background: radial-gradient(ellipse 70% 60% at 50% 110%, rgba(16,185,129,0.18), transparent), var(--apple-black);
   }
   .cta-title {
     font-size: clamp(2.5rem, 6vw, 5rem);
@@ -349,20 +479,20 @@
     letter-spacing: -0.03em;
     line-height: 1.1;
     margin-bottom: 24px;
-    color: #1D1D1F;
+    color: var(--apple-text);
   }
   .cta-subtitle {
     font-size: 19px;
-    color: #6E6E73;
+    color: var(--apple-muted);
     margin-bottom: 48px;
-    max-width: 500px;
+    max-width: 520px;
   }
 
   /* ─── FOOTER ────────────────────────────────────────────────── */
   footer {
     padding: 40px 24px;
-    border-top: 1px solid rgba(0,0,0,0.08);
-    background: #F5F5F7;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    background: var(--apple-black);
   }
   .footer-inner {
     max-width: 900px;
@@ -372,23 +502,18 @@
     align-items: center;
     gap: 16px;
   }
-  .footer-links {
-    display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;
-  }
+  .footer-links { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
   .footer-links a {
     font-size: 13px;
-    color: #6E6E73;
+    color: var(--apple-muted);
     text-decoration: none;
     transition: color 0.2s;
   }
-  .footer-links a:hover { color: #1D1D1F; }
-  .footer-copy {
-    font-size: 13px;
-    color: #6E6E73;
-  }
-  .footer-copy a { color: #6E6E73; text-decoration: none; }
+  .footer-links a:hover { color: var(--apple-text); }
+  .footer-copy { font-size: 13px; color: var(--apple-muted); }
+  .footer-copy a { color: var(--apple-muted); text-decoration: none; }
 
-  /* ─── ANIMATIONS ────────────────────────────────────────────── */
+  /* ─── ANIMATIONS (estado inicial — GSAP los anima) ──────────── */
   .fade-up {
     opacity: 0;
     transform: translateY(40px);
@@ -401,14 +526,18 @@
       text-align: center;
       padding: 80px 6vw;
       gap: 48px;
+      min-height: auto;
     }
     .feature-section.reverse { direction: ltr; }
     .feature-img { order: -1; }
     .feature-text { max-width: 100%; }
     .stats-grid { grid-template-columns: 1fr; gap: 48px; }
     .hero .iphone-frame { width: 240px; }
+    .privacy-points { gap: 32px; }
+    .pricing-cards { grid-template-columns: 1fr; }
   }
 
+  /* ─── HERO: animación de entrada al cargar ───────────────────── */
   @keyframes heroIn {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -416,11 +545,11 @@
   .hero .hero-eyebrow   { animation: heroIn 0.8s 0.10s both ease-out; opacity: 1 !important; transform: none !important; }
   .hero .hero-title     { animation: heroIn 0.8s 0.25s both ease-out; opacity: 1 !important; transform: none !important; }
   .hero .hero-subtitle  { animation: heroIn 0.8s 0.40s both ease-out; opacity: 1 !important; transform: none !important; }
-  .hero .hero-cta       { animation: heroIn 0.8s 0.55s both ease-out; opacity: 1 !important; transform: none !important; }
+  .hero .appstore-badge { animation: heroIn 0.8s 0.55s both ease-out; opacity: 1 !important; transform: none !important; }
+  .hero .hero-note      { animation: heroIn 0.8s 0.65s both ease-out; opacity: 1 !important; transform: none !important; }
 
-  .iphone-frame {
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-  }
+  /* ─── iPhone hover effect ────────────────────────────────────── */
+  .iphone-frame { transition: transform 0.4s ease, box-shadow 0.4s ease; }
   .iphone-frame:hover {
     transform: translateY(-8px) rotate(-1deg);
     box-shadow:
@@ -432,38 +561,15 @@
   .gallery-track .iphone-frame:hover {
     transform: none;
     box-shadow:
-      0 0 0 1.5px #3a3a3a,
-      0 40px 80px rgba(0,0,0,0.6),
-      0 0 0 8px #0d0d0d,
-      0 0 0 9.5px #2a2a2a;
+      0 0 0 1.5px #d0d0d0,
+      0 30px 60px rgba(0,0,0,0.12),
+      0 0 0 8px #e8e8e8,
+      0 0 0 9.5px #cccccc;
   }
 
-  .feature-section + .feature-section {
-    border-top: 1px solid rgba(0,0,0,0.06);
-  }
+  .feature-section + .feature-section { border-top: 1px solid rgba(0,0,0,0.06); }
 
-  .hero-cta {
-    box-shadow: 0 0 30px rgba(52, 211, 153, 0.3);
-  }
-  .hero-cta:hover {
-    box-shadow: 0 0 50px rgba(52, 211, 153, 0.5);
-    opacity: 1 !important;
-    transform: scale(1.02);
-    transition: all 0.2s;
-  }
-
-  .stat-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .gallery-track::after {
-    content: '';
-    flex-shrink: 0;
-    width: 8vw;
-  }
-
+  /* ─── iPhone frame en secciones claras ──────────────────────── */
   .feature-section .iphone-frame,
   .gallery-track .iphone-frame {
     box-shadow:
@@ -489,129 +595,255 @@
       <img src="../../logo.png" alt="ZeroBudget">
       ZeroBudget
     </a>
-    <span class="nav-badge">App Storeで配信中</span>
+    <a class="nav-cta" href="https://apps.apple.com/app/zerobudget/id6759937538" target="_blank" rel="noopener noreferrer">ダウンロード</a>
   </nav>
 
   <!-- ─── HERO ─────────────────────────────────────────────────── -->
   <section class="hero">
-    <p class="hero-eyebrow fade-up">iPhoneのための家計管理</p>
-    <h1 class="hero-title fade-up">あなたの家計は、<br>あなたのiPhoneだけに。</h1>
-    <p class="hero-subtitle fade-up">お金を管理し始めるのに、遅すぎるということはありません。</p>
+    <p class="hero-eyebrow fade-up">100%プライベートな支出管理</p>
+    <h1 class="hero-title fade-up">あなたの家計。<br>iPhoneの中だけに。</h1>
+    <p class="hero-subtitle fade-up">ゼロベース予算、<strong>分割払い</strong>対応のカード管理、支出ヒートマップ、貯蓄目標。<strong>サーバーなし。アカウントなし。</strong>データを見るのはあなただけ。</p>
     <a href="https://apps.apple.com/app/zerobudget/id6759937538"
        class="appstore-badge fade-up" target="_blank" rel="noopener noreferrer">
-      <svg class="apple-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+      <svg class="apple-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black">
         <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
       </svg>
       <span class="badge-text">
-        <span class="badge-small">ダウンロードはこちら</span>
+        <span class="badge-small">ダウンロードは</span>
         <span class="badge-big">App Store</span>
       </span>
     </a>
+    <p class="hero-note fade-up">無料 · <strong>Pro機能30日間つき</strong> · カード不要・登録不要</p>
 
     <div class="iphone-wrap" id="heroPhone">
       <div class="iphone-frame">
         <div class="iphone-screen">
-          <img src="../../zeroBudget/screenshots/dashboard.png" alt="ZeroBudgetのダッシュボード" loading="eager">
+          <img src="../../zeroBudget/screenshots/ja/dashboard.png" alt="ZeroBudget Dashboard" loading="eager">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── FEATURE 1: Privacidade ───────────────────────────────── -->
+  <!-- ─── PRIVACY BAND ──────────────────────────────────────────── -->
+  <section class="privacy-band">
+    <h2 class="privacy-title fade-up">サーバーなし。アカウントなし。クラウドなし。<br><span class="accent">あなたとお金だけ。</span></h2>
+    <p class="privacy-desc fade-up">他の家計アプリと違い、ZeroBudgetは銀行に接続せず、クラウドに同期せず、データを誰とも共有しません。すべてはiOSに守られて、あなたのiPhoneの中だけにあります。</p>
+    <div class="privacy-points">
+      <div class="privacy-point fade-up">
+        <span class="icon">🔒</span>
+        <span class="label">Face ID / Touch ID</span>
+        <span class="sub">生体認証でデータを保護</span>
+      </div>
+      <div class="privacy-point fade-up">
+        <span class="icon">📵</span>
+        <span class="label">オフラインで動作</span>
+        <span class="sub">アプリの100%がネットなしで動く</span>
+      </div>
+      <div class="privacy-point fade-up">
+        <span class="icon">🛡️</span>
+        <span class="label">トラッキングゼロ</span>
+        <span class="sub">外部解析も広告もなし</span>
+      </div>
+      <div class="privacy-point fade-up">
+        <span class="icon">💾</span>
+        <span class="label">暗号化バックアップ</span>
+        <span class="sub">保存先はあなたが決める</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FEATURE 1: Heatmap ────────────────────────────────────── -->
   <section class="feature-section bg-dark">
     <div class="feature-text">
-      <p class="feature-eyebrow fade-up">完全なプライバシー</p>
-      <h2 class="feature-title fade-up">サーバーなし。<br>アカウントなし。<br>あなただけ。</h2>
-      <p class="feature-desc fade-up">ZeroBudgetはデータを収集せず、バックエンドも持たず、登録も不要です。あなたの家計情報はすべてiPhoneの中だけに保存され、Face IDで守られます。</p>
+      <p class="feature-eyebrow fade-up">支出ヒートマップ</p>
+      <h2 class="feature-title fade-up">お金が、<br>見える。</h2>
+      <p class="feature-desc fade-up">支出全体をひと目で見わたせるビジュアルマップ。カテゴリごとのブロックは、大きさが金額、色が予算内かオーバーかを表します。3秒の一瞥が、30分の表計算に代わります。</p>
     </div>
     <div class="feature-img" id="phone1Wrap">
       <div class="iphone-frame">
         <div class="iphone-screen">
-          <img src="../../zeroBudget/screenshots/accounts.png" alt="ZeroBudgetの口座管理" loading="lazy">
+          <img src="../../zeroBudget/screenshots/ja/heatmap.png" alt="ZeroBudgetの支出ヒートマップ" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── FEATURE 2: Orçamento ─────────────────────────────────── -->
+  <!-- ─── FEATURE 2: Presupuesto ────────────────────────────────── -->
   <section class="feature-section bg-black reverse">
     <div class="feature-text">
       <p class="feature-eyebrow fade-up">ゼロベース予算</p>
-      <h2 class="feature-title fade-up">あなたのお金に、<br>目的を。</h2>
-      <p class="feature-desc fade-up">50/20/20/10のルール（必要なもの・貯金・欲しいもの・負債）で収入をカテゴリに振り分けます。ただ支出を記録するだけでなく、自分が正しい道を歩めているかが分かります。</p>
+      <h2 class="feature-title fade-up">一円ごとに、<br>役割を。</h2>
+      <p class="feature-desc fade-up">月が始まる前に、収入を50/20/20/10のルール（生活費・貯蓄・娯楽・返済）でカテゴリに割り当てます。「使い道未定」のお金をなくす——記録するだけでなく、望む方向に進んでいるかがわかります。</p>
     </div>
     <div class="feature-img" id="phone2Wrap">
       <div class="iphone-frame">
         <div class="iphone-screen">
-          <img src="../../zeroBudget/screenshots/budget.png" alt="ZeroBudgetの予算" loading="lazy">
+          <img src="../../zeroBudget/screenshots/ja/budget.png" alt="ZeroBudgetの予算画面" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── FEATURE 3: Análises ──────────────────────────────────── -->
+  <!-- ─── FEATURE 3: MSI / Tarjetas ─────────────────────────────── -->
   <section class="feature-section bg-dark">
     <div class="feature-text">
-      <p class="feature-eyebrow fade-up">スマートな分析</p>
-      <h2 class="feature-title fade-up">本当の支出<br>パターンを知る。</h2>
-      <p class="feature-desc fade-up">月次の予測、予算アラート、トップ支出要因が、お金がどこへ向かっているのかを、使ってしまう前に正確に教えてくれます。</p>
+      <p class="feature-eyebrow fade-up">クレジットカード</p>
+      <h2 class="feature-title fade-up">分割払いも、<br>しっかり管理。</h2>
+      <p class="feature-desc fade-up">分割払いの買い物を一度登録すれば、アプリが毎月の請求を正しい月に自動作成。締め日と支払日も自動計算され、サイクルごとの残高で、次の請求額もあと何か月分の支払いが残っているかもわかります。</p>
+      <p class="feature-desc fade-up">ここまで分割払いを扱えるアプリは、世界でも多くありません。ZeroBudgetは最初からそのために作られました。</p>
     </div>
     <div class="feature-img" id="phone3Wrap">
       <div class="iphone-frame">
         <div class="iphone-screen">
-          <img src="../../zeroBudget/screenshots/analytics.png" alt="ZeroBudgetの分析" loading="lazy">
+          <img src="../../zeroBudget/screenshots/ja/msi.png" alt="ZeroBudgetの分割払い管理" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── FEATURE 4: Siri ──────────────────────────────────────── -->
+  <!-- ─── FEATURE 4: Captura inteligente ────────────────────────── -->
   <section class="feature-section bg-black reverse">
     <div class="feature-text">
-      <p class="feature-eyebrow fade-up">Siri連携</p>
-      <h2 class="feature-title fade-up">「Hey Siri、<br>100円の支出を<br>追加して。」</h2>
-      <p class="feature-desc fade-up">アプリを開かなくても、声で取引を記録できます。Excel、CSV、TXTファイルから明細をまとめてインポートすることも可能。一件ずつ入力する必要はありません。</p>
+      <p class="feature-eyebrow fade-up">スマート入力</p>
+      <h2 class="feature-title fade-up">支出の記録は、<br>数秒で。</h2>
+      <p class="feature-desc fade-up">レシートをスキャンすれば金額を自動で読み取り。店名を入力すればカテゴリも口座も、分割かどうかまで提案——あなたの習慣から学びます。アプリを開かなくても：「Hey Siri、食費に500円追加して」。</p>
     </div>
     <div class="feature-img" id="phone4Wrap">
       <div class="iphone-frame">
         <div class="iphone-screen">
-          <img src="../../zeroBudget/screenshots/transactions.png" alt="ZeroBudgetの取引履歴" loading="lazy">
+          <img src="../../zeroBudget/screenshots/ja/addexpense.png" alt="ZeroBudgetの支出入力" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── FEATURE 5: Category Consumption ─────────────────────── -->
+  <!-- ─── FEATURE 5: Compartir movimientos (v1.3) ───────────────── -->
   <section class="feature-section bg-dark">
     <div class="feature-text">
-      <p class="feature-eyebrow fade-up">カテゴリ別消費</p>
-      <h2 class="feature-title fade-up">細部まで、<br>すべて<br>見える化。</h2>
-      <p class="feature-desc fade-up">どのカテゴリをタップしても、どのサブカテゴリで、いくら、いつ使ったのかが正確に分かります。本当に役立つお金の判断をするために必要な、詳細なレベルです。</p>
+      <p class="feature-eyebrow fade-up">家族の家計 <span class="new-pill">新機能</span></p>
+      <h2 class="feature-title fade-up">AirDropで、<br>支出を共有。</h2>
+      <p class="feature-desc fade-up">家族カードをお使いですか？使う人が取引を書き出してAirDropやメールで送信。支払う人がZeroBudgetで開き、自分のカードに自分のカテゴリで取り込めます。クラウドなし、共有アカウントなし——ファイルはiPhoneからiPhoneへ直接届きます。</p>
     </div>
     <div class="feature-img" id="phone5Wrap">
       <div class="iphone-frame">
         <div class="iphone-screen">
-          <img src="../../zeroBudget/screenshots/drilldown.png" alt="ZeroBudgetのカテゴリ詳細" loading="lazy">
+          <img src="../../zeroBudget/screenshots/ja/movements.png" alt="ZeroBudgetの取引共有" loading="lazy">
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FEATURE 6: Analíticas ─────────────────────────────────── -->
+  <section class="feature-section bg-black reverse">
+    <div class="feature-text">
+      <p class="feature-eyebrow fade-up">スマート分析</p>
+      <h2 class="feature-title fade-up">本当の使い方が、<br>わかる。</h2>
+      <p class="feature-desc fade-up">お金の行き先、月間予測、予算アラート、支出トップ、カテゴリ別の傾向、節約のヒント。お金が消える前に、判断に必要なデータを。</p>
+    </div>
+    <div class="feature-img" id="phone6Wrap">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <img src="../../zeroBudget/screenshots/ja/analytics.png" alt="ZeroBudgetの分析画面" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── GRID: Todo lo demás ───────────────────────────────────── -->
+  <section class="grid-section">
+    <div class="grid-header">
+      <h2 class="grid-title fade-up">優れたアプリに期待されるすべてを。</h2>
+      <p class="grid-subtitle fade-up">毎日使うものだから、細部まで丁寧に。</p>
+    </div>
+    <div class="features-grid">
+      <div class="grid-card fade-up">
+        <span class="emoji">🎯</span>
+        <h3>貯蓄目標</h3>
+        <p>専用口座と視覚的な進捗表示。緊急資金でも旅行でも、自分のペースで。</p>
+      </div>
+      <div class="grid-card fade-up">
+        <span class="emoji">📄</span>
+        <h3>明細のインポート</h3>
+        <p>CSV・Excel・TXTに対応、列は自動検出。数百件の取引も数秒で。</p>
+      </div>
+      <div class="grid-card fade-up">
+        <span class="emoji">🔁</span>
+        <h3>定期収支</h3>
+        <p>家賃・サブスク・給料：決まった日に自動で記録。リマインダーも設定可能。</p>
+      </div>
+      <div class="grid-card fade-up">
+        <span class="emoji">🗣️</span>
+        <h3>Siriとウィジェット</h3>
+        <p>アプリを開かず声で記録。ホーム画面から予算を確認。</p>
+      </div>
+      <div class="grid-card fade-up">
+        <span class="emoji">🌙</span>
+        <h3>完全なダークモード</h3>
+        <p>ダークを基準にデザイン、ライトも美しく。システム設定に追従。</p>
+      </div>
+      <div class="grid-card fade-up">
+        <span class="emoji">🌎</span>
+        <h3>6言語対応</h3>
+        <p>スペイン語・英語・フランス語・ポルトガル語・日本語・韓国語。現地通貨で。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PRICING ───────────────────────────────────────────────── -->
+  <section class="pricing-section">
+    <div class="pricing-header">
+      <h2 class="pricing-title fade-up">基本は無料。<br>もっと使うならPro。</h2>
+      <p class="pricing-subtitle fade-up">インストールすると<strong>Pro機能を30日間無料</strong>でお試しいただけます——カード不要・登録不要。期間終了後も、ZeroBudgetは無料で使い続けられます。</p>
+    </div>
+    <div class="pricing-cards">
+      <div class="price-card fade-up">
+        <p class="tier">ずっと無料</p>
+        <h3>ZeroBudget</h3>
+        <p class="price-note">始めるのに必要なすべて</p>
+        <ul>
+          <li>口座は最大3つ：現金・銀行・貯蓄・クレジットカード</li>
+          <li>取引は無制限、予算はリアルタイム</li>
+          <li>締め日・支払日・分割払いを自動計算するカード管理</li>
+          <li>進捗が見える貯蓄目標</li>
+          <li>スマート入力＋レシートスキャン</li>
+          <li>AirDropやメールで取引を共有</li>
+          <li>Siri・ウィジェット・定期収支・リマインダー</li>
+          <li>データのバックアップとFace ID／Touch ID</li>
+        </ul>
+      </div>
+      <div class="price-card pro fade-up">
+        <p class="tier">月額または年額</p>
+        <h3>ZeroBudget Pro</h3>
+        <p class="price-note">分析を次のレベルへ</p>
+        <ul>
+          <li>カテゴリ・店舗別の支出ヒートマップ</li>
+          <li>完全な分析：予測・アラート・傾向</li>
+          <li>明細のインポート（CSV・Excel・TXT）</li>
+          <li>家族が共有した取引の受け取り</li>
+          <li>パスワードで暗号化したバックアップ</li>
+          <li>口座・目標・分割払いが無制限</li>
+          <li>取引のCSVエクスポート</li>
+          <li>優先サポート</li>
+        </ul>
       </div>
     </div>
   </section>
 
   <!-- ─── STATS ─────────────────────────────────────────────────── -->
   <section class="stats-section">
-    <p class="stats-title fade-up">家計に真剣に向き合うあなたのために。</p>
+    <p class="stats-title fade-up">家計とプライバシーを、真剣に考える人のために。</p>
     <div class="stats-grid">
       <div class="stat-item">
         <span class="stat-number fade-up" data-target="100">0</span>
-        <span class="stat-label">% オフライン</span>
+        <span class="stat-label">%オフライン。ネットなしで動作。</span>
       </div>
       <div class="stat-item">
-        <span class="stat-number fade-up" data-target="3">0</span>
-        <span class="stat-label">つの形式：CSV、Excel、TXT</span>
+        <span class="stat-number fade-up" data-target="6">0</span>
+        <span class="stat-label">言語、15以上の国と地域で利用可能</span>
       </div>
       <div class="stat-item">
         <span class="stat-number stat-accent fade-up" data-target="0">0</span>
-        <span class="stat-label">台のサーバー。あなたのデータはクラウドにゼロ。</span>
+        <span class="stat-label">台のサーバー。クラウドにデータは一切なし。</span>
       </div>
     </div>
   </section>
@@ -619,42 +851,48 @@
   <!-- ─── GALLERY ───────────────────────────────────────────────── -->
   <section class="gallery-section">
     <div class="gallery-header">
-      <h2 class="gallery-title fade-up">使い方を見てみましょう。</h2>
-      <p class="gallery-subtitle fade-up">スワイプして各画面を探索。</p>
+      <h2 class="gallery-title fade-up">使い方を見る。</h2>
+      <p class="gallery-subtitle fade-up">スワイプして各画面をチェック。</p>
     </div>
     <div class="gallery-track">
       <div class="iphone-frame">
-        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/dashboard.png"    alt="ダッシュボード" loading="lazy"></div>
+        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/ja/dashboard.png"  alt="Dashboard" loading="lazy"></div>
       </div>
       <div class="iphone-frame">
-        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/budget.png"       alt="予算" loading="lazy"></div>
+        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/ja/heatmap.png"    alt="支出ヒートマップ" loading="lazy"></div>
       </div>
       <div class="iphone-frame">
-        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/transactions.png" alt="取引履歴" loading="lazy"></div>
+        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/ja/budget.png"     alt="予算" loading="lazy"></div>
       </div>
       <div class="iphone-frame">
-        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/accounts.png"     alt="口座" loading="lazy"></div>
+        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/ja/msi.png"        alt="分割払い" loading="lazy"></div>
       </div>
       <div class="iphone-frame">
-        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/analytics.png"    alt="分析" loading="lazy"></div>
+        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/ja/addexpense.png" alt="支出入力" loading="lazy"></div>
       </div>
       <div class="iphone-frame">
-        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/drilldown.png"    alt="カテゴリ詳細" loading="lazy"></div>
+        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/ja/analytics.png"  alt="分析" loading="lazy"></div>
+      </div>
+      <div class="iphone-frame">
+        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/ja/goals.png"      alt="貯蓄目標" loading="lazy"></div>
+      </div>
+      <div class="iphone-frame">
+        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/ja/movements.png"  alt="取引履歴" loading="lazy"></div>
       </div>
     </div>
   </section>
 
   <!-- ─── CTA ───────────────────────────────────────────────────── -->
   <section class="cta-section">
-    <h2 class="cta-title fade-up">App Storeで<br>配信中。</h2>
-    <p class="cta-subtitle fade-up">ZeroBudgetを無料でダウンロードして、今日から家計の管理を始めましょう。</p>
+    <h2 class="cta-title fade-up">あなたのお金は、<br>あなたが決める。</h2>
+    <p class="cta-subtitle fade-up">ZeroBudgetを無料でダウンロードして、Pro機能を30日間お試しください。カード不要。アカウント不要。細かい条件もなし。</p>
     <a href="https://apps.apple.com/app/zerobudget/id6759937538"
        class="appstore-badge fade-up" target="_blank" rel="noopener noreferrer">
-      <svg class="apple-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+      <svg class="apple-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black">
         <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
       </svg>
       <span class="badge-text">
-        <span class="badge-small">ダウンロードはこちら</span>
+        <span class="badge-small">ダウンロードは</span>
         <span class="badge-big">App Store</span>
       </span>
     </a>
@@ -680,12 +918,14 @@
   <script>
     gsap.registerPlugin(ScrollTrigger);
 
+    // ─── NAV: glassmorphism al scrollear ───────────────────────────
     ScrollTrigger.create({
       start: "80px top",
       onEnter:     () => document.getElementById('mainNav').classList.add('scrolled'),
       onLeaveBack: () => document.getElementById('mainNav').classList.remove('scrolled'),
     });
 
+    // ─── HERO: iPhone escala + sube al hacer scroll ────────────────
     gsap.to("#heroPhone", {
       y: -120,
       scale: 1.08,
@@ -698,6 +938,7 @@
       }
     });
 
+    // ─── FADE-UP para textos (una vez, al entrar al viewport) ──────
     gsap.utils.toArray(".fade-up").forEach(el => {
       gsap.fromTo(el,
         { opacity: 0, y: 40 },
@@ -714,12 +955,14 @@
       );
     });
 
+    // ─── PARALLAX en iPhones de features ──────────────────────────
     [
       { id: "#phone1Wrap", yFrom: 80,  yTo: -80  },
       { id: "#phone2Wrap", yFrom: 100, yTo: -100 },
       { id: "#phone3Wrap", yFrom: 80,  yTo: -80  },
       { id: "#phone4Wrap", yFrom: 100, yTo: -100 },
       { id: "#phone5Wrap", yFrom: 80,  yTo: -80  },
+      { id: "#phone6Wrap", yFrom: 100, yTo: -100 },
     ].forEach(({ id, yFrom, yTo }) => {
       gsap.fromTo(id,
         { y: yFrom },
@@ -736,6 +979,7 @@
       );
     });
 
+    // ─── COUNTER ANIMADO para stats ───────────────────────────────
     document.querySelectorAll('.stat-number[data-target]').forEach(el => {
       const target = parseInt(el.getAttribute('data-target'));
       ScrollTrigger.create({
