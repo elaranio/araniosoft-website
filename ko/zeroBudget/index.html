@@ -749,6 +749,22 @@
     </div>
   </section>
 
+  <!-- ─── FEATURE 7: 정산 ─────────────────────────────────────────── -->
+  <section class="feature-section bg-dark">
+    <div class="feature-text">
+      <p class="feature-eyebrow fade-up">그룹 지출 <span class="new-pill">신규</span></p>
+      <h2 class="feature-title fade-up">정산으로,<br>누가 얼마 갚을지 관리하세요.</h2>
+      <p class="feature-desc fade-up">식사비나 월세 같은 지출을 똑같이 또는 사람별로 나누세요. 누가 얼마를 갚아야 하는지 관리하고, 한 번의 탭으로 정산까지 완료 — 추가 앱도, 공유 계정도, 클라우드도 필요 없습니다. 모든 것이 iPhone 안에서만 이루어집니다.</p>
+    </div>
+    <div class="feature-img" id="phone7Wrap">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <img src="../../zeroBudget/screenshots/ko/split.png" alt="ZeroBudget 정산 기능" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── GRID: Todo lo demás ───────────────────────────────────── -->
   <section class="grid-section">
     <div class="grid-header">
@@ -880,6 +896,9 @@
       <div class="iphone-frame">
         <div class="iphone-screen"><img src="../../zeroBudget/screenshots/ko/movements.png"  alt="거래 내역" loading="lazy"></div>
       </div>
+      <div class="iphone-frame">
+        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/ko/split.png"      alt="정산" loading="lazy"></div>
+      </div>
     </div>
   </section>
 
@@ -964,6 +983,7 @@
       { id: "#phone4Wrap", yFrom: 100, yTo: -100 },
       { id: "#phone5Wrap", yFrom: 80,  yTo: -80  },
       { id: "#phone6Wrap", yFrom: 100, yTo: -100 },
+      { id: "#phone7Wrap", yFrom: 80,  yTo: -80  },
     ].forEach(({ id, yFrom, yTo }) => {
       gsap.fromTo(id,
         { y: yFrom },

@@ -749,6 +749,22 @@
     </div>
   </section>
 
+  <!-- ─── FEATURE 7: Diviser les dépenses ────────────────────────── -->
+  <section class="feature-section bg-dark">
+    <div class="feature-text">
+      <p class="feature-eyebrow fade-up">Dépenses de groupe <span class="new-pill">Nouveau</span></p>
+      <h2 class="feature-title fade-up">Divisez les dépenses,<br>suivez qui vous doit.</h2>
+      <p class="feature-desc fade-up">Partagez un dîner, le loyer ou toute dépense en parts égales ou par personne. Suivez qui vous doit et réglez en un geste — sans application supplémentaire, sans compte partagé, sans cloud. Tout reste sur votre iPhone.</p>
+    </div>
+    <div class="feature-img" id="phone7Wrap">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <img src="../../zeroBudget/screenshots/fr/split.png" alt="Diviser les dépenses dans ZeroBudget" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── GRID: Todo lo demás ───────────────────────────────────── -->
   <section class="grid-section">
     <div class="grid-header">
@@ -880,6 +896,9 @@
       <div class="iphone-frame">
         <div class="iphone-screen"><img src="../../zeroBudget/screenshots/fr/movements.png"  alt="Mouvements" loading="lazy"></div>
       </div>
+      <div class="iphone-frame">
+        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/fr/split.png"      alt="Diviser les dépenses" loading="lazy"></div>
+      </div>
     </div>
   </section>
 
@@ -964,6 +983,7 @@
       { id: "#phone4Wrap", yFrom: 100, yTo: -100 },
       { id: "#phone5Wrap", yFrom: 80,  yTo: -80  },
       { id: "#phone6Wrap", yFrom: 100, yTo: -100 },
+      { id: "#phone7Wrap", yFrom: 80,  yTo: -80  },
     ].forEach(({ id, yFrom, yTo }) => {
       gsap.fromTo(id,
         { y: yFrom },

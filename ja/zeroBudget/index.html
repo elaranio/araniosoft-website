@@ -749,6 +749,22 @@
     </div>
   </section>
 
+  <!-- ─── FEATURE 7: 割り勘 ───────────────────────────────────────── -->
+  <section class="feature-section bg-dark">
+    <div class="feature-text">
+      <p class="feature-eyebrow fade-up">グループの支出 <span class="new-pill">新機能</span></p>
+      <h2 class="feature-title fade-up">割り勘で、<br>誰にいくら貸しているか管理。</h2>
+      <p class="feature-desc fade-up">食事代や家賃などの支出を、均等または人ごとに分けられます。誰にいくら貸しているかを管理し、ワンタップで精算完了 — 追加のアプリも、共有アカウントも、クラウドも不要。すべてiPhoneの中だけで完結します。</p>
+    </div>
+    <div class="feature-img" id="phone7Wrap">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <img src="../../zeroBudget/screenshots/ja/split.png" alt="ZeroBudgetの割り勘機能" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── GRID: Todo lo demás ───────────────────────────────────── -->
   <section class="grid-section">
     <div class="grid-header">
@@ -880,6 +896,9 @@
       <div class="iphone-frame">
         <div class="iphone-screen"><img src="../../zeroBudget/screenshots/ja/movements.png"  alt="取引履歴" loading="lazy"></div>
       </div>
+      <div class="iphone-frame">
+        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/ja/split.png"      alt="割り勘" loading="lazy"></div>
+      </div>
     </div>
   </section>
 
@@ -964,6 +983,7 @@
       { id: "#phone4Wrap", yFrom: 100, yTo: -100 },
       { id: "#phone5Wrap", yFrom: 80,  yTo: -80  },
       { id: "#phone6Wrap", yFrom: 100, yTo: -100 },
+      { id: "#phone7Wrap", yFrom: 80,  yTo: -80  },
     ].forEach(({ id, yFrom, yTo }) => {
       gsap.fromTo(id,
         { y: yFrom },
