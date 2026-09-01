@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZeroBudget — Design System Preview</title>
+<style>
+  /* ───────── Reset & Base ───────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* ── Brand (Green accent) ── */
+    --accent:        #00B86C;
+    --accent-light:  #00D97E;
+    --accent-bg:     rgba(0,184,108,.10);
+
+    /* ── Semantic ── */
+    --positive:      #34C759;
+    --positive-dark: #30D158;
+    --negative:      #FF3B30;
+    --negative-dark: #FF453A;
+    --transfer:      #007AFF;
+    --savings:       #5AC8FA;
+    --warning:       #FF9500;
+
+    /* ── Surfaces (Light) ── */
+    --bg:            #F2F2F7;
+    --surface:       #FFFFFF;
+    --surface-2:     #F2F2F7;
+    --border:        rgba(0,0,0,.08);
+    --text:          #1C1C1E;
+    --text-2:        #636366;
+    --text-3:        #AEAEB2;
+
+    /* ── Shadows ── */
+    --shadow-card:     0 4px 12px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.04);
+    --shadow-elevated: 0 8px 20px rgba(0,0,0,.12), 0 2px 6px rgba(0,0,0,.06);
+
+    /* ── Radius ── */
+    --r-sm: 8px; --r-md: 12px; --r-lg: 16px; --r-xl: 20px; --r-pill: 100px;
+
+    /* ── Typography ── */
+    --font: -apple-system, "SF Pro Rounded", "SF Pro Display", BlinkMacSystemFont, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --accent:       #00D97E;
+      --accent-bg:    rgba(0,217,126,.12);
+      --positive:     #30D158;
+      --negative:     #FF453A;
+      --transfer:     #0A84FF;
+      --bg:           #111113;
+      --surface:      #1C1C1F;
+      --surface-2:    #242428;
+      --border:       rgba(255,255,255,.08);
+      --text:         #F5F5F7;
+      --text-2:       #8E8E93;
+      --text-3:       #48484A;
+      --shadow-card:     0 4px 12px rgba(0,0,0,.40);
+      --shadow-elevated: 0 8px 24px rgba(0,0,0,.55);
+    }
+  }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 40px 20px 80px;
+  }
+
+  /* ───────── Layout ───────── */
+  .page-title {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .page-title h1 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--accent);
+  }
+  .page-title p {
+    font-size: 15px;
+    color: var(--text-2);
+    margin-top: 6px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .grid-full {
+    max-width: 1100px;
+    margin: 0 auto 20px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--text-3);
+    margin: 32px auto 12px;
+    max-width: 1100px;
+  }
+
+  /* ───────── Card ───────── */
+  .card {
+    background: var(--surface);
+    border-radius: var(--r-xl);
+    padding: 24px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--border);
+  }
+  .card h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-2);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  /* ───────── Color Swatches ───────── */
+  .swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .swatch-dot {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--border);
+  }
+  .swatch-name {
+    font-size: 10px;
+    color: var(--text-2);
+    text-align: center;
+    font-weight: 500;
+  }
+
+  /* ───────── Typography Scale ───────── */
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .type-row:last-child { border-bottom: none; }
+  .type-label {
+    font-size: 10px;
+    color: var(--text-3);
+    width: 100px;
+    flex-shrink: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+  .type-sample { flex: 1; }
+  .hero-amount    { font-size: 48px; font-weight: 800; letter-spacing: -1px; }
+  .title-amount   { font-size: 34px; font-weight: 700; letter-spacing: -0.5px; }
+  .card-amount    { font-size: 24px; font-weight: 600; }
+  .inline-amount  { font-size: 17px; font-weight: 600; }
+  .section-title  { font-size: 20px; font-weight: 700; }
+  .card-title-t   { font-size: 15px; font-weight: 600; }
+  .body-t         { font-size: 15px; font-weight: 400; }
+  .caption-t      { font-size: 13px; font-weight: 400; color: var(--text-2); }
+  .micro-t        { font-size: 11px; font-weight: 500; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.8px; }
+
+  /* ───────── Simulated iPhone ───────── */
+  .phone-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 1100px;
+  }
+
+  .phone {
+    width: 320px;
+    background: var(--surface);
+    border-radius: 40px;
+    border: 6px solid var(--text-3);
+    overflow: hidden;
+    box-shadow: var(--shadow-elevated);
+    flex-shrink: 0;
+  }
+  .phone-label {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-3);
+    margin-bottom: 8px;
+  }
+
+  /* ───────── Status Bar ───────── */
+  .status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .status-bar .time { font-weight: 700; font-size: 15px; }
+  .status-icons { display: flex; gap: 4px; align-items: center; }
+
+  /* ───────── Nav Bar ───────── */
+  .nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 20px 4px;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-title {
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .brand-badge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--accent-bg);
+    border: 1px solid var(--accent);
+    border-radius: var(--r-pill);
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .brand-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* ───────── Dashboard Content ───────── */
+  .dash-scroll { padding: 16px 16px 24px; display: flex; flex-direction: column; gap: 14px; }
+
+  /* Hero balance */
+  .hero-card {
+    background: linear-gradient(135deg, var(--accent) 0%, #009B57 100%);
+    border-radius: var(--r-xl);
+    padding: 20px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-card::after {
+    content: '';
+    position: absolute;
+    top: -20px; right: -20px;
+    width: 100px; height: 100px;
+    background: rgba(255,255,255,.1);
+    border-radius: 50%;
+  }
+  .hero-label { font-size: 11px; font-weight: 600; opacity: .75; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px; }
+  .hero-amount-disp { font-size: 38px; font-weight: 800; letter-spacing: -1px; line-height: 1; margin-bottom: 12px; }
+  .hero-row { display: flex; gap: 12px; }
+  .hero-stat { flex: 1; }
+  .hero-stat .lbl { font-size: 10px; opacity: .7; text-transform: uppercase; letter-spacing: 0.5px; }
+  .hero-stat .val { font-size: 16px; font-weight: 700; margin-top: 1px; }
+  .hero-stat .val.neg { color: #FFD0CC; }
+  .hero-stat .val.pos { color: #CCFFDF; }
+
+  /* Quick actions */
+  .quick-actions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .qa-btn {
+    background: var(--surface-2);
+    border-radius: var(--r-lg);
+    padding: 10px 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .qa-btn:hover { transform: scale(.96); box-shadow: none; }
+  .qa-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+  .qa-label { font-size: 10px; font-weight: 600; color: var(--text-2); }
+
+  /* Category rows */
+  .section-hdr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .section-hdr-title { font-size: 15px; font-weight: 700; }
+  .section-hdr-link  { font-size: 13px; color: var(--accent); font-weight: 600; }
+
+  .cat-list { display: flex; flex-direction: column; gap: 8px; }
+  .cat-row {
+    background: var(--surface-2);
+    border-radius: var(--r-lg);
+    padding: 12px;
+    border: 1px solid var(--border);
+  }
+  .cat-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px; }
+  .cat-name { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; }
+  .cat-emoji { font-size: 16px; }
+  .cat-amounts { display: flex; flex-direction: column; align-items: flex-end; }
+  .cat-spent { font-size: 14px; font-weight: 700; color: var(--text); }
+  .cat-of    { font-size: 10px; color: var(--text-2); }
+  .prog-track {
+    height: 5px;
+    background: var(--border);
+    border-radius: var(--r-pill);
+    overflow: hidden;
+  }
+  .prog-fill {
+    height: 100%;
+    border-radius: var(--r-pill);
+    transition: width .6s cubic-bezier(.34,1.56,.64,1);
+  }
+
+  /* ───────── BEFORE card ───────── */
+  .before .hero-card-old {
+    background: var(--surface-2);
+    border-radius: var(--r-xl);
+    padding: 16px;
+    border: 1px solid var(--border);
+  }
+  .before .old-row { display: flex; justify-content: space-between; font-size: 14px; padding: 4px 0; border-bottom: 1px solid var(--border); }
+  .before .old-row:last-child { border: none; }
+  .before .old-lbl { color: var(--text-2); }
+  .before .old-val { font-weight: 600; }
+  .before .old-qa {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 0;
+  }
+  .before .old-qa-btn {
+    background: rgba(0,0,0,.04);
+    border-radius: var(--r-md);
+    padding: 12px 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+
+  /* ───────── Component Showcase ───────── */
+  .comp-row { display: flex; gap: 12px; align-items: flex-start; flex-wrap: wrap; }
+
+  /* Brand Badge variants */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: var(--r-pill);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .badge-accent  { background: var(--accent-bg); color: var(--accent); border: 1px solid var(--accent); }
+  .badge-success { background: rgba(52,199,89,.12); color: var(--positive); border: 1px solid var(--positive); }
+  .badge-danger  { background: rgba(255,59,48,.10); color: var(--negative); border: 1px solid var(--negative); }
+  .badge-neutral { background: var(--surface-2); color: var(--text-2); border: 1px solid var(--border); }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: var(--r-pill);
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font);
+    transition: transform .15s ease, opacity .15s ease;
+  }
+  .btn:hover { transform: scale(.97); opacity: .9; }
+  .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 4px 12px rgba(0,184,108,.35); }
+  .btn-secondary { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
+  .btn-ghost { background: transparent; color: var(--accent); padding: 10px 16px; }
+
+  /* Amount display */
+  .amount-pos { color: var(--positive); font-weight: 700; }
+  .amount-neg { color: var(--negative); font-weight: 700; }
+  .amount-neu { color: var(--transfer); font-weight: 700; }
+
+  /* Progress bar showcase */
+  .prog-showcase { display: flex; flex-direction: column; gap: 10px; }
+  .prog-item { display: flex; align-items: center; gap: 10px; }
+  .prog-item-label { font-size: 12px; font-weight: 600; width: 80px; flex-shrink: 0; color: var(--text-2); }
+  .prog-item-bar { flex: 1; height: 8px; background: var(--border); border-radius: 100px; overflow: hidden; }
+  .prog-item-fill { height: 100%; border-radius: 100px; }
+  .prog-item-pct { font-size: 12px; font-weight: 700; width: 36px; text-align: right; }
+
+  /* Credit card mini */
+  .cc-mini {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: var(--r-xl);
+    padding: 16px;
+    color: #fff;
+    width: 100%;
+  }
+  .cc-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .cc-name { font-size: 12px; font-weight: 700; opacity: .7; text-transform: uppercase; letter-spacing: 1px; }
+  .cc-network { font-size: 18px; }
+  .cc-balance { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 3px; }
+  .cc-limit { font-size: 11px; opacity: .5; }
+  .cc-bar { height: 4px; background: rgba(255,255,255,.15); border-radius: 100px; margin-top: 10px; overflow: hidden; }
+  .cc-bar-fill { height: 100%; border-radius: 100px; background: linear-gradient(90deg, #00B86C, #00D97E); width: 62%; }
+
+  /* Goal card */
+  .goal-card {
+    background: var(--surface-2);
+    border-radius: var(--r-xl);
+    padding: 16px;
+    border: 1px solid var(--border);
+  }
+  .goal-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .goal-name { font-size: 15px; font-weight: 700; }
+  .goal-pct { font-size: 13px; font-weight: 700; color: var(--accent); }
+  .goal-amt { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; color: var(--accent); margin-bottom: 2px; }
+  .goal-of { font-size: 12px; color: var(--text-2); }
+  .goal-bar { height: 8px; background: var(--border); border-radius: 100px; margin-top: 10px; overflow: hidden; }
+  .goal-fill { height: 100%; border-radius: 100px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); width: 68%; }
+
+  /* ───────── Toast ───────── */
+  .toast {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-pill);
+    padding: 10px 18px;
+    box-shadow: var(--shadow-elevated);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .toast-icon { font-size: 16px; }
+
+  /* ───────── Depth showcase ───────── */
+  .depth-row { display: flex; gap: 20px; justify-content: center; padding: 20px 0; }
+  .depth-card {
+    width: 140px;
+    height: 80px;
+    background: var(--surface);
+    border-radius: var(--r-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+    border: 1px solid var(--border);
+  }
+  .depth-card .lv { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-3); font-weight: 700; }
+  .depth-card .name { font-size: 13px; font-weight: 600; color: var(--text-2); }
+
+  /* ───────── Before/After ───────── */
+  .ba-label {
+    text-align: center;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+    padding: 4px 12px;
+    border-radius: var(--r-pill);
+    display: inline-block;
+  }
+  .ba-before { background: rgba(255,59,48,.1); color: var(--negative); }
+  .ba-after  { background: var(--accent-bg); color: var(--accent); }
+  .phone-header { text-align: center; margin-bottom: 8px; }
+
+  /* ───────── Dark strip ───────── */
+  .dark-strip {
+    background: #111113;
+    border-radius: var(--r-xl);
+    padding: 24px;
+    margin-top: 4px;
+    border: 1px solid rgba(255,255,255,.06);
+  }
+</style>
+</head>
+<body>
+
+<div class="page-title">
+  <h1>ZeroBudget — Design System v2</h1>
+  <p>Sistema de diseño cross-cutting · Estilo Copilot/Monzo · Verde esmeralda como acento de marca</p>
+</div>
+
+<!-- ═══════════════ PALETA ═══════════════ -->
+<p class="section-label">🎨 Paleta de color — Tokens semánticos</p>
+<div class="grid-full">
+  <div class="card">
+    <h3>Brand & Accent</h3>
+    <div class="swatches">
+      <div class="swatch"><div class="swatch-dot" style="background:#00B86C"></div><div class="swatch-name">accent<br>#00B86C</div></div>
+      <div class="swatch"><div class="swatch-dot" style="background:#00D97E"></div><div class="swatch-name">accent-light<br>#00D97E</div></div>
+      <div class="swatch"><div class="swatch-dot" style="background:#34C759"></div><div class="swatch-name">positive<br>#34C759</div></div>
+      <div class="swatch"><div class="swatch-dot" style="background:#FF3B30"></div><div class="swatch-name">negative<br>#FF3B30</div></div>
+      <div class="swatch"><div class="swatch-dot" style="background:#007AFF"></div><div class="swatch-name">transfer<br>#007AFF</div></div>
+      <div class="swatch"><div class="swatch-dot" style="background:#5AC8FA"></div><div class="swatch-name">savings<br>#5AC8FA</div></div>
+      <div class="swatch"><div class="swatch-dot" style="background:#FF9500"></div><div class="swatch-name">warning<br>#FF9500</div></div>
+    </div>
+
+    <h3 style="margin-top:20px">Superficies — Light</h3>
+    <div class="swatches">
+      <div class="swatch"><div class="swatch-dot" style="background:#FFFFFF; border: 1.5px solid #ddd"></div><div class="swatch-name">surface<br>#FFFFFF</div></div>
+      <div class="swatch"><div class="swatch-dot" style="background:#F2F2F7; border: 1.5px solid #ddd"></div><div class="swatch-name">surface-2<br>#F2F2F7</div></div>
+      <div class="swatch"><div class="swatch-dot" style="background:#1C1C1E"></div><div class="swatch-name">text<br>#1C1C1E</div></div>
+      <div class="swatch"><div class="swatch-dot" style="background:#636366"></div><div class="swatch-name">text-2<br>#636366</div></div>
+      <div class="swatch"><div class="swatch-dot" style="background:#AEAEB2"></div><div class="swatch-name">text-3<br>#AEAEB2</div></div>
+    </div>
+
+    <div class="dark-strip" style="margin-top:16px">
+      <h3 style="color: rgba(255,255,255,.4); margin-bottom:12px">Superficies — Dark mode (más rico que Apple default)</h3>
+      <div class="swatches">
+        <div class="swatch"><div class="swatch-dot" style="background:#111113; border:1px solid rgba(255,255,255,.15)"></div><div class="swatch-name" style="color:#8E8E93">bg<br>#111113</div></div>
+        <div class="swatch"><div class="swatch-dot" style="background:#1C1C1F; border:1px solid rgba(255,255,255,.1)"></div><div class="swatch-name" style="color:#8E8E93">surface<br>#1C1C1F</div></div>
+        <div class="swatch"><div class="swatch-dot" style="background:#242428; border:1px solid rgba(255,255,255,.08)"></div><div class="swatch-name" style="color:#8E8E93">elevated<br>#242428</div></div>
+        <div class="swatch"><div class="swatch-dot" style="background:#30D158"></div><div class="swatch-name" style="color:#8E8E93">positive<br>#30D158</div></div>
+        <div class="swatch"><div class="swatch-dot" style="background:#FF453A"></div><div class="swatch-name" style="color:#8E8E93">negative<br>#FF453A</div></div>
+        <div class="swatch"><div class="swatch-dot" style="background:#00D97E"></div><div class="swatch-name" style="color:#8E8E93">accent<br>#00D97E</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ TIPOGRAFÍA ═══════════════ -->
+<p class="section-label">🔤 Tipografía — AppTypography scale</p>
+<div class="grid-full">
+  <div class="card">
+    <div class="type-row">
+      <span class="type-label">heroAmount</span>
+      <span class="type-sample hero-amount" style="color:var(--text)">$15,420</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">titleAmount</span>
+      <span class="type-sample title-amount amount-pos">+$8,500</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">cardAmount</span>
+      <span class="type-sample card-amount amount-neg">-$3,240</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">inlineAmount</span>
+      <span class="type-sample inline-amount amount-neu">↔ $1,200</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">sectionTitle</span>
+      <span class="type-sample section-title">Categorías</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">cardTitle</span>
+      <span class="type-sample card-title-t">Tarjeta Visa Oro</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">body</span>
+      <span class="type-sample body-t">Supermercado Walmart • 28 feb</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">caption</span>
+      <span class="type-sample caption-t">Última actualización: hace 2 min</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">micro</span>
+      <span class="type-sample micro-t">Gastos del mes</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ COMPONENTES ═══════════════ -->
+<p class="section-label">🧩 Componentes — Badges, Botones, Montos</p>
+<div class="grid-full">
+  <div class="card">
+    <h3>Brand Badge variants</h3>
+    <div class="comp-row" style="margin-bottom: 20px">
+      <span class="badge badge-accent">⬤ ZeroBudget</span>
+      <span class="badge badge-success">↑ Ingreso</span>
+      <span class="badge badge-danger">↓ Gasto</span>
+      <span class="badge badge-neutral">↔ Transferencia</span>
+    </div>
+
+    <h3>Botones</h3>
+    <div class="comp-row" style="margin-bottom: 20px">
+      <button class="btn btn-primary">+ Agregar gasto</button>
+      <button class="btn btn-secondary">Ver todo</button>
+      <button class="btn btn-ghost">Cancelar</button>
+    </div>
+
+    <h3>Montos con color semántico</h3>
+    <div class="comp-row" style="gap: 24px; margin-bottom: 20px">
+      <span class="card-amount amount-pos">+$8,500.00</span>
+      <span class="card-amount amount-neg">−$3,240.00</span>
+      <span class="card-amount amount-neu">↔ $1,200.00</span>
+    </div>
+
+    <h3>Toast / Feedback al guardar</h3>
+    <div class="comp-row">
+      <div class="toast"><span class="toast-icon">✅</span> Gasto guardado — $450 en Comida</div>
+      <div class="toast"><span class="toast-icon">⚠️</span> Presupuesto al 85%</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ DEPTH SYSTEM ═══════════════ -->
+<p class="section-label">🌑 Depth system — 3 niveles de sombra</p>
+<div class="grid-full">
+  <div class="card">
+    <div class="depth-row">
+      <div class="depth-card" style="box-shadow: none; border: 1px solid var(--border)">
+        <span class="lv">Level 0</span>
+        <span class="name">Flat</span>
+        <span style="font-size:10px; color:var(--text-3)">sin sombra</span>
+      </div>
+      <div class="depth-card" style="box-shadow: 0 4px 12px rgba(0,0,0,.07), 0 1px 3px rgba(0,0,0,.04)">
+        <span class="lv">Level 1</span>
+        <span class="name">Card</span>
+        <span style="font-size:10px; color:var(--text-3)">r:12 y:4 op:.07</span>
+      </div>
+      <div class="depth-card" style="box-shadow: 0 8px 20px rgba(0,0,0,.12), 0 2px 6px rgba(0,0,0,.06)">
+        <span class="lv">Level 2</span>
+        <span class="name">Elevated</span>
+        <span style="font-size:10px; color:var(--text-3)">r:20 y:8 op:.12</span>
+      </div>
+      <div class="depth-card" style="box-shadow: 0 16px 32px rgba(0,0,0,.18), 0 4px 12px rgba(0,0,0,.10)">
+        <span class="lv">Level 3</span>
+        <span class="name">Overlay</span>
+        <span style="font-size:10px; color:var(--text-3)">r:32 y:16 op:.18</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ PROGRESS BARS ═══════════════ -->
+<p class="section-label">📊 Progress bars — con color semántico</p>
+<div class="grid-full">
+  <div class="card">
+    <div class="prog-showcase">
+      <div class="prog-item">
+        <span class="prog-item-label">Comida</span>
+        <div class="prog-item-bar">
+          <div class="prog-item-fill" style="width:45%; background: var(--positive)"></div>
+        </div>
+        <span class="prog-item-pct" style="color:var(--positive)">45%</span>
+      </div>
+      <div class="prog-item">
+        <span class="prog-item-label">Transporte</span>
+        <div class="prog-item-bar">
+          <div class="prog-item-fill" style="width:72%; background: var(--warning)"></div>
+        </div>
+        <span class="prog-item-pct" style="color:var(--warning)">72%</span>
+      </div>
+      <div class="prog-item">
+        <span class="prog-item-label">Entretenm.</span>
+        <div class="prog-item-bar">
+          <div class="prog-item-fill" style="width:100%; background: var(--negative)"></div>
+        </div>
+        <span class="prog-item-pct" style="color:var(--negative)">103%</span>
+      </div>
+      <div class="prog-item">
+        <span class="prog-item-label">Salud</span>
+        <div class="prog-item-bar">
+          <div class="prog-item-fill" style="width:28%; background: var(--positive)"></div>
+        </div>
+        <span class="prog-item-pct" style="color:var(--positive)">28%</span>
+      </div>
+    </div>
+    <p style="font-size:11px; color:var(--text-3); margin-top:12px">
+      ≤79% → verde · 80–99% → ámbar · 100%+ → rojo
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════ CARD VARIANTS ═══════════════ -->
+<p class="section-label">💳 Cards — Crédito y Metas</p>
+<div class="grid">
+  <div class="card">
+    <h3>Credit Card Mini — nuevo</h3>
+    <div class="cc-mini">
+      <div class="cc-top">
+        <div>
+          <div class="cc-name">Visa Oro</div>
+        </div>
+        <div class="cc-network">💳</div>
+      </div>
+      <div class="cc-balance">$4,820.00</div>
+      <div class="cc-limit">de $20,000 disponibles</div>
+      <div class="cc-bar"><div class="cc-bar-fill"></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Goal Card — nuevo</h3>
+    <div class="goal-card">
+      <div class="goal-top">
+        <span class="goal-name">🌍 Viaje a Europa</span>
+        <span class="goal-pct">68%</span>
+      </div>
+      <div class="goal-amt">$34,000</div>
+      <div class="goal-of">de $50,000 meta</div>
+      <div class="goal-bar"><div class="goal-fill"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ BEFORE / AFTER DASHBOARD ═══════════════ -->
+<p class="section-label">📱 Dashboard — Antes vs. Después</p>
+<div class="phone-wrap">
+
+  <!-- BEFORE -->
+  <div>
+    <div class="phone-header">
+      <span class="ba-label ba-before">ANTES</span>
+    </div>
+    <div class="phone before">
+      <div class="status-bar">
+        <span class="time">9:41</span>
+        <div class="status-icons">📶 🔋</div>
+      </div>
+      <div class="nav-bar">
+        <span class="nav-title">Dashboard</span>
+        <span style="font-size:13px; color:var(--text-2)">ZeroBudget ⬡</span>
+      </div>
+      <div class="dash-scroll">
+        <!-- Old summary -->
+        <div class="hero-card-old">
+          <div class="old-row"><span class="old-lbl">Ingresos</span><span class="old-val" style="color:var(--positive)">$15,000</span></div>
+          <div class="old-row"><span class="old-lbl">Gastos</span><span class="old-val" style="color:var(--negative)">$8,450</span></div>
+          <div class="old-row"><span class="old-lbl">Balance</span><span class="old-val">$6,550</span></div>
+        </div>
+        <!-- Old QA grid 2x2 -->
+        <div class="old-qa">
+          <div class="old-qa-btn">✅ <span>Ingreso</span></div>
+          <div class="old-qa-btn">❌ <span>Gasto</span></div>
+          <div class="old-qa-btn">🔄 <span>Transferir</span></div>
+          <div class="old-qa-btn">📥 <span>Importar</span></div>
+        </div>
+        <!-- Old category list -->
+        <div>
+          <div class="section-hdr"><span class="section-hdr-title" style="font-size:13px">Categorías</span></div>
+          <div class="cat-list">
+            <div class="cat-row" style="padding:8px">
+              <div class="cat-top">
+                <div class="cat-name"><span>🍔</span> Comida</div>
+                <div class="cat-amounts"><span class="cat-spent" style="font-size:13px">$2,500</span><span class="cat-of">de $3,000</span></div>
+              </div>
+              <div class="prog-track"><div class="prog-fill" style="width:83%; background: linear-gradient(90deg, green, yellow, orange)"></div></div>
+            </div>
+            <div class="cat-row" style="padding:8px">
+              <div class="cat-top">
+                <div class="cat-name"><span>🚗</span> Transporte</div>
+                <div class="cat-amounts"><span class="cat-spent" style="font-size:13px">$1,200</span><span class="cat-of">de $1,500</span></div>
+              </div>
+              <div class="prog-track"><div class="prog-fill" style="width:80%; background: linear-gradient(90deg, green, yellow, orange)"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AFTER -->
+  <div>
+    <div class="phone-header">
+      <span class="ba-label ba-after">DESPUÉS</span>
+    </div>
+    <div class="phone">
+      <div class="status-bar">
+        <span class="time">9:41</span>
+        <div class="status-icons">📶 🔋</div>
+      </div>
+      <div class="nav-bar">
+        <span class="nav-title" style="font-size:15px">Febrero 2026</span>
+        <div class="brand-badge"><div class="brand-dot"></div>ZeroBudget</div>
+      </div>
+      <div class="dash-scroll">
+        <!-- Hero balance card -->
+        <div class="hero-card">
+          <div class="hero-label">Balance disponible</div>
+          <div class="hero-amount-disp">$6,550</div>
+          <div class="hero-row">
+            <div class="hero-stat">
+              <div class="lbl">Ingresos</div>
+              <div class="val pos">+$15,000</div>
+            </div>
+            <div class="hero-stat" style="text-align:right">
+              <div class="lbl">Gastos</div>
+              <div class="val neg">−$8,450</div>
+            </div>
+          </div>
+        </div>
+        <!-- Quick actions 1x4 -->
+        <div class="quick-actions">
+          <div class="qa-btn">
+            <div class="qa-icon" style="background:rgba(52,199,89,.15)">💰</div>
+            <span class="qa-label">Ingreso</span>
+          </div>
+          <div class="qa-btn">
+            <div class="qa-icon" style="background:rgba(255,59,48,.12)">💸</div>
+            <span class="qa-label">Gasto</span>
+          </div>
+          <div class="qa-btn">
+            <div class="qa-icon" style="background:rgba(0,122,255,.12)">↔️</div>
+            <span class="qa-label">Mover</span>
+          </div>
+          <div class="qa-btn">
+            <div class="qa-icon" style="background:rgba(0,184,108,.12)">📷</div>
+            <span class="qa-label">Ticket</span>
+          </div>
+        </div>
+        <!-- Category list mejorada -->
+        <div>
+          <div class="section-hdr">
+            <span class="section-hdr-title">Categorías</span>
+            <span class="section-hdr-link">Ver todo →</span>
+          </div>
+          <div class="cat-list">
+            <div class="cat-row">
+              <div class="cat-top">
+                <div class="cat-name"><span class="cat-emoji">🍔</span>Comida</div>
+                <div class="cat-amounts">
+                  <span class="cat-spent amount-neg">$2,500</span>
+                  <span class="cat-of">de $3,000</span>
+                </div>
+              </div>
+              <div class="prog-track"><div class="prog-fill" style="width:83%; background:var(--warning)"></div></div>
+            </div>
+            <div class="cat-row">
+              <div class="cat-top">
+                <div class="cat-name"><span class="cat-emoji">🚗</span>Transporte</div>
+                <div class="cat-amounts">
+                  <span class="cat-spent" style="color:var(--positive)">$950</span>
+                  <span class="cat-of">de $1,500</span>
+                </div>
+              </div>
+              <div class="prog-track"><div class="prog-fill" style="width:63%; background:var(--positive)"></div></div>
+            </div>
+            <div class="cat-row">
+              <div class="cat-top">
+                <div class="cat-name"><span class="cat-emoji">🎬</span>Entretenim.</div>
+                <div class="cat-amounts">
+                  <span class="cat-spent amount-neg">$1,050</span>
+                  <span class="cat-of">de $1,000</span>
+                </div>
+              </div>
+              <div class="prog-track"><div class="prog-fill" style="width:100%; background:var(--negative)"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p style="text-align:center; color: var(--text-3); font-size: 12px; margin-top: 40px; font-weight: 500">
+  ZeroBudget Design System v2 · Araniosoft · 2026
+</p>
+
+</body>
+</html>
