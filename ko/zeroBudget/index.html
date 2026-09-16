@@ -49,6 +49,95 @@
       }
     }
     </script>
+    <!-- JSON-LD FAQPage -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "ZeroBudget는 은행과 연동되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "아니요, 의도적으로 연동하지 않습니다. 은행 비밀번호를 묻지도, 계좌에 연결하지도 않습니다. 몇 초 만에 지출을 기록하거나 Excel·CSV·TXT 명세서를 iPhone에서 가져오면 됩니다. 그래서 어느 은행에서나 쓸 수 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "오프라인에서도 되나요? 정말 프라이빗한가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네. 100% 오프라인 가계부 앱입니다. 서버 없음, 계정 가입 없음, 클라우드 없음. 데이터는 iPhone 안에만 있으며 Face ID·Touch ID·PIN으로 잠글 수 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "제로베이스 예산이 무엇이고 앱에서 어떻게 쓰나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "달이 시작되기 전에 수입의 한 푼까지 용도를 정하는 방법입니다(50/20/20/10: 필요·저축·욕구·부채). 카테고리별 지출이 실시간으로 보이고, 초과하기 전에 알려줍니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "신용카드 할부를 관리할 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네. 구매를 한 번만 등록하면 매월 청구가 자동으로 만들어지고, 카드 마감일과 결제일을 따라가며 다음 명세서 중 얼마가 이미 확정됐는지 보여줍니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "친구와 지출을 정산하고 누가 얼마를 갚아야 하는지 볼 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네. 똑같이 나누거나 금액을 지정해 나눌 수 있고, 갚을 때까지 사람별 잔액을 관리합니다. 모든 것이 iPhone 안에서 끝나므로 클라우드로 올리는 앱들과 달리 지출을 남이 볼 수 없습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "가격은 얼마인가요? 무료 플랜에는 무엇이 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "다운로드는 무료이고 카드 등록 없이 30일 동안 모든 Pro 기능을 쓸 수 있습니다. 이후에도 무료 플랜이 남습니다: 현금 외 계좌 2개, 무제한 거래, 예산, 할부가 있는 카드, 저축 목표 1개, 지출 정산 2건. Pro(월간·연간)는 히트맵, 분석, 파일 가져오기와 무제한 기능을 더합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "은행 명세서를 가져올 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네, Pro에서 가능합니다. 은행의 Excel·CSV·TXT 파일을 열면 날짜·내용·금액 열을 자동으로 찾아내고, 맞지 않으면 몇 초 만에 직접 지정할 수 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "iPhone을 바꾸거나 앱을 지우면 데이터는 어떻게 되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "직접 정하실 수 있습니다. 선택한 폴더(iCloud Drive 포함)에 암호화 백업을 만들고, Pro에서는 비밀번호로 보호해 어느 기기로든 옮길 수 있습니다. 서버가 없으니 저희가 사본을 가질 일도 없습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "부부나 가족이 함께 쓰기에 좋나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네. 지출 정산은 물론, 가족이 가족카드 거래 내역을 AirDrop으로 보내주면 입력 없이 내 카드로 가져올 수 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Android·iPad·웹 버전이 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "현재 ZeroBudget은 iPhone 앱입니다. Android나 웹 버전도, 온라인 대시보드도 없습니다. 그래서 데이터가 기기 밖으로 나가지 않습니다."
+      }
+    }
+  ]
+}
+    </script>
     <style>
   /* ─── RESET & BASE ─────────────────────────────────────────── */
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -585,7 +674,32 @@
       0 0 0 8px #e0e0e0,
       0 0 0 9.5px #c8c8c8;
   }
-    </style>
+    
+  /* ─── FAQ ──────────────────────────────────────────────────── */
+  .faq-section { padding: 120px 24px; background: var(--apple-black); }
+  .faq-inner { max-width: 820px; margin: 0 auto; }
+  .faq-header { text-align: center; margin-bottom: 56px; }
+  .faq-title { font-size: clamp(32px, 5vw, 56px); font-weight: 700; letter-spacing: -.02em; line-height: 1.08; }
+  .faq-subtitle { margin-top: 14px; color: #86868b; font-size: 19px; }
+  .faq-item { border-bottom: 1px solid rgba(255,255,255,.12); }
+  .faq-item summary {
+    list-style: none; cursor: pointer; padding: 22px 44px 22px 0; position: relative;
+    font-size: 19px; font-weight: 600; line-height: 1.35;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+"; position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+    font-size: 26px; font-weight: 400; color: #86868b; transition: transform .2s ease;
+  }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-item summary:focus-visible { outline: 2px solid #fff; outline-offset: 4px; border-radius: 6px; }
+  .faq-answer { padding: 0 44px 26px 0; color: #a1a1a6; font-size: 17px; line-height: 1.65; }
+  @media (max-width: 600px) {
+    .faq-section { padding: 80px 20px; }
+    .faq-item summary { font-size: 17px; padding-right: 36px; }
+    .faq-answer { font-size: 16px; padding-right: 36px; }
+  }
+</style>
 </head>
 <body>
 
@@ -899,6 +1013,56 @@
       <div class="iphone-frame">
         <div class="iphone-screen"><img src="../../zeroBudget/screenshots/ko/split.png"      alt="정산" loading="lazy"></div>
       </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ───────────────────────────────────────────────────── -->
+  <section class="faq-section" id="faq">
+    <div class="faq-inner">
+      <div class="faq-header">
+        <h2 class="faq-title fade-up">자주 묻는 질문</h2>
+        <p class="faq-subtitle fade-up">다운로드 전에 가장 많이 묻는 것들.</p>
+      </div>
+      <details class="faq-item fade-up">
+        <summary>ZeroBudget는 은행과 연동되나요?</summary>
+        <div class="faq-answer">아니요, 의도적으로 연동하지 않습니다. 은행 비밀번호를 묻지도, 계좌에 연결하지도 않습니다. 몇 초 만에 지출을 기록하거나 Excel·CSV·TXT 명세서를 iPhone에서 가져오면 됩니다. 그래서 어느 은행에서나 쓸 수 있습니다.</div>
+      </details>
+      <details class="faq-item fade-up">
+        <summary>오프라인에서도 되나요? 정말 프라이빗한가요?</summary>
+        <div class="faq-answer">네. 100% 오프라인 가계부 앱입니다. 서버 없음, 계정 가입 없음, 클라우드 없음. 데이터는 iPhone 안에만 있으며 Face ID·Touch ID·PIN으로 잠글 수 있습니다.</div>
+      </details>
+      <details class="faq-item fade-up">
+        <summary>제로베이스 예산이 무엇이고 앱에서 어떻게 쓰나요?</summary>
+        <div class="faq-answer">달이 시작되기 전에 수입의 한 푼까지 용도를 정하는 방법입니다(50/20/20/10: 필요·저축·욕구·부채). 카테고리별 지출이 실시간으로 보이고, 초과하기 전에 알려줍니다.</div>
+      </details>
+      <details class="faq-item fade-up">
+        <summary>신용카드 할부를 관리할 수 있나요?</summary>
+        <div class="faq-answer">네. 구매를 한 번만 등록하면 매월 청구가 자동으로 만들어지고, 카드 마감일과 결제일을 따라가며 다음 명세서 중 얼마가 이미 확정됐는지 보여줍니다.</div>
+      </details>
+      <details class="faq-item fade-up">
+        <summary>친구와 지출을 정산하고 누가 얼마를 갚아야 하는지 볼 수 있나요?</summary>
+        <div class="faq-answer">네. 똑같이 나누거나 금액을 지정해 나눌 수 있고, 갚을 때까지 사람별 잔액을 관리합니다. 모든 것이 iPhone 안에서 끝나므로 클라우드로 올리는 앱들과 달리 지출을 남이 볼 수 없습니다.</div>
+      </details>
+      <details class="faq-item fade-up">
+        <summary>가격은 얼마인가요? 무료 플랜에는 무엇이 있나요?</summary>
+        <div class="faq-answer">다운로드는 무료이고 카드 등록 없이 30일 동안 모든 Pro 기능을 쓸 수 있습니다. 이후에도 무료 플랜이 남습니다: 현금 외 계좌 2개, 무제한 거래, 예산, 할부가 있는 카드, 저축 목표 1개, 지출 정산 2건. Pro(월간·연간)는 히트맵, 분석, 파일 가져오기와 무제한 기능을 더합니다.</div>
+      </details>
+      <details class="faq-item fade-up">
+        <summary>은행 명세서를 가져올 수 있나요?</summary>
+        <div class="faq-answer">네, Pro에서 가능합니다. 은행의 Excel·CSV·TXT 파일을 열면 날짜·내용·금액 열을 자동으로 찾아내고, 맞지 않으면 몇 초 만에 직접 지정할 수 있습니다.</div>
+      </details>
+      <details class="faq-item fade-up">
+        <summary>iPhone을 바꾸거나 앱을 지우면 데이터는 어떻게 되나요?</summary>
+        <div class="faq-answer">직접 정하실 수 있습니다. 선택한 폴더(iCloud Drive 포함)에 암호화 백업을 만들고, Pro에서는 비밀번호로 보호해 어느 기기로든 옮길 수 있습니다. 서버가 없으니 저희가 사본을 가질 일도 없습니다.</div>
+      </details>
+      <details class="faq-item fade-up">
+        <summary>부부나 가족이 함께 쓰기에 좋나요?</summary>
+        <div class="faq-answer">네. 지출 정산은 물론, 가족이 가족카드 거래 내역을 AirDrop으로 보내주면 입력 없이 내 카드로 가져올 수 있습니다.</div>
+      </details>
+      <details class="faq-item fade-up">
+        <summary>Android·iPad·웹 버전이 있나요?</summary>
+        <div class="faq-answer">현재 ZeroBudget은 iPhone 앱입니다. Android나 웹 버전도, 온라인 대시보드도 없습니다. 그래서 데이터가 기기 밖으로 나가지 않습니다.</div>
+      </details>
     </div>
   </section>
 

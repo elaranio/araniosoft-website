@@ -6,9 +6,9 @@
     <lastmod>2026-02-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="es"        href="https://araniosoft.com/"/>
-    <xhtml:link rel="alternate" hreflang="en"        href="https://araniosoft.com/en/"/>
-    <xhtml:link rel="alternate" hreflang="fr"        href="https://araniosoft.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es       " href="https://araniosoft.com/"/>
+    <xhtml:link rel="alternate" hreflang="en       " href="https://araniosoft.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr       " href="https://araniosoft.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://araniosoft.com/"/>
   </url>
   <url>
@@ -16,9 +16,9 @@
     <lastmod>2026-02-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es"        href="https://araniosoft.com/"/>
-    <xhtml:link rel="alternate" hreflang="en"        href="https://araniosoft.com/en/"/>
-    <xhtml:link rel="alternate" hreflang="fr"        href="https://araniosoft.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es       " href="https://araniosoft.com/"/>
+    <xhtml:link rel="alternate" hreflang="en       " href="https://araniosoft.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr       " href="https://araniosoft.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://araniosoft.com/"/>
   </url>
   <url>
@@ -26,39 +26,87 @@
     <lastmod>2026-02-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es"        href="https://araniosoft.com/"/>
-    <xhtml:link rel="alternate" hreflang="en"        href="https://araniosoft.com/en/"/>
-    <xhtml:link rel="alternate" hreflang="fr"        href="https://araniosoft.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es       " href="https://araniosoft.com/"/>
+    <xhtml:link rel="alternate" hreflang="en       " href="https://araniosoft.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr       " href="https://araniosoft.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://araniosoft.com/"/>
   </url>
   <url>
     <loc>https://araniosoft.com/zeroBudget/</loc>
-    <lastmod>2026-02-27</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es"        href="https://araniosoft.com/zeroBudget/"/>
-    <xhtml:link rel="alternate" hreflang="en"        href="https://araniosoft.com/en/zeroBudget/"/>
-    <xhtml:link rel="alternate" hreflang="fr"        href="https://araniosoft.com/fr/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="es       " href="https://araniosoft.com/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="en       " href="https://araniosoft.com/en/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="fr       " href="https://araniosoft.com/fr/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR    " href="https://araniosoft.com/pt/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="ja       " href="https://araniosoft.com/ja/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="ko       " href="https://araniosoft.com/ko/zeroBudget/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://araniosoft.com/zeroBudget/"/>
   </url>
   <url>
     <loc>https://araniosoft.com/en/zeroBudget/</loc>
-    <lastmod>2026-02-27</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es"        href="https://araniosoft.com/zeroBudget/"/>
-    <xhtml:link rel="alternate" hreflang="en"        href="https://araniosoft.com/en/zeroBudget/"/>
-    <xhtml:link rel="alternate" hreflang="fr"        href="https://araniosoft.com/fr/zeroBudget/"/>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es       " href="https://araniosoft.com/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="en       " href="https://araniosoft.com/en/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="fr       " href="https://araniosoft.com/fr/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR    " href="https://araniosoft.com/pt/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="ja       " href="https://araniosoft.com/ja/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="ko       " href="https://araniosoft.com/ko/zeroBudget/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://araniosoft.com/zeroBudget/"/>
   </url>
   <url>
     <loc>https://araniosoft.com/fr/zeroBudget/</loc>
-    <lastmod>2026-02-27</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es"        href="https://araniosoft.com/zeroBudget/"/>
-    <xhtml:link rel="alternate" hreflang="en"        href="https://araniosoft.com/en/zeroBudget/"/>
-    <xhtml:link rel="alternate" hreflang="fr"        href="https://araniosoft.com/fr/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="es       " href="https://araniosoft.com/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="en       " href="https://araniosoft.com/en/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="fr       " href="https://araniosoft.com/fr/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR    " href="https://araniosoft.com/pt/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="ja       " href="https://araniosoft.com/ja/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="ko       " href="https://araniosoft.com/ko/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://araniosoft.com/zeroBudget/"/>
+  </url>
+  <url>
+    <loc>https://araniosoft.com/pt/zeroBudget/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es       " href="https://araniosoft.com/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="en       " href="https://araniosoft.com/en/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="fr       " href="https://araniosoft.com/fr/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR    " href="https://araniosoft.com/pt/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="ja       " href="https://araniosoft.com/ja/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="ko       " href="https://araniosoft.com/ko/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://araniosoft.com/zeroBudget/"/>
+  </url>
+  <url>
+    <loc>https://araniosoft.com/ja/zeroBudget/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es       " href="https://araniosoft.com/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="en       " href="https://araniosoft.com/en/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="fr       " href="https://araniosoft.com/fr/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR    " href="https://araniosoft.com/pt/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="ja       " href="https://araniosoft.com/ja/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="ko       " href="https://araniosoft.com/ko/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://araniosoft.com/zeroBudget/"/>
+  </url>
+  <url>
+    <loc>https://araniosoft.com/ko/zeroBudget/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es       " href="https://araniosoft.com/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="en       " href="https://araniosoft.com/en/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="fr       " href="https://araniosoft.com/fr/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR    " href="https://araniosoft.com/pt/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="ja       " href="https://araniosoft.com/ja/zeroBudget/"/>
+    <xhtml:link rel="alternate" hreflang="ko       " href="https://araniosoft.com/ko/zeroBudget/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://araniosoft.com/zeroBudget/"/>
   </url>
 </urlset>

@@ -50,6 +50,95 @@
       }
     }
     </script>
+    <!-- JSON-LD FAQPage -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿ZeroBudget se conecta a mi banco?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, y es a propósito. ZeroBudget nunca pide las claves de tu banco ni se conecta a él: tú registras tus gastos en segundos, o importas tu estado de cuenta en Excel, CSV o TXT desde tu iPhone. Por eso funciona con cualquier banco de México y del mundo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Funciona sin internet? ¿Es realmente privada?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Es una app de control de gastos 100% offline: sin servidores, sin cuenta que crear y sin nube. Tus datos viven sólo en tu iPhone, protegidos por iOS, y puedes ponerle Face ID, Touch ID o PIN."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es el presupuesto base cero y cómo lo hace la app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Es darle un destino a cada peso de tu ingreso antes de que empiece el mes, con la guía 50/20/20/10: necesidades, ahorro, deseos y deudas. ZeroBudget te muestra en tiempo real cuánto llevas gastado de cada categoría y te avisa antes de que te pases."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo controlar mis meses sin intereses (MSI)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, y es de lo que más nos agradecen. Registras la compra a meses una sola vez y la app crea cada mensualidad, calcula el corte y la fecha de pago de tu tarjeta, y te dice cuánto de la próxima factura ya está comprometido."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo dividir gastos con amigos o familia y saber quién me debe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Divides un gasto en partes iguales o por montos, y la app lleva el saldo de cada persona hasta que te pagan. Todo en tu iPhone: nadie más ve cuánto gastas, a diferencia de las apps que suben todo a su nube."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta? ¿Qué incluye el plan gratis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Descargarla es gratis y durante 30 días usas todas las funciones Pro, sin tarjeta. Al terminar conservas el plan gratis: 2 cuentas más efectivo, movimientos ilimitados, presupuesto, tarjetas con MSI, 1 meta de ahorro y 2 divisiones de gastos. Pro (mensual o anual) suma Heatmap, analíticas, importación de archivos y todo ilimitado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo importar los movimientos de mi estado de cuenta?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, con Pro. Abres el archivo de tu banco en Excel, CSV o TXT y la app detecta sola las columnas de fecha, descripción y monto; si algo no cuadra, ajustas las columnas en segundos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa con mis datos si cambio de iPhone o borro la app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tú decides: la app crea un respaldo cifrado en la carpeta que elijas, incluso en iCloud Drive, y con Pro puedes protegerlo con contraseña para llevarlo a cualquier dispositivo. Nosotros nunca tenemos una copia porque no hay servidores."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Sirve para gastos compartidos en pareja o en casa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Además de dividir gastos, un familiar puede compartirte los movimientos de su tarjeta adicional por AirDrop y tú los cargas a tu tarjeta sin teclear nada."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hay versión para Android, iPad o web?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hoy ZeroBudget es una app para iPhone. No hay versión de Android ni web, y tampoco un panel en internet: esa es justo la razón por la que tus datos no salen de tu teléfono."
+      }
+    }
+  ]
+}
+    </script>
     <style>
   /* ─── RESET & BASE ─────────────────────────────────────────── */
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -586,7 +675,32 @@
       0 0 0 8px #e0e0e0,
       0 0 0 9.5px #c8c8c8;
   }
-    </style>
+    
+  /* ─── FAQ ──────────────────────────────────────────────────── */
+  .faq-section { padding: 120px 24px; background: var(--apple-black); }
+  .faq-inner { max-width: 820px; margin: 0 auto; }
+  .faq-header { text-align: center; margin-bottom: 56px; }
+  .faq-title { font-size: clamp(32px, 5vw, 56px); font-weight: 700; letter-spacing: -.02em; line-height: 1.08; }
+  .faq-subtitle { margin-top: 14px; color: #86868b; font-size: 19px; }
+  .faq-item { border-bottom: 1px solid rgba(255,255,255,.12); }
+  .faq-item summary {
+    list-style: none; cursor: pointer; padding: 22px 44px 22px 0; position: relative;
+    font-size: 19px; font-weight: 600; line-height: 1.35;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+"; position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+    font-size: 26px; font-weight: 400; color: #86868b; transition: transform .2s ease;
+  }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-item summary:focus-visible { outline: 2px solid #fff; outline-offset: 4px; border-radius: 6px; }
+  .faq-answer { padding: 0 44px 26px 0; color: #a1a1a6; font-size: 17px; line-height: 1.65; }
+  @media (max-width: 600px) {
+    .faq-section { padding: 80px 20px; }
+    .faq-item summary { font-size: 17px; padding-right: 36px; }
+    .faq-answer { font-size: 16px; padding-right: 36px; }
+  }
+</style>
 </head>
 <body>
 
@@ -900,6 +1014,56 @@
       <div class="iphone-frame">
         <div class="iphone-screen"><img src="screenshots/es/split.png"      alt="Dividir gastos" loading="lazy"></div>
       </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ───────────────────────────────────────────────────── -->
+  <section class="faq-section" id="faq">
+    <div class="faq-inner">
+      <div class="faq-header">
+        <h2 class="faq-title fade-up">Preguntas frecuentes</h2>
+        <p class="faq-subtitle fade-up">Lo que todos preguntan antes de descargarla.</p>
+      </div>
+      <details class="faq-item fade-up">
+        <summary>¿ZeroBudget se conecta a mi banco?</summary>
+        <div class="faq-answer">No, y es a propósito. ZeroBudget nunca pide las claves de tu banco ni se conecta a él: tú registras tus gastos en segundos, o importas tu estado de cuenta en Excel, CSV o TXT desde tu iPhone. Por eso funciona con cualquier banco de México y del mundo.</div>
+      </details>
+      <details class="faq-item fade-up">
+        <summary>¿Funciona sin internet? ¿Es realmente privada?</summary>
+        <div class="faq-answer">Sí. Es una app de control de gastos 100% offline: sin servidores, sin cuenta que crear y sin nube. Tus datos viven sólo en tu iPhone, protegidos por iOS, y puedes ponerle Face ID, Touch ID o PIN.</div>
+      </details>
+      <details class="faq-item fade-up">
+        <summary>¿Qué es el presupuesto base cero y cómo lo hace la app?</summary>
+        <div class="faq-answer">Es darle un destino a cada peso de tu ingreso antes de que empiece el mes, con la guía 50/20/20/10: necesidades, ahorro, deseos y deudas. ZeroBudget te muestra en tiempo real cuánto llevas gastado de cada categoría y te avisa antes de que te pases.</div>
+      </details>
+      <details class="faq-item fade-up">
+        <summary>¿Puedo controlar mis meses sin intereses (MSI)?</summary>
+        <div class="faq-answer">Sí, y es de lo que más nos agradecen. Registras la compra a meses una sola vez y la app crea cada mensualidad, calcula el corte y la fecha de pago de tu tarjeta, y te dice cuánto de la próxima factura ya está comprometido.</div>
+      </details>
+      <details class="faq-item fade-up">
+        <summary>¿Puedo dividir gastos con amigos o familia y saber quién me debe?</summary>
+        <div class="faq-answer">Sí. Divides un gasto en partes iguales o por montos, y la app lleva el saldo de cada persona hasta que te pagan. Todo en tu iPhone: nadie más ve cuánto gastas, a diferencia de las apps que suben todo a su nube.</div>
+      </details>
+      <details class="faq-item fade-up">
+        <summary>¿Cuánto cuesta? ¿Qué incluye el plan gratis?</summary>
+        <div class="faq-answer">Descargarla es gratis y durante 30 días usas todas las funciones Pro, sin tarjeta. Al terminar conservas el plan gratis: 2 cuentas más efectivo, movimientos ilimitados, presupuesto, tarjetas con MSI, 1 meta de ahorro y 2 divisiones de gastos. Pro (mensual o anual) suma Heatmap, analíticas, importación de archivos y todo ilimitado.</div>
+      </details>
+      <details class="faq-item fade-up">
+        <summary>¿Puedo importar los movimientos de mi estado de cuenta?</summary>
+        <div class="faq-answer">Sí, con Pro. Abres el archivo de tu banco en Excel, CSV o TXT y la app detecta sola las columnas de fecha, descripción y monto; si algo no cuadra, ajustas las columnas en segundos.</div>
+      </details>
+      <details class="faq-item fade-up">
+        <summary>¿Qué pasa con mis datos si cambio de iPhone o borro la app?</summary>
+        <div class="faq-answer">Tú decides: la app crea un respaldo cifrado en la carpeta que elijas, incluso en iCloud Drive, y con Pro puedes protegerlo con contraseña para llevarlo a cualquier dispositivo. Nosotros nunca tenemos una copia porque no hay servidores.</div>
+      </details>
+      <details class="faq-item fade-up">
+        <summary>¿Sirve para gastos compartidos en pareja o en casa?</summary>
+        <div class="faq-answer">Sí. Además de dividir gastos, un familiar puede compartirte los movimientos de su tarjeta adicional por AirDrop y tú los cargas a tu tarjeta sin teclear nada.</div>
+      </details>
+      <details class="faq-item fade-up">
+        <summary>¿Hay versión para Android, iPad o web?</summary>
+        <div class="faq-answer">Hoy ZeroBudget es una app para iPhone. No hay versión de Android ni web, y tampoco un panel en internet: esa es justo la razón por la que tus datos no salen de tu teléfono.</div>
+      </details>
     </div>
   </section>
 
