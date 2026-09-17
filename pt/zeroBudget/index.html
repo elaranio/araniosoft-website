@@ -879,6 +879,22 @@
     </div>
   </section>
 
+  <!-- ─── FEATURE 8: Modo mercado ────────────────────────────────── -->
+  <section class="feature-section bg-black reverse">
+    <div class="feature-text">
+      <p class="feature-eyebrow fade-up">Modo mercado <span class="new-pill">Novo</span></p>
+      <h2 class="feature-title fade-up">Sua lista de compras,<br>com o total ao vivo.</h2>
+      <p class="feature-desc fade-up">Monte a lista em casa e marque o que vai comprar desta vez. No mercado, o modo mercado soma o carrinho conforme você marca os itens e mostra quanto ainda resta daquela categoria do orçamento — com o total na tela bloqueada e na Dynamic Island, sem abrir o app. No fim, a compra é registrada como despesa com o recibo, e cada item lembra o último preço.</p>
+    </div>
+    <div class="feature-img" id="phone8Wrap">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <img src="../../zeroBudget/screenshots/pt/super.png" alt="Modo mercado no ZeroBudget" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── GRID: Todo lo demás ───────────────────────────────────── -->
   <section class="grid-section">
     <div class="grid-header">
@@ -940,6 +956,7 @@
           <li>Compartilhar movimentações por AirDrop ou Mail</li>
           <li>Siri, widgets, recorrentes e lembretes</li>
           <li>Backup criptografado e Face ID / Touch ID</li>
+          <li>Lista de compras com modo mercado e total ao vivo — 1 lista ativa</li>
         </ul>
       </div>
       <div class="price-card pro fade-up">
@@ -955,6 +972,7 @@
           <li>Contas, metas, parcelamentos e divisões de despesas ilimitados</li>
           <li>Exportar lançamentos para CSV</li>
           <li>Suporte prioritário</li>
+          <li>No mercado, quanto ainda resta daquela categoria do orçamento enquanto enche o carrinho</li>
         </ul>
       </div>
     </div>
@@ -1012,6 +1030,9 @@
       </div>
       <div class="iphone-frame">
         <div class="iphone-screen"><img src="../../zeroBudget/screenshots/pt/split.png"      alt="Dividir despesas" loading="lazy"></div>
+      </div>
+      <div class="iphone-frame">
+        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/pt/super.png"      alt="Lista de compras" loading="lazy"></div>
       </div>
     </div>
   </section>
@@ -1148,6 +1169,7 @@
       { id: "#phone5Wrap", yFrom: 80,  yTo: -80  },
       { id: "#phone6Wrap", yFrom: 100, yTo: -100 },
       { id: "#phone7Wrap", yFrom: 80,  yTo: -80  },
+      { id: "#phone8Wrap", yFrom: 100, yTo: -100 },
     ].forEach(({ id, yFrom, yTo }) => {
       gsap.fromTo(id,
         { y: yFrom },

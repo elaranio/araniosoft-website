@@ -880,6 +880,22 @@
     </div>
   </section>
 
+  <!-- ─── FEATURE 8: Modo súper ────────────────────────────────── -->
+  <section class="feature-section bg-black reverse">
+    <div class="feature-text">
+      <p class="feature-eyebrow fade-up">Modo súper <span class="new-pill">Nuevo</span></p>
+      <h2 class="feature-title fade-up">Tu lista del súper,<br>con el total en vivo.</h2>
+      <p class="feature-desc fade-up">Prepara la lista en casa y marca lo que vas a comprar esta vez. En la tienda, el modo súper suma el carrito mientras palomeas y te dice cuánto te queda de esa categoría de tu presupuesto — con el total en la pantalla bloqueada y en la Dynamic Island, sin abrir la app. Al terminar, la compra se registra como gasto con su recibo, y cada artículo recuerda su último precio.</p>
+    </div>
+    <div class="feature-img" id="phone8Wrap">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <img src="screenshots/es/super.png" alt="Modo súper de la lista de compras en ZeroBudget" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── GRID: Todo lo demás ───────────────────────────────────── -->
   <section class="grid-section">
     <div class="grid-header">
@@ -937,6 +953,7 @@
           <li>Tarjetas con corte, pago y MSI automáticos</li>
           <li>Meta de ahorro con progreso visual</li>
           <li>Divide gastos con amigos o familia y controla quién te debe — hasta 2 divisiones activas</li>
+          <li>Lista del súper con modo súper y total en vivo — 1 lista activa</li>
           <li>Captura inteligente + escaneo de tickets</li>
           <li>Compartir movimientos por AirDrop o Mail</li>
           <li>Siri, widgets, recurrentes y recordatorios</li>
@@ -953,7 +970,8 @@
           <li>Importación de estados de cuenta (CSV, Excel, TXT)</li>
           <li>Recibe los movimientos que tu familia comparte</li>
           <li>Respaldo con contraseña, para llevarlo a cualquier dispositivo</li>
-          <li>Cuentas, metas, parcialidades y divisiones de gastos ilimitadas</li>
+          <li>Cuentas, metas, parcialidades, divisiones de gastos y listas de compras ilimitadas</li>
+          <li>En el súper, cuánto te queda de esa categoría mientras llenas el carrito</li>
           <li>Exportar movimientos a CSV</li>
           <li>Soporte prioritario</li>
         </ul>
@@ -1013,6 +1031,9 @@
       </div>
       <div class="iphone-frame">
         <div class="iphone-screen"><img src="screenshots/es/split.png"      alt="Dividir gastos" loading="lazy"></div>
+      </div>
+      <div class="iphone-frame">
+        <div class="iphone-screen"><img src="screenshots/es/super.png"      alt="Lista del súper" loading="lazy"></div>
       </div>
     </div>
   </section>
@@ -1149,6 +1170,7 @@
       { id: "#phone5Wrap", yFrom: 80,  yTo: -80  },
       { id: "#phone6Wrap", yFrom: 100, yTo: -100 },
       { id: "#phone7Wrap", yFrom: 80,  yTo: -80  },
+      { id: "#phone8Wrap", yFrom: 100, yTo: -100 },
     ].forEach(({ id, yFrom, yTo }) => {
       gsap.fromTo(id,
         { y: yFrom },

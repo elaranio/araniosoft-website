@@ -879,6 +879,22 @@
     </div>
   </section>
 
+  <!-- ─── FEATURE 8: Mode courses ────────────────────────────────── -->
+  <section class="feature-section bg-black reverse">
+    <div class="feature-text">
+      <p class="feature-eyebrow fade-up">Mode courses <span class="new-pill">Nouveau</span></p>
+      <h2 class="feature-title fade-up">Votre liste de courses,<br>avec le total en direct.</h2>
+      <p class="feature-desc fade-up">Préparez la liste à la maison et cochez ce que vous achetez cette fois. En magasin, le mode courses additionne le panier à mesure que vous cochez et vous indique ce qu'il reste dans cette catégorie du budget — avec le total sur l'écran verrouillé et dans la Dynamic Island, sans ouvrir l'app. À la fin, les courses sont enregistrées comme dépense avec leur reçu, et chaque article retient son dernier prix.</p>
+    </div>
+    <div class="feature-img" id="phone8Wrap">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <img src="../../zeroBudget/screenshots/fr/super.png" alt="Mode courses dans ZeroBudget" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── GRID: Todo lo demás ───────────────────────────────────── -->
   <section class="grid-section">
     <div class="grid-header">
@@ -940,6 +956,7 @@
           <li>Partage des mouvements par AirDrop ou Mail</li>
           <li>Siri, widgets, récurrents et rappels</li>
           <li>Sauvegarde chiffrée et Face ID / Touch ID</li>
+          <li>Liste de courses avec le mode courses et le total en direct — 1 liste active</li>
         </ul>
       </div>
       <div class="price-card pro fade-up">
@@ -955,6 +972,7 @@
           <li>Comptes, objectifs, paiements échelonnés et divisions de dépenses illimités</li>
           <li>Export des transactions en CSV</li>
           <li>Support prioritaire</li>
+          <li>En magasin, ce qu'il vous reste dans cette catégorie du budget pendant que vous remplissez le panier</li>
         </ul>
       </div>
     </div>
@@ -1012,6 +1030,9 @@
       </div>
       <div class="iphone-frame">
         <div class="iphone-screen"><img src="../../zeroBudget/screenshots/fr/split.png"      alt="Diviser les dépenses" loading="lazy"></div>
+      </div>
+      <div class="iphone-frame">
+        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/fr/super.png"      alt="Liste de courses" loading="lazy"></div>
       </div>
     </div>
   </section>
@@ -1148,6 +1169,7 @@
       { id: "#phone5Wrap", yFrom: 80,  yTo: -80  },
       { id: "#phone6Wrap", yFrom: 100, yTo: -100 },
       { id: "#phone7Wrap", yFrom: 80,  yTo: -80  },
+      { id: "#phone8Wrap", yFrom: 100, yTo: -100 },
     ].forEach(({ id, yFrom, yTo }) => {
       gsap.fromTo(id,
         { y: yFrom },

@@ -879,6 +879,22 @@
     </div>
   </section>
 
+  <!-- ─── FEATURE 8: 장보기 모드 ────────────────────────────────── -->
+  <section class="feature-section bg-black reverse">
+    <div class="feature-text">
+      <p class="feature-eyebrow fade-up">장보기 모드 <span class="new-pill">신규</span></p>
+      <h2 class="feature-title fade-up">쇼핑 목록 합계를,<br>실시간으로.</h2>
+      <p class="feature-desc fade-up">집에서 목록을 만들고 이번에 살 것을 표시하세요. 매장에서는 장보기 모드가 항목을 체크할 때마다 장바구니 합계를 더하고, 해당 예산 카테고리에 얼마가 남았는지 알려줍니다. 합계는 잠금 화면과 Dynamic Island에 표시되어 앱을 열 필요가 없습니다. 쇼핑을 마치면 영수증과 함께 지출로 기록되고, 각 상품은 최근 가격을 기억합니다.</p>
+    </div>
+    <div class="feature-img" id="phone8Wrap">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <img src="../../zeroBudget/screenshots/ko/super.png" alt="ZeroBudget의 장보기 모드" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── GRID: Todo lo demás ───────────────────────────────────── -->
   <section class="grid-section">
     <div class="grid-header">
@@ -940,6 +956,7 @@
           <li>AirDrop이나 Mail로 거래 공유</li>
           <li>Siri·위젯·반복 거래·알림</li>
           <li>암호화 백업과 Face ID / Touch ID</li>
+          <li>장보기 모드와 실시간 합계가 있는 쇼핑 목록 — 활성 목록 1개</li>
         </ul>
       </div>
       <div class="price-card pro fade-up">
@@ -955,6 +972,7 @@
           <li>무제한 계좌·목표·할부·정산</li>
           <li>거래 CSV 내보내기</li>
           <li>우선 지원</li>
+          <li>장보는 동안 해당 예산 카테고리에 얼마가 남았는지 표시</li>
         </ul>
       </div>
     </div>
@@ -1012,6 +1030,9 @@
       </div>
       <div class="iphone-frame">
         <div class="iphone-screen"><img src="../../zeroBudget/screenshots/ko/split.png"      alt="정산" loading="lazy"></div>
+      </div>
+      <div class="iphone-frame">
+        <div class="iphone-screen"><img src="../../zeroBudget/screenshots/ko/super.png"      alt="쇼핑 목록" loading="lazy"></div>
       </div>
     </div>
   </section>
@@ -1148,6 +1169,7 @@
       { id: "#phone5Wrap", yFrom: 80,  yTo: -80  },
       { id: "#phone6Wrap", yFrom: 100, yTo: -100 },
       { id: "#phone7Wrap", yFrom: 80,  yTo: -80  },
+      { id: "#phone8Wrap", yFrom: 100, yTo: -100 },
     ].forEach(({ id, yFrom, yTo }) => {
       gsap.fromTo(id,
         { y: yFrom },
