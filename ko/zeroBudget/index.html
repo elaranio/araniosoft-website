@@ -895,6 +895,22 @@
     </div>
   </section>
 
+  <!-- ─── FEATURE 9: Paletas de colores ────────────────────────── -->
+  <section class="feature-section bg-dark">
+    <div class="feature-text">
+      <p class="feature-eyebrow fade-up">색상 팔레트 <span class="new-pill">신규</span></p>
+      <h2 class="feature-title fade-up">내 카테고리를<br>내 스타일로.</h2>
+      <p class="feature-desc fade-up">5가지 팔레트 중에서 카테고리 색상을 고를 수 있습니다. 하나는 기본 제공이고 나머지 4가지는 Pro 기능입니다. 히트맵, 막대, 아이콘이 내 색으로 바뀌고, 계좌마다 색도 정할 수 있어요.</p>
+    </div>
+    <div class="feature-img" id="phone9Wrap">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <img src="../../zeroBudget/screenshots/ko/palettes.png" alt="ZeroBudget 카테고리 색상 팔레트" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── GRID: Todo lo demás ───────────────────────────────────── -->
   <section class="grid-section">
     <div class="grid-header">
@@ -1170,6 +1186,7 @@
       { id: "#phone6Wrap", yFrom: 100, yTo: -100 },
       { id: "#phone7Wrap", yFrom: 80,  yTo: -80  },
       { id: "#phone8Wrap", yFrom: 100, yTo: -100 },
+      { id: "#phone9Wrap", yFrom: 100, yTo: -100 },
     ].forEach(({ id, yFrom, yTo }) => {
       gsap.fromTo(id,
         { y: yFrom },
