@@ -109,4 +109,10 @@
     <xhtml:link rel="alternate" hreflang="ko       " href="https://araniosoft.com/ko/zeroBudget/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://araniosoft.com/zeroBudget/"/>
   </url>
+  <url>
+    <loc>https://araniosoft.com/zeroBudget/controlar-gastos-iphone/</loc>
+    <lastmod>2026-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
