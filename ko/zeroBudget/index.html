@@ -1008,11 +1008,11 @@
     <p class="stats-title fade-up">가계부와 프라이버시를 진지하게 생각하는 사람을 위해.</p>
     <div class="stats-grid">
       <div class="stat-item">
-        <span class="stat-number fade-up" data-target="100">0</span>
+        <span class="stat-number fade-up" data-target="100">100</span>
         <span class="stat-label">% 오프라인. 인터넷 없이 작동.</span>
       </div>
       <div class="stat-item">
-        <span class="stat-number fade-up" data-target="6">0</span>
+        <span class="stat-number fade-up" data-target="6">6</span>
         <span class="stat-label">개 언어, 15개 이상 국가에서 이용 가능</span>
       </div>
       <div class="stat-item">
@@ -1213,6 +1213,7 @@
     // ─── COUNTER ANIMADO para stats ───────────────────────────────
     document.querySelectorAll('.stat-number[data-target]').forEach(el => {
       const target = parseInt(el.getAttribute('data-target'));
+      el.textContent = '0'; // el HTML trae el valor final; se reinicia aquí solo para animarlo
       ScrollTrigger.create({
         trigger: el,
         start: "top 80%",
