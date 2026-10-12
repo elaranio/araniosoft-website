@@ -53,3 +53,8 @@ footer{padding:40px 24px;border-top:1px solid var(--line);background:var(--black
 .fl a,.fc,.fc a{font-size:13px;color:var(--muted);text-decoration:none}
 .fl a:hover{color:var(--text)}
 @media(max-width:560px){.nav-links a.t{display:none}.hero{padding-top:110px}main p{font-size:17px}}
+html:lang(ja) h1,html:lang(ja) h2,html:lang(ko) h1,html:lang(ko) h2,html:lang(ja) .cards strong,html:lang(ko) .cards strong{letter-spacing:0}
+html:lang(ja) body{line-break:strict}
+html:lang(ko) body{word-break:keep-all}
+.hero h1,.hero .lead,.cards strong{text-wrap:balance}
+html:lang(ja) .hero h1,html:lang(ja) .hero .lead,html:lang(ja) .cards strong{word-break:auto-phrase}
