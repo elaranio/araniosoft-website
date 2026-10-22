@@ -124,7 +124,7 @@
     // nuestra cuenta de Cloudflare (código: Scripts/web/feedback-worker.js en el repo de la app) que las guarda
     // en un KV propio: sin IP, sin cookies, sin servicios de terceros. Se guardan CLAVES, no el texto mostrado.
     // API vacía = el Worker aún no está desplegado: la página ofrece sólo el correo.
-    var API = "";
+    var API = "https://zerobudget-feedback-api.elaranio.workers.dev/api/feedback";
     var OPTS = {
         q1: ["daily", "weekly_few", "weekly_one", "sometimes", "rarely"],
         q2: ["spending", "budget", "cards", "split", "saving", "other"],

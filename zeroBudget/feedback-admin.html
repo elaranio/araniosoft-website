@@ -46,7 +46,7 @@ var L = {
     q6: { already_pro: "Ya soy Pro", price: "El precio", not_needed: "No lo necesito", unclear: "No tengo claro qué incluye", prefer_free: "Prefiero que sea gratis", other: "Otro" }
 };
 // URL del Worker (Scripts/web/feedback-worker.js). Vacía = aún no desplegado.
-var API = "";
+var API = "https://zerobudget-feedback-api.elaranio.workers.dev/api/feedback";
 var rows = [];
 function lab(q, k) { return (L[q] && L[q][k]) || k || ""; }
 
