@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Respuestas — Ayúdanos a mejorar</title>
+    <style>
+        :root { --bg:#FAFAFA; --card:#fff; --text:#1A1A1A; --muted:#6B7280; --accent:#10B981; --border:#E5E7EB; --field:#F3F4F6; }
+        @media (prefers-color-scheme: dark) { :root { --bg:#111; --card:#1C1C1E; --text:#F5F5F5; --muted:#9CA3AF; --accent:#34D399; --border:#2D2D2D; --field:#2A2A2D; } }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif; background: var(--bg); color: var(--text); padding: 1.5rem 1rem 3rem; line-height: 1.5; }
+        .wrap { max-width: 900px; margin: 0 auto; }
+        h1 { font-size: 1.4rem; margin-bottom: 0.25rem; }
+        .muted { color: var(--muted); font-size: 0.9rem; }
+        .bar { display: flex; gap: 0.5rem; margin: 1rem 0; flex-wrap: wrap; }
+        input[type=password] { flex: 1 1 14rem; font: inherit; padding: 0.65rem 0.8rem; border-radius: 10px; border: 1px solid var(--border); background: var(--field); color: var(--text); }
+        button { font: inherit; font-weight: 600; padding: 0.65rem 1rem; border: 0; border-radius: 10px; background: var(--accent); color: #06251B; cursor: pointer; }
+        button.sec { background: var(--field); color: var(--text); border: 1px solid var(--border); }
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1rem 1.1rem; margin-bottom: 0.75rem; }
+        .head { display: flex; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+        .tag { display: inline-block; background: var(--field); border-radius: 8px; padding: 0.1rem 0.5rem; font-size: 0.85rem; margin: 0 0.25rem 0.25rem 0; }
+        dt { font-weight: 600; font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; }
+        dd { white-space: pre-wrap; word-break: break-word; }
+        .error { color: #DC2626; margin-top: 0.5rem; }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <h1>Respuestas de «Ayúdanos a mejorar»</h1>
+    <p class="muted">Privado: necesita la clave de administración (<code>ADMIN_TOKEN</code>). La clave no se guarda en el navegador.</p>
+    <form class="bar" id="f">
+        <input type="password" id="token" placeholder="Clave de administración" autocomplete="off" required>
+        <button type="submit">Ver respuestas</button>
+        <button type="button" class="sec" id="csv" hidden>Descargar CSV</button>
+    </form>
+    <p class="error" id="err"></p>
+    <p class="muted" id="count"></p>
+    <div id="list"></div>
+</div>
+<script>
+var L = {
+    q1: { daily: "Todos los días", weekly_few: "Varias veces por semana", weekly_one: "Una vez por semana", sometimes: "De vez en cuando", rarely: "Ya casi no la uso" },
+    q2: { spending: "Controlar mis gastos", budget: "Armar un presupuesto", cards: "Mis tarjetas y MSI", split: "Dividir gastos", saving: "Ahorrar", other: "Otro" },
+    q3: { log: "Registrar gastos", budget: "Presupuesto", heatmap: "Mapa de consumo", cards: "Tarjetas y MSI", split: "Dividir gastos", shopping: "Lista del súper", goals: "Metas", analytics: "Analíticas", import: "Importar", other: "Otro" },
+    q6: { already_pro: "Ya soy Pro", price: "El precio", not_needed: "No lo necesito", unclear: "No tengo claro qué incluye", prefer_free: "Prefiero que sea gratis", other: "Otro" }
+};
+var rows = [];
+function lab(q, k) { return (L[q] && L[q][k]) || k || ""; }
+
+function render() {
+    var list = document.getElementById("list");
+    list.textContent = "";
+    document.getElementById("count").textContent = rows.length + " respuesta" + (rows.length === 1 ? "" : "s");
+    rows.forEach(function (r) {
+        var c = document.createElement("div"); c.className = "card";
+        var h = document.createElement("div"); h.className = "head";
+        var when = document.createElement("strong"); when.textContent = r.at.replace("T", " ").slice(0, 16) + " UTC · " + r.lang;
+        var nps = document.createElement("span"); nps.className = "muted"; nps.textContent = r.q7 === null ? "" : "Recomendaría: " + r.q7 + "/10";
+        h.appendChild(when); h.appendChild(nps); c.appendChild(h);
+        var dl = document.createElement("dl");
+        function add(label, value) {
+            if (!value) return;
+            var dt = document.createElement("dt"); dt.textContent = label;
+            var dd = document.createElement("dd"); dd.textContent = value;
+            dl.appendChild(dt); dl.appendChild(dd);
+        }
+        add("Frecuencia", lab("q1", r.q1));
+        add("La instaló para", lab("q2", r.q2) + (r.q2Other ? ": " + r.q2Other : ""));
+        add("Lo que más usa", (r.q3 || []).map(function (k) { return lab("q3", k); }).join(", ") + (r.q3Other ? " (" + r.q3Other + ")" : ""));
+        add("Lo difícil o confuso", r.q4);
+        add("Qué le falta o cambiaría", r.q5);
+        add("Qué le frena de Pro", r.q6 ? lab("q6", r.q6) + (r.q6Other ? ": " + r.q6Other : "") : "");
+        add("Correo (quiere charlar)", r.q8);
+        c.appendChild(dl); list.appendChild(c);
+    });
+}
+
+function csvCell(v) { v = v === null || v === undefined ? "" : String(v); return '"' + v.replace(/"/g, '""') + '"'; }
+function downloadCSV() {
+    var cols = ["at", "lang", "q1", "q2", "q2Other", "q3", "q3Other", "q4", "q5", "q6", "q6Other", "q7", "q8"];
+    var lines = [cols.join(",")].concat(rows.map(function (r) {
+        return cols.map(function (c) { return csvCell(c === "q3" ? (r.q3 || []).join("|") : r[c]); }).join(",");
+    }));
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob(["﻿" + lines.join("\n")], { type: "text/csv;charset=utf-8" }));
+    a.download = "respuestas-ayudanos-a-mejorar.csv";
+    a.click();
+}
+
+document.getElementById("csv").addEventListener("click", downloadCSV);
+document.getElementById("f").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var err = document.getElementById("err"); err.textContent = "";
+    fetch("/api/feedback", { headers: { authorization: "Bearer " + document.getElementById("token").value } })
+        .then(function (r) {
+            if (r.status === 401) throw new Error("Clave incorrecta.");
+            if (r.status === 503) throw new Error("El almacén (KV) todavía no está conectado en Cloudflare.");
+            if (!r.ok) throw new Error("Error " + r.status);
+            return r.json();
+        })
+        .then(function (d) { rows = d.rows; render(); document.getElementById("csv").hidden = rows.length === 0; })
+        .catch(function (x) { err.textContent = x.message; });
+});
+</script>
+</body>
+</html>

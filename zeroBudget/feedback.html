@@ -12,7 +12,10 @@
             --text: #1A1A1A;
             --muted: #6B7280;
             --accent: #10B981;
+            --accent-text: #06251B;
             --border: #E5E7EB;
+            --field: #F3F4F6;
+            --error: #DC2626;
         }
         @media (prefers-color-scheme: dark) {
             :root {
@@ -22,6 +25,8 @@
                 --muted: #9CA3AF;
                 --accent: #34D399;
                 --border: #2D2D2D;
+                --field: #2A2A2D;
+                --error: #F87171;
             }
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,38 +34,69 @@
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.6;
-            padding: 2rem 1rem;
+            line-height: 1.55;
+            padding: 1.5rem 1rem 3rem;
         }
         .container {
-            max-width: 560px;
-            margin: 2rem auto;
+            max-width: 640px;
+            margin: 1rem auto;
             background: var(--card);
             border-radius: 16px;
             border: 1px solid var(--border);
-            padding: 2.5rem 2rem;
-            text-align: center;
+            padding: 2rem 1.5rem;
         }
+        .logo { text-align: center; }
         .logo span {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             background: linear-gradient(135deg, var(--accent), #059669);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        h1 { font-size: 1.5rem; margin: 1rem 0 0.75rem; }
-        p { color: var(--muted); margin-bottom: 1.5rem; }
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: #06251B;
-            font-weight: 600;
-            text-decoration: none;
-            padding: 0.85rem 1.6rem;
-            border-radius: 12px;
+        h1 { font-size: 1.5rem; text-align: center; margin: 0.75rem 0 0.5rem; }
+        .intro { color: var(--muted); text-align: center; margin-bottom: 1.75rem; }
+        fieldset { border: 0; margin: 0 0 1.5rem; min-width: 0; }
+        legend, .q-label { font-weight: 600; margin-bottom: 0.6rem; display: block; padding: 0; }
+        .hint { color: var(--muted); font-weight: 400; font-size: 0.9rem; }
+        .opt {
+            display: flex; align-items: center; gap: 0.65rem;
+            padding: 0.65rem 0.85rem; margin-bottom: 0.4rem;
+            background: var(--field); border-radius: 10px; cursor: pointer;
+            border: 1px solid transparent;
         }
-        .alt { margin-top: 1.5rem; font-size: 0.9rem; }
+        .opt:has(input:checked) { border-color: var(--accent); }
+        .opt input { accent-color: var(--accent); width: 1.1rem; height: 1.1rem; flex-shrink: 0; }
+        .opt.disabled { opacity: 0.45; cursor: not-allowed; }
+        textarea, input[type=text], input[type=email] {
+            width: 100%; font: inherit; color: var(--text);
+            background: var(--field); border: 1px solid var(--border);
+            border-radius: 10px; padding: 0.7rem 0.85rem;
+        }
+        textarea { min-height: 6.5rem; resize: vertical; }
+        textarea:focus, input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+        .other { margin-top: 0.4rem; }
+        .scale { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+        .scale label {
+            flex: 1 0 2.4rem; text-align: center; padding: 0.6rem 0;
+            background: var(--field); border-radius: 10px; cursor: pointer; border: 1px solid transparent;
+        }
+        .scale input { position: absolute; opacity: 0; pointer-events: none; }
+        .scale label:has(input:checked) { background: var(--accent); color: var(--accent-text); font-weight: 700; }
+        .scale-ends { display: flex; justify-content: space-between; color: var(--muted); font-size: 0.8rem; margin-top: 0.3rem; }
+        .btn {
+            width: 100%; font: inherit; font-weight: 600; cursor: pointer;
+            background: var(--accent); color: var(--accent-text); border: 0;
+            padding: 0.95rem 1.2rem; border-radius: 12px;
+        }
+        .btn[disabled] { opacity: 0.6; cursor: default; }
+        .msg { margin-top: 1rem; text-align: center; }
+        .msg.error { color: var(--error); }
+        .done { text-align: center; padding: 1rem 0; }
+        .done p { color: var(--muted); }
+        .alt { margin-top: 1.5rem; text-align: center; color: var(--muted); font-size: 0.9rem; }
         .alt a { color: var(--accent); }
+        .privacy { color: var(--muted); font-size: 0.85rem; margin: 1rem 0 1.25rem; text-align: center; }
+        .trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
         [hidden] { display: none !important; }
     </style>
 </head>
@@ -68,63 +104,254 @@
     <div class="container">
         <div class="logo"><span>ZeroBudget</span></div>
         <h1 id="title"></h1>
-        <p id="intro"></p>
-        <a id="formBtn" class="btn" hidden></a>
-        <a id="mailBtn" class="btn" hidden></a>
-        <p class="alt" id="alt" hidden></p>
+        <p class="intro" id="intro"></p>
+
+        <form id="form" novalidate></form>
+
+        <div id="done" class="done" hidden>
+            <h1 id="doneTitle"></h1>
+            <p id="doneText"></p>
+        </div>
+
+        <p class="alt" id="alt"></p>
     </div>
 
     <script>
-    // 22-oct-2026. La app abre esta página con ?lang=es|pt|en y esta lleva al formulario de ese idioma.
-    // Sirve para cambiar el formulario SIN una versión nueva de la app: basta editar FORMS.
-    // Mientras un idioma no tenga formulario (cadena vacía) se ofrece escribir por correo.
-    var FORMS = { es: "", pt: "", en: "" };
-
-    var T = {
-        es: { title: "Ayúdanos a mejorar ZeroBudget",
-              intro: "Tus datos financieros nunca salen de tu iPhone, y esta encuesta tampoco te pide ninguno. Son unos 3 minutos y leo cada respuesta personalmente.",
-              form: "Abrir la encuesta", mail: "Escríbenos un correo",
-              alt: "¿Prefieres escribirnos? <a href=\"mailto:soporte@araniosoft.com?subject=ZeroBudget%20-%20Ayúdanos%20a%20mejorar\">soporte@araniosoft.com</a>",
-              subject: "ZeroBudget - Ayúdanos a mejorar",
-              body: "1) ¿Qué fue lo más difícil o confuso?\n\n2) ¿Qué te falta o qué cambiarías?\n\n3) Si no eres Pro, ¿qué te frena?\n" },
-        pt: { title: "Ajude a melhorar o ZeroBudget",
-              intro: "Seus dados financeiros nunca saem do seu iPhone, e esta pesquisa também não pede nenhum. Leva cerca de 3 minutos e eu leio cada resposta pessoalmente.",
-              form: "Abrir a pesquisa", mail: "Escreva-nos um e-mail",
-              alt: "Prefere nos escrever? <a href=\"mailto:soporte@araniosoft.com?subject=ZeroBudget%20-%20Ajude%20a%20melhorar\">soporte@araniosoft.com</a>",
-              subject: "ZeroBudget - Ajude a melhorar",
-              body: "1) O que foi mais difícil ou confuso?\n\n2) O que falta ou o que você mudaria?\n\n3) Se você não é Pro, o que te impede?\n" },
-        en: { title: "Help us improve ZeroBudget",
-              intro: "Your financial data never leaves your iPhone, and this survey doesn't ask for any. It takes about 3 minutes and I read every answer myself.",
-              form: "Open the survey", mail: "Send us an email",
-              alt: "Prefer to write to us? <a href=\"mailto:soporte@araniosoft.com?subject=ZeroBudget%20-%20Help%20us%20improve\">soporte@araniosoft.com</a>",
-              subject: "ZeroBudget - Help us improve",
-              body: "1) What was hardest or most confusing?\n\n2) What's missing, or what would you change?\n\n3) If you're not on Pro, what holds you back?\n" }
+    // 22-oct-2026. La app abre esta página con ?lang=es|pt|en. Las respuestas se envían a /api/feedback
+    // (función de Cloudflare Pages del propio sitio; ver functions/api/feedback.js). Se guardan sólo las
+    // respuestas: sin IP, sin cookies, sin servicios de terceros. Se guardan CLAVES, no el texto mostrado.
+    var OPTS = {
+        q1: ["daily", "weekly_few", "weekly_one", "sometimes", "rarely"],
+        q2: ["spending", "budget", "cards", "split", "saving", "other"],
+        q3: ["log", "budget", "heatmap", "cards", "split", "shopping", "goals", "analytics", "import", "other"],
+        q6: ["already_pro", "price", "not_needed", "unclear", "prefer_free", "other"]
     };
 
-    var q = new URLSearchParams(location.search).get("lang");
+    var T = {
+        es: {
+            title: "Ayúdanos a mejorar ZeroBudget",
+            intro: "Soy quien desarrolla ZeroBudget. Tus datos financieros nunca salen de tu iPhone, y esta encuesta tampoco te pide ninguno. Son 8 preguntas, unos 3 minutos, y leo cada respuesta personalmente. Gracias por ayudarme.",
+            privacy: "No guardamos tu IP ni te pedimos nombre. Solo se guarda lo que escribas aquí.",
+            req: "obligatoria", opt: "opcional", other: "Escribe cuál", max3: "hasta 3",
+            q1: "¿Con qué frecuencia usas ZeroBudget?",
+            q2: "¿Para qué la instalaste?",
+            q3: "¿Qué es lo que más usas?",
+            q4: "¿Qué fue lo más difícil o confuso?",
+            q5: "¿Qué te falta o qué cambiarías?",
+            q6: "Si no eres Pro, ¿qué te frena?",
+            q7: "¿Qué tan probable es que recomiendes ZeroBudget a un amigo?", q7a: "Nada probable", q7b: "Muy probable",
+            q8: "Si quieres platicar 15 minutos conmigo, deja tu correo", q8h: "Solo lo usaré para eso.",
+            labels: {
+                q1: ["Todos los días", "Varias veces por semana", "Una vez por semana", "De vez en cuando", "Ya casi no la uso"],
+                q2: ["Controlar mis gastos", "Armar un presupuesto", "Controlar mis tarjetas y MSI", "Dividir gastos con alguien", "Ahorrar", "Otro"],
+                q3: ["Registrar gastos e ingresos", "Presupuesto", "Mapa de consumo (heatmap)", "Tarjetas y MSI", "Dividir gastos", "Lista del súper", "Metas de ahorro", "Analíticas", "Importar estados de cuenta", "Otro"],
+                q6: ["Ya soy Pro", "El precio", "No lo necesito", "No tengo claro qué incluye", "Prefiero que sea gratis", "Otro"]
+            },
+            send: "Enviar", sending: "Enviando…",
+            needQ1: "Responde la primera pregunta para poder enviar.",
+            badEmail: "Revisa tu correo: no parece válido.",
+            fail: "No pudimos enviarlo ahora. Puedes escribirnos por correo.",
+            doneTitle: "Gracias", doneText: "Leo cada respuesta y las uso para decidir qué mejorar primero. Si dejaste tu correo, te escribo pronto.",
+            alt: "¿Prefieres escribirnos? <a href=\"mailto:soporte@araniosoft.com?subject=ZeroBudget%20-%20Ay%C3%BAdanos%20a%20mejorar\">soporte@araniosoft.com</a>"
+        },
+        pt: {
+            title: "Ajude a melhorar o ZeroBudget",
+            intro: "Eu desenvolvo o ZeroBudget. Seus dados financeiros nunca saem do seu iPhone, e esta pesquisa também não pede nenhum. São 8 perguntas, cerca de 3 minutos, e eu leio cada resposta pessoalmente. Obrigado por me ajudar.",
+            privacy: "Não guardamos seu IP nem pedimos seu nome. Só é guardado o que você escrever aqui.",
+            req: "obrigatória", opt: "opcional", other: "Escreva qual", max3: "até 3",
+            q1: "Com que frequência você usa o ZeroBudget?",
+            q2: "Para que você o instalou?",
+            q3: "O que você mais usa?",
+            q4: "O que foi mais difícil ou confuso?",
+            q5: "O que falta ou o que você mudaria?",
+            q6: "Se você não é Pro, o que te impede?",
+            q7: "Qual a chance de você recomendar o ZeroBudget a um amigo?", q7a: "Nenhuma", q7b: "Muito alta",
+            q8: "Se quiser conversar 15 minutos comigo, deixe seu e-mail", q8h: "Só vou usá-lo para isso.",
+            labels: {
+                q1: ["Todos os dias", "Várias vezes por semana", "Uma vez por semana", "De vez em quando", "Quase não uso mais"],
+                q2: ["Controlar meus gastos", "Montar um orçamento", "Controlar meus cartões e parcelas", "Dividir contas com alguém", "Poupar", "Outro"],
+                q3: ["Registrar gastos e receitas", "Orçamento", "Mapa de consumo (heatmap)", "Cartões e parcelas", "Dividir contas", "Lista de compras", "Metas de poupança", "Análises", "Importar extratos", "Outro"],
+                q6: ["Já sou Pro", "O preço", "Não preciso", "Não está claro o que inclui", "Prefiro que seja grátis", "Outro"]
+            },
+            send: "Enviar", sending: "Enviando…",
+            needQ1: "Responda a primeira pergunta para enviar.",
+            badEmail: "Confira seu e-mail: não parece válido.",
+            fail: "Não conseguimos enviar agora. Você pode nos escrever por e-mail.",
+            doneTitle: "Obrigado", doneText: "Leio cada resposta e as uso para decidir o que melhorar primeiro. Se você deixou seu e-mail, eu escrevo em breve.",
+            alt: "Prefere nos escrever? <a href=\"mailto:soporte@araniosoft.com?subject=ZeroBudget%20-%20Ajude%20a%20melhorar\">soporte@araniosoft.com</a>"
+        },
+        en: {
+            title: "Help us improve ZeroBudget",
+            intro: "I'm the person who builds ZeroBudget. Your financial data never leaves your iPhone, and this survey doesn't ask for any. It's 8 questions, about 3 minutes, and I read every answer myself. Thank you for helping.",
+            privacy: "We don't store your IP or ask your name. Only what you write here is saved.",
+            req: "required", opt: "optional", other: "Tell us which", max3: "up to 3",
+            q1: "How often do you use ZeroBudget?",
+            q2: "Why did you install it?",
+            q3: "What do you use the most?",
+            q4: "What was hardest or most confusing?",
+            q5: "What's missing, or what would you change?",
+            q6: "If you're not on Pro, what holds you back?",
+            q7: "How likely are you to recommend ZeroBudget to a friend?", q7a: "Not likely", q7b: "Very likely",
+            q8: "If you'd like to chat for 15 minutes, leave your email", q8h: "I'll only use it for that.",
+            labels: {
+                q1: ["Every day", "A few times a week", "Once a week", "Once in a while", "I barely use it anymore"],
+                q2: ["Track my spending", "Build a budget", "Manage my cards and installments", "Split expenses with someone", "Save money", "Other"],
+                q3: ["Logging expenses and income", "Budget", "Spending heatmap", "Cards and installments", "Split expenses", "Shopping list", "Savings goals", "Analytics", "Importing statements", "Other"],
+                q6: ["I'm already Pro", "The price", "I don't need it", "It's not clear what it includes", "I'd rather it be free", "Other"]
+            },
+            send: "Send", sending: "Sending…",
+            needQ1: "Please answer the first question to send.",
+            badEmail: "Please check your email: it doesn't look valid.",
+            fail: "We couldn't send it right now. You can email us instead.",
+            doneTitle: "Thank you", doneText: "I read every answer and use them to decide what to improve first. If you left your email, I'll write to you soon.",
+            alt: "Prefer to write to us? <a href=\"mailto:soporte@araniosoft.com?subject=ZeroBudget%20-%20Help%20us%20improve\">soporte@araniosoft.com</a>"
+        }
+    };
+
+    // Con ?lang= manda el parámetro (un idioma sin versión cae a inglés); sin él, el del navegador.
+    var qp = new URLSearchParams(location.search).get("lang");
     var nav = (navigator.language || "en").toLowerCase().slice(0, 2);
-    // Con ?lang= manda el parámetro (un idioma sin formulario cae a inglés); sin él, el del navegador.
-    var lang = q ? (T[q] ? q : "en") : (T[nav] ? nav : "en");
+    var lang = qp ? (T[qp] ? qp : "en") : (T[nav] ? nav : "en");
     var t = T[lang];
+    var started = Date.now();
 
     document.documentElement.lang = lang;
     document.title = "ZeroBudget — " + t.title;
     document.getElementById("title").textContent = t.title;
     document.getElementById("intro").textContent = t.intro;
+    document.getElementById("alt").innerHTML = t.alt;
 
-    var form = FORMS[lang];
-    if (form) {
-        var b = document.getElementById("formBtn");
-        b.href = form; b.textContent = t.form; b.hidden = false;
-        var alt = document.getElementById("alt");
-        alt.innerHTML = t.alt; alt.hidden = false;
-        // Quien viene de la app va directo al formulario; el botón queda por si no redirige.
-        window.location.replace(form);
-    } else {
-        var m = document.getElementById("mailBtn");
-        m.href = "mailto:soporte@araniosoft.com?subject=" + encodeURIComponent(t.subject) + "&body=" + encodeURIComponent(t.body);
-        m.textContent = t.mail; m.hidden = false;
+    var form = document.getElementById("form");
+
+    function el(tag, attrs, text) {
+        var e = document.createElement(tag);
+        Object.keys(attrs || {}).forEach(function (k) { e.setAttribute(k, attrs[k]); });
+        if (text !== undefined) e.textContent = text;
+        return e;
     }
+
+    function group(id, type, max) {
+        var fs = el("fieldset", { id: "g_" + id });
+        var legend = el("legend", {}, t[id]);
+        if (id === "q1") legend.appendChild(el("span", { class: "hint" }, " (" + t.req + ")"));
+        if (type === "checkbox") legend.appendChild(el("span", { class: "hint" }, " (" + t.max3 + ")"));
+        fs.appendChild(legend);
+        OPTS[id].forEach(function (key, i) {
+            var lab = el("label", { class: "opt" });
+            var inp = el("input", { type: type, name: id, value: key });
+            lab.appendChild(inp);
+            lab.appendChild(el("span", {}, t.labels[id][i]));
+            fs.appendChild(lab);
+        });
+        if (OPTS[id].indexOf("other") >= 0) {
+            var o = el("input", { type: "text", id: id + "Other", maxlength: "200", placeholder: t.other, class: "other", hidden: "" });
+            fs.appendChild(o);
+            fs.addEventListener("change", function () {
+                var other = fs.querySelector("input[value=other]");
+                o.hidden = !other.checked;
+            });
+        }
+        if (type === "checkbox") {
+            fs.addEventListener("change", function () {
+                var boxes = fs.querySelectorAll("input[type=checkbox]");
+                var n = fs.querySelectorAll("input[type=checkbox]:checked").length;
+                boxes.forEach(function (b) {
+                    var off = n >= max && !b.checked;
+                    b.disabled = off;
+                    b.parentNode.classList.toggle("disabled", off);
+                });
+            });
+        }
+        return fs;
+    }
+
+    function text(id) {
+        var fs = el("fieldset");
+        fs.appendChild(el("label", { class: "q-label", for: id }, t[id]));
+        fs.appendChild(el("textarea", { id: id, maxlength: "1500" }));
+        return fs;
+    }
+
+    form.appendChild(group("q1", "radio"));
+    form.appendChild(group("q2", "radio"));
+    form.appendChild(group("q3", "checkbox", 3));
+    form.appendChild(text("q4"));
+    form.appendChild(text("q5"));
+    form.appendChild(group("q6", "radio"));
+
+    // q7: escala 0 a 10
+    var f7 = el("fieldset");
+    f7.appendChild(el("legend", {}, t.q7));
+    var sc = el("div", { class: "scale" });
+    for (var i = 0; i <= 10; i++) {
+        var l = el("label", {});
+        l.appendChild(el("input", { type: "radio", name: "q7", value: String(i) }));
+        l.appendChild(document.createTextNode(String(i)));
+        sc.appendChild(l);
+    }
+    f7.appendChild(sc);
+    var ends = el("div", { class: "scale-ends" });
+    ends.appendChild(el("span", {}, t.q7a)); ends.appendChild(el("span", {}, t.q7b));
+    f7.appendChild(ends);
+    form.appendChild(f7);
+
+    // q8: correo opcional
+    var f8 = el("fieldset");
+    var l8 = el("label", { class: "q-label", for: "q8" }, t.q8);
+    l8.appendChild(el("span", { class: "hint" }, " (" + t.opt + "). " + t.q8h));
+    f8.appendChild(l8);
+    f8.appendChild(el("input", { type: "email", id: "q8", maxlength: "160", autocomplete: "email" }));
+    form.appendChild(f8);
+
+    // Trampa para bots: un campo que una persona no ve ni llena.
+    var trap = el("div", { class: "trap", "aria-hidden": "true" });
+    trap.appendChild(el("input", { type: "text", name: "website", id: "website", tabindex: "-1", autocomplete: "off" }));
+    form.appendChild(trap);
+
+    form.appendChild(el("p", { class: "privacy" }, t.privacy));
+    var btn = el("button", { type: "submit", class: "btn" }, t.send);
+    form.appendChild(btn);
+    var msg = el("p", { class: "msg", role: "status" });
+    form.appendChild(msg);
+
+    function checked(name) {
+        var n = form.querySelector("input[name=" + name + "]:checked");
+        return n ? n.value : null;
+    }
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        msg.className = "msg"; msg.textContent = "";
+        var q1 = checked("q1");
+        if (!q1) { msg.className = "msg error"; msg.textContent = t.needQ1; document.getElementById("g_q1").scrollIntoView({ behavior: "smooth" }); return; }
+        var email = document.getElementById("q8").value.trim();
+        if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { msg.className = "msg error"; msg.textContent = t.badEmail; return; }
+
+        var q3 = [].map.call(form.querySelectorAll("input[name=q3]:checked"), function (i) { return i.value; });
+        var body = {
+            lang: lang, elapsed: Date.now() - started, website: document.getElementById("website").value,
+            q1: q1, q2: checked("q2"), q2Other: document.getElementById("q2Other").value,
+            q3: q3, q3Other: document.getElementById("q3Other").value,
+            q4: document.getElementById("q4").value, q5: document.getElementById("q5").value,
+            q6: checked("q6"), q6Other: document.getElementById("q6Other").value,
+            q7: checked("q7"), q8: email
+        };
+
+        btn.disabled = true; btn.textContent = t.sending;
+        fetch("/api/feedback", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) })
+            .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+            .then(function () {
+                form.hidden = true;
+                document.getElementById("done").hidden = false;
+                document.getElementById("doneTitle").textContent = t.doneTitle;
+                document.getElementById("doneText").textContent = t.doneText;
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            })
+            .catch(function () {
+                btn.disabled = false; btn.textContent = t.send;
+                msg.className = "msg error"; msg.textContent = t.fail;
+            });
+    });
     </script>
 </body>
 </html>
