@@ -45,6 +45,8 @@ var L = {
     q3: { log: "Registrar gastos", budget: "Presupuesto", heatmap: "Mapa de consumo", cards: "Tarjetas y MSI", split: "Dividir gastos", shopping: "Lista del súper", goals: "Metas", analytics: "Analíticas", import: "Importar", other: "Otro" },
     q6: { already_pro: "Ya soy Pro", price: "El precio", not_needed: "No lo necesito", unclear: "No tengo claro qué incluye", prefer_free: "Prefiero que sea gratis", other: "Otro" }
 };
+// URL del Worker (Scripts/web/feedback-worker.js). Vacía = aún no desplegado.
+var API = "";
 var rows = [];
 function lab(q, k) { return (L[q] && L[q][k]) || k || ""; }
 
@@ -92,7 +94,8 @@ document.getElementById("csv").addEventListener("click", downloadCSV);
 document.getElementById("f").addEventListener("submit", function (e) {
     e.preventDefault();
     var err = document.getElementById("err"); err.textContent = "";
-    fetch("/api/feedback", { headers: { authorization: "Bearer " + document.getElementById("token").value } })
+    if (!API) { err.textContent = "Falta la URL del Worker en esta página (constante API)."; return; }
+    fetch(API, { headers: { authorization: "Bearer " + document.getElementById("token").value } })
         .then(function (r) {
             if (r.status === 401) throw new Error("Clave incorrecta.");
             if (r.status === 503) throw new Error("El almacén (KV) todavía no está conectado en Cloudflare.");

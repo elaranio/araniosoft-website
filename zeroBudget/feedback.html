@@ -89,6 +89,7 @@
             padding: 0.95rem 1.2rem; border-radius: 12px;
         }
         .btn[disabled] { opacity: 0.6; cursor: default; }
+        .mailbtn { display: block; text-align: center; text-decoration: none; }
         .msg { margin-top: 1rem; text-align: center; }
         .msg.error { color: var(--error); }
         .done { text-align: center; padding: 1rem 0; }
@@ -107,6 +108,7 @@
         <p class="intro" id="intro"></p>
 
         <form id="form" novalidate></form>
+        <a id="mailBtn" class="btn mailbtn" hidden></a>
 
         <div id="done" class="done" hidden>
             <h1 id="doneTitle"></h1>
@@ -117,9 +119,12 @@
     </div>
 
     <script>
-    // 22-oct-2026. La app abre esta página con ?lang=es|pt|en. Las respuestas se envían a /api/feedback
-    // (función de Cloudflare Pages del propio sitio; ver functions/api/feedback.js). Se guardan sólo las
-    // respuestas: sin IP, sin cookies, sin servicios de terceros. Se guardan CLAVES, no el texto mostrado.
+    // 22-oct-2026. La app abre esta página con ?lang=es|pt|en.
+    // araniosoft.com lo sirve GitHub Pages (sólo estático), así que las respuestas se envían a un Worker de
+    // nuestra cuenta de Cloudflare (código: Scripts/web/feedback-worker.js en el repo de la app) que las guarda
+    // en un KV propio: sin IP, sin cookies, sin servicios de terceros. Se guardan CLAVES, no el texto mostrado.
+    // API vacía = el Worker aún no está desplegado: la página ofrece sólo el correo.
+    var API = "";
     var OPTS = {
         q1: ["daily", "weekly_few", "weekly_one", "sometimes", "rarely"],
         q2: ["spending", "budget", "cards", "split", "saving", "other"],
@@ -152,6 +157,7 @@
             badEmail: "Revisa tu correo: no parece válido.",
             fail: "No pudimos enviarlo ahora. Puedes escribirnos por correo.",
             doneTitle: "Gracias", doneText: "Leo cada respuesta y las uso para decidir qué mejorar primero. Si dejaste tu correo, te escribo pronto.",
+            introMail: "Soy quien desarrolla ZeroBudget. Tus datos financieros nunca salen de tu iPhone. Cuéntame por correo cómo la usas, qué te falta o qué no entendiste: leo cada mensaje personalmente.", mail: "Escríbenos un correo", subject: "ZeroBudget - Ayúdanos a mejorar", mailBody: "1) ¿Qué fue lo más difícil o confuso?\n\n2) ¿Qué te falta o qué cambiarías?\n\n3) Si no eres Pro, ¿qué te frena?\n",
             alt: "¿Prefieres escribirnos? <a href=\"mailto:soporte@araniosoft.com?subject=ZeroBudget%20-%20Ay%C3%BAdanos%20a%20mejorar\">soporte@araniosoft.com</a>"
         },
         pt: {
@@ -178,6 +184,7 @@
             badEmail: "Confira seu e-mail: não parece válido.",
             fail: "Não conseguimos enviar agora. Você pode nos escrever por e-mail.",
             doneTitle: "Obrigado", doneText: "Leio cada resposta e as uso para decidir o que melhorar primeiro. Se você deixou seu e-mail, eu escrevo em breve.",
+            introMail: "Eu desenvolvo o ZeroBudget. Seus dados financeiros nunca saem do seu iPhone. Conte por e-mail como você a usa, o que falta ou o que não entendeu: leio cada mensagem pessoalmente.", mail: "Escreva-nos um e-mail", subject: "ZeroBudget - Ajude a melhorar", mailBody: "1) O que foi mais difícil ou confuso?\n\n2) O que falta ou o que você mudaria?\n\n3) Se você não é Pro, o que te impede?\n",
             alt: "Prefere nos escrever? <a href=\"mailto:soporte@araniosoft.com?subject=ZeroBudget%20-%20Ajude%20a%20melhorar\">soporte@araniosoft.com</a>"
         },
         en: {
@@ -204,6 +211,7 @@
             badEmail: "Please check your email: it doesn't look valid.",
             fail: "We couldn't send it right now. You can email us instead.",
             doneTitle: "Thank you", doneText: "I read every answer and use them to decide what to improve first. If you left your email, I'll write to you soon.",
+            introMail: "I'm the person who builds ZeroBudget. Your financial data never leaves your iPhone. Tell me by email how you use it, what's missing or what confused you: I read every message myself.", mail: "Send us an email", subject: "ZeroBudget - Help us improve", mailBody: "1) What was hardest or most confusing?\n\n2) What's missing, or what would you change?\n\n3) If you're not on Pro, what holds you back?\n",
             alt: "Prefer to write to us? <a href=\"mailto:soporte@araniosoft.com?subject=ZeroBudget%20-%20Help%20us%20improve\">soporte@araniosoft.com</a>"
         }
     };
@@ -314,6 +322,16 @@
     var msg = el("p", { class: "msg", role: "status" });
     form.appendChild(msg);
 
+    if (!API) {
+        // Sin Worker todavía: sólo el correo (así la página sirve desde el primer día).
+        form.hidden = true;
+        document.getElementById("intro").textContent = t.introMail;
+        var mb = document.getElementById("mailBtn");
+        mb.href = "mailto:soporte@araniosoft.com?subject=" + encodeURIComponent(t.subject) + "&body=" + encodeURIComponent(t.mailBody);
+        mb.textContent = t.mail; mb.hidden = false;
+        document.getElementById("alt").hidden = true;
+    }
+
     function checked(name) {
         var n = form.querySelector("input[name=" + name + "]:checked");
         return n ? n.value : null;
@@ -338,7 +356,7 @@
         };
 
         btn.disabled = true; btn.textContent = t.sending;
-        fetch("/api/feedback", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) })
+        fetch(API, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) })
             .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
             .then(function () {
                 form.hidden = true;
