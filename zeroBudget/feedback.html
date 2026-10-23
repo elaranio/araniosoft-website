@@ -90,6 +90,9 @@
         }
         .btn[disabled] { opacity: 0.6; cursor: default; }
         .mailbtn { display: block; text-align: center; text-decoration: none; }
+        .btn.secondary { background: var(--field); color: var(--text); border: 1px solid var(--border); }
+        .extra { margin-top: 1.5rem; text-align: center; }
+        .extra p { margin-bottom: 0.6rem; }
         .msg { margin-top: 1rem; text-align: center; }
         .msg.error { color: var(--error); }
         .done { text-align: center; padding: 1rem 0; }
@@ -113,8 +116,6 @@
         <div id="done" class="done" hidden>
             <h1 id="doneTitle"></h1>
             <p id="doneText"></p>
-            <p id="doneMailHint"></p>
-            <a id="doneMail" class="btn mailbtn" style="margin-top:1rem"></a>
         </div>
 
         <p class="alt" id="alt"></p>
@@ -157,8 +158,7 @@
             needQ1: "Responde la primera pregunta para poder enviar.",
             fail: "No pudimos enviarlo ahora. Puedes escribirnos por correo.",
             doneTitle: "Gracias", doneText: "Leo cada respuesta y las uso para decidir qué mejorar primero.",
-            doneMailHint: "¿Quieres contarnos algo más? Toca el botón: se abre un correo con tus respuestas para que agregues lo que quieras.", doneMail: "Enviar un correo con mis respuestas",
-            mailHead: "Mis respuestas", mailQ: ["¿Con qué frecuencia usas ZeroBudget?", "¿Para qué la instalaste?", "¿Qué es lo que más usas?", "¿Qué fue lo más difícil o confuso?", "¿Qué te falta o qué cambiarías?", "Si no eres Pro, ¿qué te frena?", "¿Qué tan probable es que la recomiendes (0-10)?"], mailMore: "Quiero agregar:",
+            extraText: "¿Quieres comentar algo adicional? Escríbenos por correo.", extraBtn: "soporte@araniosoft.com",
             introMail: "Soy quien desarrolla ZeroBudget. Tus datos financieros nunca salen de tu iPhone. Cuéntame por correo cómo la usas, qué te falta o qué no entendiste: leo cada mensaje personalmente.", mail: "Escríbenos un correo", subject: "ZeroBudget - Ayúdanos a mejorar", mailBody: "1) ¿Qué fue lo más difícil o confuso?\n\n2) ¿Qué te falta o qué cambiarías?\n\n3) Si no eres Pro, ¿qué te frena?\n",
             alt: "¿Prefieres escribirnos? <a href=\"mailto:soporte@araniosoft.com?subject=ZeroBudget%20-%20Ay%C3%BAdanos%20a%20mejorar\">soporte@araniosoft.com</a>"
         },
@@ -184,8 +184,7 @@
             needQ1: "Responda a primeira pergunta para enviar.",
             fail: "Não conseguimos enviar agora. Você pode nos escrever por e-mail.",
             doneTitle: "Obrigado", doneText: "Leio cada resposta e as uso para decidir o que melhorar primeiro.",
-            doneMailHint: "Quer contar mais alguma coisa? Toque no botão: abre um e-mail com suas respostas para você acrescentar o que quiser.", doneMail: "Enviar um e-mail com minhas respostas",
-            mailHead: "Minhas respostas", mailQ: ["Com que frequência você usa o ZeroBudget?", "Para que você o instalou?", "O que você mais usa?", "O que foi mais difícil ou confuso?", "O que falta ou o que você mudaria?", "Se você não é Pro, o que te impede?", "Qual a chance de recomendar (0-10)?"], mailMore: "Quero acrescentar:",
+            extraText: "Quer comentar algo a mais? Escreva para nós por e-mail.", extraBtn: "soporte@araniosoft.com",
             introMail: "Eu desenvolvo o ZeroBudget. Seus dados financeiros nunca saem do seu iPhone. Conte por e-mail como você a usa, o que falta ou o que não entendeu: leio cada mensagem pessoalmente.", mail: "Escreva-nos um e-mail", subject: "ZeroBudget - Ajude a melhorar", mailBody: "1) O que foi mais difícil ou confuso?\n\n2) O que falta ou o que você mudaria?\n\n3) Se você não é Pro, o que te impede?\n",
             alt: "Prefere nos escrever? <a href=\"mailto:soporte@araniosoft.com?subject=ZeroBudget%20-%20Ajude%20a%20melhorar\">soporte@araniosoft.com</a>"
         },
@@ -211,8 +210,7 @@
             needQ1: "Please answer the first question to send.",
             fail: "We couldn't send it right now. You can email us instead.",
             doneTitle: "Thank you", doneText: "I read every answer and use them to decide what to improve first.",
-            doneMailHint: "Want to tell us more? Tap the button: it opens an email with your answers so you can add whatever you like.", doneMail: "Email my answers",
-            mailHead: "My answers", mailQ: ["How often do you use ZeroBudget?", "Why did you install it?", "What do you use the most?", "What was hardest or most confusing?", "What's missing, or what would you change?", "If you're not on Pro, what holds you back?", "How likely are you to recommend it (0-10)?"], mailMore: "I'd like to add:",
+            extraText: "Want to add anything else? Send us an email.", extraBtn: "soporte@araniosoft.com",
             introMail: "I'm the person who builds ZeroBudget. Your financial data never leaves your iPhone. Tell me by email how you use it, what's missing or what confused you: I read every message myself.", mail: "Send us an email", subject: "ZeroBudget - Help us improve", mailBody: "1) What was hardest or most confusing?\n\n2) What's missing, or what would you change?\n\n3) If you're not on Pro, what holds you back?\n",
             alt: "Prefer to write to us? <a href=\"mailto:soporte@araniosoft.com?subject=ZeroBudget%20-%20Help%20us%20improve\">soporte@araniosoft.com</a>"
         }
@@ -230,6 +228,7 @@
     document.getElementById("title").textContent = t.title;
     document.getElementById("intro").textContent = t.intro;
     document.getElementById("alt").innerHTML = t.alt;
+    document.getElementById("alt").hidden = !!API;
 
     var form = document.getElementById("form");
 
@@ -310,6 +309,12 @@
     trap.appendChild(el("input", { type: "text", name: "website", id: "website", tabindex: "-1", autocomplete: "off" }));
     form.appendChild(trap);
 
+    // Cierre opcional: comentar algo adicional por correo (se abre un correo en blanco con el asunto puesto).
+    var extra = el("div", { class: "extra" });
+    extra.appendChild(el("p", {}, t.extraText));
+    extra.appendChild(el("a", { class: "btn mailbtn secondary", href: "mailto:soporte@araniosoft.com?subject=" + encodeURIComponent(t.subject) }, t.extraBtn));
+    form.appendChild(extra);
+
     form.appendChild(el("p", { class: "privacy" }, t.privacy));
     var btn = el("button", { type: "submit", class: "btn" }, t.send);
     form.appendChild(btn);
@@ -329,20 +334,6 @@
     function checked(name) {
         var n = form.querySelector("input[name=" + name + "]:checked");
         return n ? n.value : null;
-    }
-
-    // Correo prellenado con las respuestas de la persona (ella lo revisa y lo envía desde su app de correo;
-    // nada de esto pasa por nuestro servidor). Los textos libres se recortan para que quepan en el enlace.
-    function answersMail(b) {
-        function lab(q, key) { var i = OPTS[q].indexOf(key); return i >= 0 ? t.labels[q][i] : ""; }
-        function opt(q, key, other) { var l = lab(q, key); return l && other ? l + ": " + other : l; }
-        function cut(v) { v = (v || "").trim(); return v.length > 300 ? v.slice(0, 300) + "…" : v; }
-        var q3 = b.q3.map(function (k) { return lab("q3", k); }).join(", ") + (b.q3Other ? " (" + b.q3Other + ")" : "");
-        var rows = [lab("q1", b.q1), opt("q2", b.q2, b.q2Other), q3, cut(b.q4), cut(b.q5), opt("q6", b.q6, b.q6Other), b.q7 === null ? "" : b.q7];
-        var lines = [t.mailHead, ""];
-        rows.forEach(function (r, i) { if (r !== "" && r !== null) lines.push(t.mailQ[i] + "\n" + r + "\n"); });
-        lines.push(t.mailMore, "");
-        return "mailto:soporte@araniosoft.com?subject=" + encodeURIComponent(t.subject) + "&body=" + encodeURIComponent(lines.join("\n"));
     }
 
     form.addEventListener("submit", function (e) {
@@ -369,10 +360,6 @@
                 document.getElementById("done").hidden = false;
                 document.getElementById("doneTitle").textContent = t.doneTitle;
                 document.getElementById("doneText").textContent = t.doneText;
-                document.getElementById("doneMailHint").textContent = t.doneMailHint;
-                var dm = document.getElementById("doneMail");
-                dm.textContent = t.doneMail; dm.href = answersMail(body);
-                document.getElementById("alt").hidden = true;
                 window.scrollTo({ top: 0, behavior: "smooth" });
             })
             .catch(function () {
