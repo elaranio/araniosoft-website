@@ -58,7 +58,7 @@ function render() {
         var c = document.createElement("div"); c.className = "card";
         var h = document.createElement("div"); h.className = "head";
         var when = document.createElement("strong"); when.textContent = r.at.replace("T", " ").slice(0, 16) + " UTC · " + r.lang;
-        var nps = document.createElement("span"); nps.className = "muted"; nps.textContent = r.q7 === null ? "" : "Recomendaría: " + r.q7 + "/10";
+        var nps = document.createElement("span"); nps.className = "muted"; nps.textContent = (r.q7 === null || r.q7 === undefined) ? "" : "Recomendaría: " + (r.q7 <= 3 ? ["Nada", "Poco", "Algo", "Mucho"][r.q7] : r.q7 + "/10");
         h.appendChild(when); h.appendChild(nps); c.appendChild(h);
         var dl = document.createElement("dl");
         function add(label, value) {
@@ -68,7 +68,7 @@ function render() {
             dl.appendChild(dt); dl.appendChild(dd);
         }
         add("Frecuencia", lab("q1", r.q1));
-        add("La instaló para", lab("q2", r.q2) + (r.q2Other ? ": " + r.q2Other : ""));
+        add("La instaló para", [].concat(r.q2 || []).map(function (k) { return lab("q2", k); }).join(", ") + (r.q2Other ? " (" + r.q2Other + ")" : ""));
         add("Lo que más usa", (r.q3 || []).map(function (k) { return lab("q3", k); }).join(", ") + (r.q3Other ? " (" + r.q3Other + ")" : ""));
         add("Lo difícil o confuso", r.q4);
         add("Qué le falta o cambiaría", r.q5);
@@ -82,7 +82,7 @@ function csvCell(v) { v = v === null || v === undefined ? "" : String(v); return
 function downloadCSV() {
     var cols = ["at", "lang", "q1", "q2", "q2Other", "q3", "q3Other", "q4", "q5", "q6", "q6Other", "q7", "q8"];
     var lines = [cols.join(",")].concat(rows.map(function (r) {
-        return cols.map(function (c) { return csvCell(c === "q3" ? (r.q3 || []).join("|") : r[c]); }).join(",");
+        return cols.map(function (c) { return csvCell((c === "q3" || c === "q2") ? [].concat(r[c] || []).join("|") : r[c]); }).join(",");
     }));
     var a = document.createElement("a");
     a.href = URL.createObjectURL(new Blob(["﻿" + lines.join("\n")], { type: "text/csv;charset=utf-8" }));

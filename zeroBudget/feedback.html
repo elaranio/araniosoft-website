@@ -106,7 +106,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="logo"><span>ZeroBudget</span></div>
+        <div class="logo"><img src="logo.png?v=3" alt="" width="72" height="72" style="border-radius:16px;display:block;margin:0 auto 0.5rem"><span>ZeroBudget</span></div>
         <h1 id="title"></h1>
         <p class="intro" id="intro"></p>
 
@@ -140,14 +140,14 @@
             title: "Ayúdanos a mejorar ZeroBudget",
             intro: "Soy quien desarrolla ZeroBudget. Tus datos financieros nunca salen de tu iPhone, y esta encuesta tampoco te pide ninguno. Son 7 preguntas, unos 3 minutos, y leo cada respuesta personalmente. Gracias por ayudarme.",
             privacy: "No guardamos tu IP ni te pedimos nombre. Solo se guarda lo que escribas aquí.",
-            req: "obligatoria", opt: "opcional", other: "Escribe cuál", max3: "hasta 3",
+            req: "obligatoria", opt: "opcional", other: "Escribe cuál", multi: "puedes elegir varias",
             q1: "¿Con qué frecuencia usas ZeroBudget?",
             q2: "¿Para qué la instalaste?",
             q3: "¿Qué es lo que más usas?",
             q4: "¿Qué fue lo más difícil o confuso?",
             q5: "¿Qué te falta o qué cambiarías?",
             q6: "Si no eres Pro, ¿qué te frena?",
-            q7: "¿Qué tan probable es que recomiendes ZeroBudget a un amigo?", q7a: "Nada probable", q7b: "Muy probable",
+            q7: "¿Qué tan probable es que recomiendes ZeroBudget a un amigo?", q7l: ["Nada", "Poco", "Algo", "Mucho"],
             labels: {
                 q1: ["Todos los días", "Varias veces por semana", "Una vez por semana", "De vez en cuando", "Ya casi no la uso"],
                 q2: ["Controlar mis gastos", "Armar un presupuesto", "Controlar mis tarjetas y MSI", "Dividir gastos con alguien", "Ahorrar", "Otro"],
@@ -166,14 +166,14 @@
             title: "Ajude a melhorar o ZeroBudget",
             intro: "Eu desenvolvo o ZeroBudget. Seus dados financeiros nunca saem do seu iPhone, e esta pesquisa também não pede nenhum. São 7 perguntas, cerca de 3 minutos, e eu leio cada resposta pessoalmente. Obrigado por me ajudar.",
             privacy: "Não guardamos seu IP nem pedimos seu nome. Só é guardado o que você escrever aqui.",
-            req: "obrigatória", opt: "opcional", other: "Escreva qual", max3: "até 3",
+            req: "obrigatória", opt: "opcional", other: "Escreva qual", multi: "pode escolher várias",
             q1: "Com que frequência você usa o ZeroBudget?",
             q2: "Para que você o instalou?",
             q3: "O que você mais usa?",
             q4: "O que foi mais difícil ou confuso?",
             q5: "O que falta ou o que você mudaria?",
             q6: "Se você não é Pro, o que te impede?",
-            q7: "Qual a chance de você recomendar o ZeroBudget a um amigo?", q7a: "Nenhuma", q7b: "Muito alta",
+            q7: "Qual a chance de você recomendar o ZeroBudget a um amigo?", q7l: ["Nada", "Pouco", "Algo", "Muito"],
             labels: {
                 q1: ["Todos os dias", "Várias vezes por semana", "Uma vez por semana", "De vez em quando", "Quase não uso mais"],
                 q2: ["Controlar meus gastos", "Montar um orçamento", "Controlar meus cartões e parcelas", "Dividir contas com alguém", "Poupar", "Outro"],
@@ -192,14 +192,14 @@
             title: "Help us improve ZeroBudget",
             intro: "I'm the person who builds ZeroBudget. Your financial data never leaves your iPhone, and this survey doesn't ask for any. It's 7 questions, about 3 minutes, and I read every answer myself. Thank you for helping.",
             privacy: "We don't store your IP or ask your name. Only what you write here is saved.",
-            req: "required", opt: "optional", other: "Tell us which", max3: "up to 3",
+            req: "required", opt: "optional", other: "Tell us which", multi: "choose all that apply",
             q1: "How often do you use ZeroBudget?",
             q2: "Why did you install it?",
             q3: "What do you use the most?",
             q4: "What was hardest or most confusing?",
             q5: "What's missing, or what would you change?",
             q6: "If you're not on Pro, what holds you back?",
-            q7: "How likely are you to recommend ZeroBudget to a friend?", q7a: "Not likely", q7b: "Very likely",
+            q7: "How likely are you to recommend ZeroBudget to a friend?", q7l: ["Not at all", "A little", "Somewhat", "Very"],
             labels: {
                 q1: ["Every day", "A few times a week", "Once a week", "Once in a while", "I barely use it anymore"],
                 q2: ["Track my spending", "Build a budget", "Manage my cards and installments", "Split expenses with someone", "Save money", "Other"],
@@ -243,7 +243,7 @@
         var fs = el("fieldset", { id: "g_" + id });
         var legend = el("legend", {}, t[id]);
         if (id === "q1") legend.appendChild(el("span", { class: "hint" }, " (" + t.req + ")"));
-        if (type === "checkbox") legend.appendChild(el("span", { class: "hint" }, " (" + t.max3 + ")"));
+        if (type === "checkbox") legend.appendChild(el("span", { class: "hint" }, " (" + t.multi + ")"));
         fs.appendChild(legend);
         OPTS[id].forEach(function (key, i) {
             var lab = el("label", { class: "opt" });
@@ -260,7 +260,7 @@
                 o.hidden = !other.checked;
             });
         }
-        if (type === "checkbox") {
+        if (type === "checkbox" && max) {
             fs.addEventListener("change", function () {
                 var boxes = fs.querySelectorAll("input[type=checkbox]");
                 var n = fs.querySelectorAll("input[type=checkbox]:checked").length;
@@ -282,26 +282,23 @@
     }
 
     form.appendChild(group("q1", "radio"));
-    form.appendChild(group("q2", "radio"));
-    form.appendChild(group("q3", "checkbox", 3));
+    form.appendChild(group("q2", "checkbox"));
+    form.appendChild(group("q3", "checkbox"));
     form.appendChild(text("q4"));
     form.appendChild(text("q5"));
     form.appendChild(group("q6", "radio"));
 
-    // q7: escala 0 a 10
+    // q7: cuatro niveles (se guardan como 0 a 3)
     var f7 = el("fieldset");
     f7.appendChild(el("legend", {}, t.q7));
     var sc = el("div", { class: "scale" });
-    for (var i = 0; i <= 10; i++) {
+    t.q7l.forEach(function (label, i) {
         var l = el("label", {});
         l.appendChild(el("input", { type: "radio", name: "q7", value: String(i) }));
-        l.appendChild(document.createTextNode(String(i)));
+        l.appendChild(document.createTextNode(label));
         sc.appendChild(l);
-    }
+    });
     f7.appendChild(sc);
-    var ends = el("div", { class: "scale-ends" });
-    ends.appendChild(el("span", {}, t.q7a)); ends.appendChild(el("span", {}, t.q7b));
-    f7.appendChild(ends);
     form.appendChild(f7);
 
     // Trampa para bots: un campo que una persona no ve ni llena.
@@ -331,6 +328,10 @@
         document.getElementById("alt").hidden = true;
     }
 
+    function checkedAll(name) {
+        return [].map.call(form.querySelectorAll("input[name=" + name + "]:checked"), function (i) { return i.value; });
+    }
+
     function checked(name) {
         var n = form.querySelector("input[name=" + name + "]:checked");
         return n ? n.value : null;
@@ -342,10 +343,10 @@
         var q1 = checked("q1");
         if (!q1) { msg.className = "msg error"; msg.textContent = t.needQ1; document.getElementById("g_q1").scrollIntoView({ behavior: "smooth" }); return; }
 
-        var q3 = [].map.call(form.querySelectorAll("input[name=q3]:checked"), function (i) { return i.value; });
+        var q3 = checkedAll("q3");
         var body = {
             lang: lang, elapsed: Date.now() - started, website: document.getElementById("website").value,
-            q1: q1, q2: checked("q2"), q2Other: document.getElementById("q2Other").value,
+            q1: q1, q2: checkedAll("q2"), q2Other: document.getElementById("q2Other").value,
             q3: q3, q3Other: document.getElementById("q3Other").value,
             q4: document.getElementById("q4").value, q5: document.getElementById("q5").value,
             q6: checked("q6"), q6Other: document.getElementById("q6Other").value,
