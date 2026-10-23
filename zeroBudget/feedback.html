@@ -113,6 +113,8 @@
         <div id="done" class="done" hidden>
             <h1 id="doneTitle"></h1>
             <p id="doneText"></p>
+            <p id="doneMailHint"></p>
+            <a id="doneMail" class="btn mailbtn" style="margin-top:1rem"></a>
         </div>
 
         <p class="alt" id="alt"></p>
@@ -135,7 +137,7 @@
     var T = {
         es: {
             title: "Ayúdanos a mejorar ZeroBudget",
-            intro: "Soy quien desarrolla ZeroBudget. Tus datos financieros nunca salen de tu iPhone, y esta encuesta tampoco te pide ninguno. Son 8 preguntas, unos 3 minutos, y leo cada respuesta personalmente. Gracias por ayudarme.",
+            intro: "Soy quien desarrolla ZeroBudget. Tus datos financieros nunca salen de tu iPhone, y esta encuesta tampoco te pide ninguno. Son 7 preguntas, unos 3 minutos, y leo cada respuesta personalmente. Gracias por ayudarme.",
             privacy: "No guardamos tu IP ni te pedimos nombre. Solo se guarda lo que escribas aquí.",
             req: "obligatoria", opt: "opcional", other: "Escribe cuál", max3: "hasta 3",
             q1: "¿Con qué frecuencia usas ZeroBudget?",
@@ -145,7 +147,6 @@
             q5: "¿Qué te falta o qué cambiarías?",
             q6: "Si no eres Pro, ¿qué te frena?",
             q7: "¿Qué tan probable es que recomiendes ZeroBudget a un amigo?", q7a: "Nada probable", q7b: "Muy probable",
-            q8: "Si quieres platicar 15 minutos conmigo, deja tu correo", q8h: "Solo lo usaré para eso.",
             labels: {
                 q1: ["Todos los días", "Varias veces por semana", "Una vez por semana", "De vez en cuando", "Ya casi no la uso"],
                 q2: ["Controlar mis gastos", "Armar un presupuesto", "Controlar mis tarjetas y MSI", "Dividir gastos con alguien", "Ahorrar", "Otro"],
@@ -154,15 +155,16 @@
             },
             send: "Enviar", sending: "Enviando…",
             needQ1: "Responde la primera pregunta para poder enviar.",
-            badEmail: "Revisa tu correo: no parece válido.",
             fail: "No pudimos enviarlo ahora. Puedes escribirnos por correo.",
-            doneTitle: "Gracias", doneText: "Leo cada respuesta y las uso para decidir qué mejorar primero. Si dejaste tu correo, te escribo pronto.",
+            doneTitle: "Gracias", doneText: "Leo cada respuesta y las uso para decidir qué mejorar primero.",
+            doneMailHint: "¿Quieres contarnos algo más? Toca el botón: se abre un correo con tus respuestas para que agregues lo que quieras.", doneMail: "Enviar un correo con mis respuestas",
+            mailHead: "Mis respuestas", mailQ: ["¿Con qué frecuencia usas ZeroBudget?", "¿Para qué la instalaste?", "¿Qué es lo que más usas?", "¿Qué fue lo más difícil o confuso?", "¿Qué te falta o qué cambiarías?", "Si no eres Pro, ¿qué te frena?", "¿Qué tan probable es que la recomiendes (0-10)?"], mailMore: "Quiero agregar:",
             introMail: "Soy quien desarrolla ZeroBudget. Tus datos financieros nunca salen de tu iPhone. Cuéntame por correo cómo la usas, qué te falta o qué no entendiste: leo cada mensaje personalmente.", mail: "Escríbenos un correo", subject: "ZeroBudget - Ayúdanos a mejorar", mailBody: "1) ¿Qué fue lo más difícil o confuso?\n\n2) ¿Qué te falta o qué cambiarías?\n\n3) Si no eres Pro, ¿qué te frena?\n",
             alt: "¿Prefieres escribirnos? <a href=\"mailto:soporte@araniosoft.com?subject=ZeroBudget%20-%20Ay%C3%BAdanos%20a%20mejorar\">soporte@araniosoft.com</a>"
         },
         pt: {
             title: "Ajude a melhorar o ZeroBudget",
-            intro: "Eu desenvolvo o ZeroBudget. Seus dados financeiros nunca saem do seu iPhone, e esta pesquisa também não pede nenhum. São 8 perguntas, cerca de 3 minutos, e eu leio cada resposta pessoalmente. Obrigado por me ajudar.",
+            intro: "Eu desenvolvo o ZeroBudget. Seus dados financeiros nunca saem do seu iPhone, e esta pesquisa também não pede nenhum. São 7 perguntas, cerca de 3 minutos, e eu leio cada resposta pessoalmente. Obrigado por me ajudar.",
             privacy: "Não guardamos seu IP nem pedimos seu nome. Só é guardado o que você escrever aqui.",
             req: "obrigatória", opt: "opcional", other: "Escreva qual", max3: "até 3",
             q1: "Com que frequência você usa o ZeroBudget?",
@@ -172,7 +174,6 @@
             q5: "O que falta ou o que você mudaria?",
             q6: "Se você não é Pro, o que te impede?",
             q7: "Qual a chance de você recomendar o ZeroBudget a um amigo?", q7a: "Nenhuma", q7b: "Muito alta",
-            q8: "Se quiser conversar 15 minutos comigo, deixe seu e-mail", q8h: "Só vou usá-lo para isso.",
             labels: {
                 q1: ["Todos os dias", "Várias vezes por semana", "Uma vez por semana", "De vez em quando", "Quase não uso mais"],
                 q2: ["Controlar meus gastos", "Montar um orçamento", "Controlar meus cartões e parcelas", "Dividir contas com alguém", "Poupar", "Outro"],
@@ -181,15 +182,16 @@
             },
             send: "Enviar", sending: "Enviando…",
             needQ1: "Responda a primeira pergunta para enviar.",
-            badEmail: "Confira seu e-mail: não parece válido.",
             fail: "Não conseguimos enviar agora. Você pode nos escrever por e-mail.",
-            doneTitle: "Obrigado", doneText: "Leio cada resposta e as uso para decidir o que melhorar primeiro. Se você deixou seu e-mail, eu escrevo em breve.",
+            doneTitle: "Obrigado", doneText: "Leio cada resposta e as uso para decidir o que melhorar primeiro.",
+            doneMailHint: "Quer contar mais alguma coisa? Toque no botão: abre um e-mail com suas respostas para você acrescentar o que quiser.", doneMail: "Enviar um e-mail com minhas respostas",
+            mailHead: "Minhas respostas", mailQ: ["Com que frequência você usa o ZeroBudget?", "Para que você o instalou?", "O que você mais usa?", "O que foi mais difícil ou confuso?", "O que falta ou o que você mudaria?", "Se você não é Pro, o que te impede?", "Qual a chance de recomendar (0-10)?"], mailMore: "Quero acrescentar:",
             introMail: "Eu desenvolvo o ZeroBudget. Seus dados financeiros nunca saem do seu iPhone. Conte por e-mail como você a usa, o que falta ou o que não entendeu: leio cada mensagem pessoalmente.", mail: "Escreva-nos um e-mail", subject: "ZeroBudget - Ajude a melhorar", mailBody: "1) O que foi mais difícil ou confuso?\n\n2) O que falta ou o que você mudaria?\n\n3) Se você não é Pro, o que te impede?\n",
             alt: "Prefere nos escrever? <a href=\"mailto:soporte@araniosoft.com?subject=ZeroBudget%20-%20Ajude%20a%20melhorar\">soporte@araniosoft.com</a>"
         },
         en: {
             title: "Help us improve ZeroBudget",
-            intro: "I'm the person who builds ZeroBudget. Your financial data never leaves your iPhone, and this survey doesn't ask for any. It's 8 questions, about 3 minutes, and I read every answer myself. Thank you for helping.",
+            intro: "I'm the person who builds ZeroBudget. Your financial data never leaves your iPhone, and this survey doesn't ask for any. It's 7 questions, about 3 minutes, and I read every answer myself. Thank you for helping.",
             privacy: "We don't store your IP or ask your name. Only what you write here is saved.",
             req: "required", opt: "optional", other: "Tell us which", max3: "up to 3",
             q1: "How often do you use ZeroBudget?",
@@ -199,7 +201,6 @@
             q5: "What's missing, or what would you change?",
             q6: "If you're not on Pro, what holds you back?",
             q7: "How likely are you to recommend ZeroBudget to a friend?", q7a: "Not likely", q7b: "Very likely",
-            q8: "If you'd like to chat for 15 minutes, leave your email", q8h: "I'll only use it for that.",
             labels: {
                 q1: ["Every day", "A few times a week", "Once a week", "Once in a while", "I barely use it anymore"],
                 q2: ["Track my spending", "Build a budget", "Manage my cards and installments", "Split expenses with someone", "Save money", "Other"],
@@ -208,9 +209,10 @@
             },
             send: "Send", sending: "Sending…",
             needQ1: "Please answer the first question to send.",
-            badEmail: "Please check your email: it doesn't look valid.",
             fail: "We couldn't send it right now. You can email us instead.",
-            doneTitle: "Thank you", doneText: "I read every answer and use them to decide what to improve first. If you left your email, I'll write to you soon.",
+            doneTitle: "Thank you", doneText: "I read every answer and use them to decide what to improve first.",
+            doneMailHint: "Want to tell us more? Tap the button: it opens an email with your answers so you can add whatever you like.", doneMail: "Email my answers",
+            mailHead: "My answers", mailQ: ["How often do you use ZeroBudget?", "Why did you install it?", "What do you use the most?", "What was hardest or most confusing?", "What's missing, or what would you change?", "If you're not on Pro, what holds you back?", "How likely are you to recommend it (0-10)?"], mailMore: "I'd like to add:",
             introMail: "I'm the person who builds ZeroBudget. Your financial data never leaves your iPhone. Tell me by email how you use it, what's missing or what confused you: I read every message myself.", mail: "Send us an email", subject: "ZeroBudget - Help us improve", mailBody: "1) What was hardest or most confusing?\n\n2) What's missing, or what would you change?\n\n3) If you're not on Pro, what holds you back?\n",
             alt: "Prefer to write to us? <a href=\"mailto:soporte@araniosoft.com?subject=ZeroBudget%20-%20Help%20us%20improve\">soporte@araniosoft.com</a>"
         }
@@ -303,14 +305,6 @@
     f7.appendChild(ends);
     form.appendChild(f7);
 
-    // q8: correo opcional
-    var f8 = el("fieldset");
-    var l8 = el("label", { class: "q-label", for: "q8" }, t.q8);
-    l8.appendChild(el("span", { class: "hint" }, " (" + t.opt + "). " + t.q8h));
-    f8.appendChild(l8);
-    f8.appendChild(el("input", { type: "email", id: "q8", maxlength: "160", autocomplete: "email" }));
-    form.appendChild(f8);
-
     // Trampa para bots: un campo que una persona no ve ni llena.
     var trap = el("div", { class: "trap", "aria-hidden": "true" });
     trap.appendChild(el("input", { type: "text", name: "website", id: "website", tabindex: "-1", autocomplete: "off" }));
@@ -337,13 +331,25 @@
         return n ? n.value : null;
     }
 
+    // Correo prellenado con las respuestas de la persona (ella lo revisa y lo envía desde su app de correo;
+    // nada de esto pasa por nuestro servidor). Los textos libres se recortan para que quepan en el enlace.
+    function answersMail(b) {
+        function lab(q, key) { var i = OPTS[q].indexOf(key); return i >= 0 ? t.labels[q][i] : ""; }
+        function opt(q, key, other) { var l = lab(q, key); return l && other ? l + ": " + other : l; }
+        function cut(v) { v = (v || "").trim(); return v.length > 300 ? v.slice(0, 300) + "…" : v; }
+        var q3 = b.q3.map(function (k) { return lab("q3", k); }).join(", ") + (b.q3Other ? " (" + b.q3Other + ")" : "");
+        var rows = [lab("q1", b.q1), opt("q2", b.q2, b.q2Other), q3, cut(b.q4), cut(b.q5), opt("q6", b.q6, b.q6Other), b.q7 === null ? "" : b.q7];
+        var lines = [t.mailHead, ""];
+        rows.forEach(function (r, i) { if (r !== "" && r !== null) lines.push(t.mailQ[i] + "\n" + r + "\n"); });
+        lines.push(t.mailMore, "");
+        return "mailto:soporte@araniosoft.com?subject=" + encodeURIComponent(t.subject) + "&body=" + encodeURIComponent(lines.join("\n"));
+    }
+
     form.addEventListener("submit", function (e) {
         e.preventDefault();
         msg.className = "msg"; msg.textContent = "";
         var q1 = checked("q1");
         if (!q1) { msg.className = "msg error"; msg.textContent = t.needQ1; document.getElementById("g_q1").scrollIntoView({ behavior: "smooth" }); return; }
-        var email = document.getElementById("q8").value.trim();
-        if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { msg.className = "msg error"; msg.textContent = t.badEmail; return; }
 
         var q3 = [].map.call(form.querySelectorAll("input[name=q3]:checked"), function (i) { return i.value; });
         var body = {
@@ -352,7 +358,7 @@
             q3: q3, q3Other: document.getElementById("q3Other").value,
             q4: document.getElementById("q4").value, q5: document.getElementById("q5").value,
             q6: checked("q6"), q6Other: document.getElementById("q6Other").value,
-            q7: checked("q7"), q8: email
+            q7: checked("q7")
         };
 
         btn.disabled = true; btn.textContent = t.sending;
@@ -363,6 +369,10 @@
                 document.getElementById("done").hidden = false;
                 document.getElementById("doneTitle").textContent = t.doneTitle;
                 document.getElementById("doneText").textContent = t.doneText;
+                document.getElementById("doneMailHint").textContent = t.doneMailHint;
+                var dm = document.getElementById("doneMail");
+                dm.textContent = t.doneMail; dm.href = answersMail(body);
+                document.getElementById("alt").hidden = true;
                 window.scrollTo({ top: 0, behavior: "smooth" });
             })
             .catch(function () {
